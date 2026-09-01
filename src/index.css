@@ -4,6 +4,40 @@
 @import 'swiper/css/pagination';
 @import 'swiper/css/navigation';
 
+/* ════════════════════════════════════════════════════════════
+   FONTS
+   Dubai   — headings (EN bold · AR regular)
+   Myanmar — EN body text (regular)
+════════════════════════════════════════════════════════════ */
+
+@font-face {
+  font-family: 'Dubai';
+  src: url('/fonts/Dubai-Bold.woff') format('woff'),
+       url('/fonts/Dubai-Bold.ttf')  format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Dubai';
+  src: url('/fonts/Dubai-Regular.woff') format('woff'),
+       url('/fonts/Dubai-Regular.ttf')  format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Myanmar';
+  src: url('/fonts/mmrtext.woff') format('woff'),
+       url('/fonts/mmrtext.ttf')  format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── Force dark colour scheme ── */
 :root {
   color-scheme: dark;
 }

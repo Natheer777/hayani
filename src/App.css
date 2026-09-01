@@ -7,16 +7,19 @@
   --color-white: #ffffff;
   --color-black: #000000;
 
-  --font-heading: "Dubai", sans-serif;
-  --font-body: "Dubai", sans-serif;
+  /* Default (LTR / English) */
+  --font-heading: "Dubai", sans-serif;   /* bold weight used on headings */
+  --font-body: "Myanmar", sans-serif;    /* Myanmar Regular for EN body */
 }
 
+/* ── English (LTR) ── */
 [dir="ltr"] {
   --font-heading: "Dubai", sans-serif;
   --font-body: "Myanmar", sans-serif;
 }
 
+/* ── Arabic (RTL) ── */
 [dir="rtl"] {
   --font-heading: "Dubai", sans-serif;
-  --font-body: "Dubai", sans-serif;
+  --font-body: "Dubai", sans-serif;     /* Dubai Regular for AR body */
 }
