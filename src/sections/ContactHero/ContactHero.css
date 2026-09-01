@@ -49,6 +49,13 @@
 }
 
 @media (max-width: 768px) {
-  .ch-hero { min-height: 420px; }
-  .ch-bg   { object-fit: contain; }
+  .ch-hero {
+    height: auto;
+    min-height: unset;
+    aspect-ratio: 4 / 3;
+  }
+  .ch-bg {
+    object-fit: cover;
+    object-position: center top;
+  }
 }

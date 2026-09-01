@@ -59,10 +59,17 @@
   box-shadow: 0 0 8px var(--color-primary);
 }
 
-/* mobile: show full image */
+/* mobile: full image, no gaps */
 @media (max-width: 768px) {
-  .ph-hero { min-height: 420px; }
-  .ph-slide-img { object-fit: contain; }
+  .ph-hero {
+    height: auto;
+    min-height: unset;
+    aspect-ratio: 4 / 3;
+  }
+  .ph-slide-img {
+    object-fit: cover;
+    object-position: center top;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -217,8 +217,15 @@
 
 /* ── Responsive ── */
 @media (max-width: 768px) {
-  .dh-hero { min-height: 460px; }
-  .dh-slide-img { object-fit: contain; }
+  .dh-hero {
+    height: auto;
+    min-height: unset;
+    aspect-ratio: 4 / 3;
+  }
+  .dh-slide-img {
+    object-fit: cover;
+    object-position: center top;
+  }
   .dh-content { left: 1rem; max-width: 70%; }
   [dir="rtl"] .dh-content { right: 1rem; left: unset; }
 }

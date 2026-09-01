@@ -191,8 +191,17 @@
 
 /* ── responsive ── */
 @media (max-width: 768px) {
-  .prh-hero { min-height: 460px; }
-  .prh-bg   { object-fit: contain; animation: none; transform: none; }
+  .prh-hero {
+    height: auto;
+    min-height: unset;
+    aspect-ratio: 4 / 3;
+  }
+  .prh-bg {
+    object-fit: cover;
+    object-position: center top;
+    animation: none;
+    transform: none;
+  }
   .prh-content { left: 1rem; max-width: 70%; }
   [dir="rtl"] .prh-content { right: 1rem; left: unset; }
 }

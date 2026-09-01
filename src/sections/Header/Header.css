@@ -136,22 +136,19 @@
 }
 
 /* ════════════════════════════════════════════════════════════
-   RESPONSIVE — mobile: show full image without cropping
+   RESPONSIVE — mobile: full image, no gaps
 ════════════════════════════════════════════════════════════ */
 
 @media (max-width: 768px) {
   .hdr-hero {
-    height: 100svh;
-    min-height: 420px;
+    height: auto;
+    min-height: unset;
+    aspect-ratio: 4 / 3;
   }
 
-  /*
-   * object-fit: contain — shows the entire image, no cropping.
-   * Dark background fills any letterbox gap.
-   */
   .hdr-slide-img {
-    object-fit: contain;
-    object-position: center center;
+    object-fit: cover;
+    object-position: center top;
   }
 
   .hdr-nav__btn { width: 38px; height: 38px; }
@@ -162,8 +159,7 @@
 }
 
 @media (max-width: 480px) {
-  .hdr-hero { min-height: 360px; }
-  .hdr-nav  { right: 0.8rem; }
+  .hdr-nav { right: 0.8rem; }
 }
 
 /* ─── Reduced motion ─────────────────────────────────────── */
