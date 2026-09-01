@@ -1,0 +1,173 @@
+/* ═══════════════════════════════════════════════════════════
+   HEADER / HERO  —  Swiper  —  images only, no text overlay
+═══════════════════════════════════════════════════════════ */
+
+/* ─── Swiper reset ───────────────────────────────────────── */
+.hdr-swiper {
+  width: 100%;
+  height: 100%;
+}
+.hdr-swiper .swiper-slide { overflow: hidden; }
+.hdr-swiper .swiper-button-next,
+.hdr-swiper .swiper-button-prev { display: none; }
+
+/* ─── Section shell ──────────────────────────────────────── */
+.hdr-hero {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  min-height: 520px;
+  overflow: hidden;
+  background: var(--color-dark);
+}
+
+/* ─── Slide image — full bleed, never cropped ────────────── */
+.hdr-slide-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
+}
+
+/* ─── Bottom scrim — keeps pagination readable ───────────── */
+.hdr-scrim {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(
+    to top,
+    color-mix(in srgb, var(--color-dark) 60%, transparent),
+    transparent
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ─── Autoplay progress bar ──────────────────────────────── */
+.hdr-progress-bar {
+  position: absolute;
+  z-index: 5;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: color-mix(in srgb, var(--color-white) 15%, transparent);
+  overflow: hidden;
+}
+.hdr-progress-bar__fill {
+  display: block;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, var(--color-secondary), var(--color-primary));
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.1s linear;
+  box-shadow: 0 0 8px var(--color-primary);
+}
+
+/* ─── Pagination dots ────────────────────────────────────── */
+.hdr-pagination {
+  position: absolute !important;
+  z-index: 5;
+  bottom: clamp(1rem, 3vh, 1.8rem) !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  width: auto !important;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.hdr-pagination .swiper-pagination-bullet {
+  width: 28px;
+  height: 3px;
+  border-radius: 99px;
+  background: color-mix(in srgb, var(--color-white) 35%, transparent);
+  opacity: 1;
+  margin: 0 !important;
+  transition: background 0.3s ease, width 0.3s ease;
+}
+.hdr-pagination .swiper-pagination-bullet-active {
+  width: 48px;
+  background: linear-gradient(90deg, var(--color-secondary), var(--color-primary));
+  box-shadow: 0 0 8px color-mix(in srgb, var(--color-primary) 50%, transparent);
+}
+
+/* ─── Prev / Next buttons ────────────────────────────────── */
+.hdr-nav {
+  position: absolute;
+  z-index: 5;
+  bottom: clamp(0.8rem, 2.5vh, 1.6rem);
+  right: clamp(1rem, 4vw, 3.5rem);
+  display: flex;
+  gap: 0.55rem;
+}
+.hdr-nav__btn {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid color-mix(in srgb, var(--color-white) 30%, transparent);
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--color-dark) 22%, transparent);
+  color: var(--color-white);
+  cursor: pointer;
+  backdrop-filter: blur(12px);
+  transition:
+    transform    0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.3s ease,
+    background   0.3s ease,
+    box-shadow   0.3s ease;
+}
+.hdr-nav__btn svg { width: 18px; height: 18px; }
+.hdr-nav__btn:hover,
+.hdr-nav__btn:focus-visible {
+  transform: translateY(-3px);
+  border-color: var(--color-secondary);
+  background: color-mix(in srgb, var(--color-secondary) 22%, transparent);
+  box-shadow: 0 4px 18px color-mix(in srgb, var(--color-secondary) 28%, transparent);
+  outline: none;
+}
+
+/* ════════════════════════════════════════════════════════════
+   RESPONSIVE — mobile: show full image without cropping
+════════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+  .hdr-hero {
+    height: 100svh;
+    min-height: 420px;
+  }
+
+  /*
+   * object-fit: contain — shows the entire image, no cropping.
+   * Dark background fills any letterbox gap.
+   */
+  .hdr-slide-img {
+    object-fit: contain;
+    object-position: center center;
+  }
+
+  .hdr-nav__btn { width: 38px; height: 38px; }
+  .hdr-nav__btn svg { width: 15px; height: 15px; }
+
+  .hdr-pagination .swiper-pagination-bullet        { width: 20px; }
+  .hdr-pagination .swiper-pagination-bullet-active { width: 36px; }
+}
+
+@media (max-width: 480px) {
+  .hdr-hero { min-height: 360px; }
+  .hdr-nav  { right: 0.8rem; }
+}
+
+/* ─── Reduced motion ─────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .hdr-nav__btn            { transition: none !important; }
+  .hdr-progress-bar__fill  { transition: none !important; }
+}

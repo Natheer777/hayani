@@ -1,0 +1,70 @@
+/* ═══════════════════════════════════════════════════════════
+   PARTNERSHIP HERO  —  images only, no text overlay
+═══════════════════════════════════════════════════════════ */
+
+.ph-swiper { width: 100%; height: 100%; }
+.ph-swiper .swiper-slide { overflow: hidden; }
+
+.ph-hero {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  min-height: 520px;
+  overflow: hidden;
+  background: var(--color-dark);
+}
+
+/* full-bleed image */
+.ph-slide-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* bottom scrim */
+.ph-scrim {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 120px;
+  z-index: 2;
+  background: linear-gradient(
+    to top,
+    color-mix(in srgb, var(--color-dark) 60%, transparent),
+    transparent
+  );
+  pointer-events: none;
+}
+
+/* autoplay progress bar */
+.ph-progress {
+  position: absolute;
+  z-index: 5;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: color-mix(in srgb, var(--color-white) 15%, transparent);
+  overflow: hidden;
+}
+.ph-progress__fill {
+  display: block;
+  height: 100%; width: 100%;
+  background: linear-gradient(90deg, var(--color-secondary), var(--color-primary));
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.1s linear;
+  box-shadow: 0 0 8px var(--color-primary);
+}
+
+/* mobile: show full image */
+@media (max-width: 768px) {
+  .ph-hero { min-height: 420px; }
+  .ph-slide-img { object-fit: contain; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ph-progress__fill { transition: none !important; }
+}

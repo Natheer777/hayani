@@ -1,0 +1,329 @@
+/* ═══════════════════════════════════════════════════════════
+   QUICK STATS SECTION
+   Dark/cyan theme — matches haeani_com design system
+═══════════════════════════════════════════════════════════ */
+
+/* ─── Section shell ──────────────────────────────────────── */
+.qs-section {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-dark);
+  padding: clamp(4rem, 8vw, 7rem) 0 clamp(4.5rem, 9vw, 8rem);
+}
+
+/* ─── Ambient background orbs ────────────────────────────── */
+.qs-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(110px);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+.qs-section--visible .qs-orb { opacity: 1; }
+
+.qs-orb--a {
+  width: clamp(340px, 45vw, 620px);
+  height: clamp(340px, 45vw, 620px);
+  background: radial-gradient(circle, color-mix(in srgb, var(--color-primary) 18%, transparent), transparent 70%);
+  top: -12%;
+  left: -10%;
+}
+.qs-orb--b {
+  width: clamp(280px, 38vw, 500px);
+  height: clamp(280px, 38vw, 500px);
+  background: radial-gradient(circle, color-mix(in srgb, var(--color-secondary) 15%, transparent), transparent 70%);
+  bottom: -8%;
+  right: -8%;
+}
+
+/* ─── Grid texture ───────────────────────────────────────── */
+.qs-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--color-primary) 5%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--color-primary) 5%, transparent) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 30%, transparent 100%);
+  pointer-events: none;
+}
+
+/* ─── Container ──────────────────────────────────────────── */
+.qs-container {
+  width: min(1280px, calc(100% - 3rem));
+  margin: 0 auto;
+}
+
+/* ─── Section header ─────────────────────────────────────── */
+.qs-header {
+  text-align: center;
+  margin-bottom: clamp(2.8rem, 5vw, 4.5rem);
+
+  /* entrance */
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.qs-section--visible .qs-header {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.qs-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  font-weight: 850;
+  letter-spacing: 0.08em;
+  line-height: 1.1;
+  margin: 0 0 0.9rem;
+
+  /* gradient text */
+  background: linear-gradient(90deg, var(--color-secondary), var(--color-primary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+[dir="rtl"] .qs-title {
+  letter-spacing: 0;
+}
+
+/* three decorative bars under the title */
+.qs-title-lines {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.qs-title-lines span {
+  height: 3px;
+  border-radius: 99px;
+  background: linear-gradient(90deg, var(--color-secondary), var(--color-primary));
+}
+.qs-title-lines span:nth-child(1) { width: 52px; opacity: 1; }
+.qs-title-lines span:nth-child(2) { width: 18px; opacity: 0.6; }
+.qs-title-lines span:nth-child(3) { width: 7px;  opacity: 0.3; }
+
+/* ─── Cards grid ─────────────────────────────────────────── */
+.qs-grid-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1rem, 2.5vw, 1.75rem);
+}
+
+@media (max-width: 768px) {
+  .qs-grid-cards { grid-template-columns: 1fr; gap: 1.1rem; }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .qs-grid-cards { gap: 1.2rem; }
+}
+
+/* ─── Card ───────────────────────────────────────────────── */
+.qs-card {
+  position: relative;
+  border: 1.5px solid color-mix(in srgb, var(--color-primary) 28%, transparent);
+  border-radius: 16px;
+  padding: clamp(1.6rem, 3vw, 2.4rem) clamp(1.4rem, 2.5vw, 2rem);
+  background: color-mix(in srgb, var(--color-dark-blue) 30%, transparent);
+  backdrop-filter: blur(18px) saturate(120%);
+  overflow: hidden;
+  cursor: default;
+
+  /* entrance */
+  opacity: 0;
+  transform: translateY(40px) scale(0.97);
+  animation: qsCardIn 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-play-state: paused;
+
+  transition:
+    border-color 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow   0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    transform    0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.qs-section--visible .qs-card {
+  animation-play-state: running;
+}
+
+@keyframes qsCardIn {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.qs-card:hover {
+  border-color: color-mix(in srgb, var(--color-primary) 70%, transparent);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--color-primary) 20%, transparent),
+    0 8px 40px color-mix(in srgb, var(--color-primary) 14%, transparent),
+    inset 0 0 28px color-mix(in srgb, var(--color-primary) 5%, transparent);
+  transform: translateY(-5px);
+}
+
+/* glow sweep on hover */
+.qs-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 35%,
+    color-mix(in srgb, var(--color-primary) 10%, transparent) 50%,
+    transparent 65%
+  );
+  background-size: 200% 100%;
+  background-position: 200% 0;
+  border-radius: inherit;
+  transition: background-position 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+.qs-card:hover::after {
+  background-position: -200% 0;
+}
+
+/* ─── Corner brackets ────────────────────────────────────── */
+.qs-bracket {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  pointer-events: none;
+  opacity: 0.65;
+  transition: opacity 0.3s ease;
+}
+.qs-card:hover .qs-bracket { opacity: 1; }
+
+.qs-bracket--tl {
+  top: 10px;
+  left: 10px;
+  border-top: 2px solid var(--color-primary);
+  border-left: 2px solid var(--color-primary);
+  border-radius: 3px 0 0 0;
+}
+.qs-bracket--br {
+  bottom: 10px;
+  right: 10px;
+  border-bottom: 2px solid var(--color-secondary);
+  border-right: 2px solid var(--color-secondary);
+  border-radius: 0 0 3px 0;
+}
+
+[dir="rtl"] .qs-bracket--tl {
+  left: unset;
+  right: 10px;
+  border-left: none;
+  border-right: 2px solid var(--color-primary);
+  border-radius: 0 3px 0 0;
+}
+[dir="rtl"] .qs-bracket--br {
+  right: unset;
+  left: 10px;
+  border-right: none;
+  border-left: 2px solid var(--color-secondary);
+  border-radius: 0 0 0 3px;
+}
+
+/* ─── Index pill ─────────────────────────────────────────── */
+.qs-index {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: color-mix(in srgb, var(--color-primary) 55%, transparent);
+  margin-bottom: 0.6rem;
+  text-transform: uppercase;
+}
+
+/* ─── Counter (big number + suffix) ─────────────────────── */
+.qs-counter {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  margin-bottom: 0.75rem;
+  line-height: 1;
+}
+
+.qs-number {
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 5.5vw, 4rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  background: linear-gradient(90deg, var(--color-secondary), var(--color-primary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1;
+  /* smooth number flicker during count */
+  will-change: contents;
+}
+
+[dir="rtl"] .qs-number {
+  letter-spacing: 0;
+}
+
+.qs-suffix {
+  font-family: var(--font-heading);
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1;
+}
+
+/* ─── Accent bar (the horizontal cyan line in the design) ── */
+.qs-bar {
+  width: 100%;
+  height: 3px;
+  background: color-mix(in srgb, var(--color-primary) 18%, transparent);
+  border-radius: 99px;
+  overflow: hidden;
+  margin-bottom: 0.85rem;
+}
+
+.qs-bar__fill {
+  display: block;
+  height: 100%;
+  width: 0%;
+  border-radius: 99px;
+  background: linear-gradient(90deg, var(--color-secondary), var(--color-primary));
+  /* fill triggers when card's parent section becomes visible */
+  transition: width 1.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.qs-section--visible .qs-bar__fill {
+  width: 100%;
+}
+
+/* ─── Label ──────────────────────────────────────────────── */
+.qs-label {
+  font-family: var(--font-heading);
+  font-size: clamp(0.7rem, 1.5vw, 0.82rem);
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--color-white) 75%, transparent);
+  margin: 0;
+  line-height: 1.4;
+}
+
+[dir="rtl"] .qs-label {
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+/* ─── Reduced motion ─────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .qs-card,
+  .qs-header,
+  .qs-orb,
+  .qs-bar__fill {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    width: 100% !important;
+  }
+}

@@ -1,0 +1,453 @@
+/* ═══════════════════════════════════════════════════════════
+   KEEP IN TOUCH SECTION
+   Dark/cyan theme — matches haeani_com design system
+═══════════════════════════════════════════════════════════ */
+
+/* ─── Section shell ──────────────────────────────────────── */
+.kit-section {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-dark);
+  padding: clamp(4rem, 8vw, 7rem) 0 clamp(5rem, 10vw, 9rem);
+}
+
+/* ─── Ambient orbs ───────────────────────────────────────── */
+.kit-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1.4s ease;
+}
+.kit-section--visible .kit-orb { opacity: 1; }
+
+.kit-orb--a {
+  width: clamp(380px, 50vw, 680px);
+  height: clamp(380px, 50vw, 680px);
+  background: radial-gradient(circle, color-mix(in srgb, var(--color-primary) 16%, transparent), transparent 70%);
+  top: -18%;
+  right: -14%;
+}
+.kit-orb--b {
+  width: clamp(300px, 40vw, 520px);
+  height: clamp(300px, 40vw, 520px);
+  background: radial-gradient(circle, color-mix(in srgb, var(--color-secondary) 14%, transparent), transparent 70%);
+  bottom: -12%;
+  left: -10%;
+}
+
+/* ─── Grid texture ───────────────────────────────────────── */
+.kit-grid-bg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--color-primary) 5%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--color-primary) 5%, transparent) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(ellipse 90% 80% at 50% 50%, black 20%, transparent 100%);
+  pointer-events: none;
+}
+
+/* ─── Container ──────────────────────────────────────────── */
+.kit-container {
+  width: min(720px, calc(100% - 3rem));
+  margin: 0 auto;
+}
+
+/* ─── Glass card ─────────────────────────────────────────── */
+.kit-card {
+  position: relative;
+  border: 1.5px solid color-mix(in srgb, var(--color-primary) 32%, transparent);
+  border-radius: 22px;
+  padding: clamp(2.2rem, 5vw, 3.6rem) clamp(1.8rem, 5vw, 3.2rem);
+  background: color-mix(in srgb, var(--color-dark-blue) 28%, transparent);
+  backdrop-filter: blur(28px) saturate(130%);
+  overflow: hidden;
+
+  /* entrance */
+  opacity: 0;
+  transform: translateY(50px) scale(0.97);
+  transition:
+    opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* outer glow ring */
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--color-primary) 10%, transparent),
+    0 24px 80px color-mix(in srgb, var(--color-primary) 8%, transparent);
+}
+
+.kit-section--visible .kit-card {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* ─── Corner brackets ────────────────────────────────────── */
+.kit-corner {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.kit-corner--tl {
+  top: 12px; left: 12px;
+  border-top: 2px solid var(--color-primary);
+  border-left: 2px solid var(--color-primary);
+  border-radius: 4px 0 0 0;
+}
+.kit-corner--tr {
+  top: 12px; right: 12px;
+  border-top: 2px solid var(--color-secondary);
+  border-right: 2px solid var(--color-secondary);
+  border-radius: 0 4px 0 0;
+}
+.kit-corner--bl {
+  bottom: 12px; left: 12px;
+  border-bottom: 2px solid var(--color-secondary);
+  border-left: 2px solid var(--color-secondary);
+  border-radius: 0 0 0 4px;
+}
+.kit-corner--br {
+  bottom: 12px; right: 12px;
+  border-bottom: 2px solid var(--color-primary);
+  border-right: 2px solid var(--color-primary);
+  border-radius: 0 0 4px 0;
+}
+
+/* RTL corner mirroring is inherently symmetric — no changes needed */
+
+/* ─── Scanning line ──────────────────────────────────────── */
+.kit-scan {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+.kit-scan::before {
+  content: '';
+  position: absolute;
+  left: -100%;
+  top: 0;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in srgb, var(--color-primary) 6%, transparent),
+    transparent
+  );
+  animation: kitScan 6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  animation-play-state: paused;
+}
+.kit-section--visible .kit-scan::before {
+  animation-play-state: running;
+}
+
+@keyframes kitScan {
+  0%   { left: -60%; }
+  50%  { left: 110%; }
+  100% { left: 110%; }
+}
+
+/* ─── Card header ────────────────────────────────────────── */
+.kit-card__header {
+  text-align: center;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+.kit-card__title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 850;
+  letter-spacing: 0.08em;
+  margin: 0 0 0.75rem;
+  background: linear-gradient(90deg, var(--color-secondary), var(--color-primary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+[dir="rtl"] .kit-card__title { letter-spacing: 0; }
+
+/* three bars under title */
+.kit-title-lines {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 1rem;
+}
+.kit-title-lines span {
+  height: 3px;
+  border-radius: 99px;
+  background: linear-gradient(90deg, var(--color-secondary), var(--color-primary));
+}
+.kit-title-lines span:nth-child(1) { width: 52px; opacity: 1; }
+.kit-title-lines span:nth-child(2) { width: 18px; opacity: 0.6; }
+.kit-title-lines span:nth-child(3) { width: 7px;  opacity: 0.3; }
+
+.kit-card__subtitle {
+  font-family: var(--font-body);
+  font-size: clamp(0.78rem, 1.6vw, 0.9rem);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  line-height: 1.7;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--color-white) 68%, transparent);
+  margin: 0;
+  max-width: 56ch;
+  margin-inline: auto;
+}
+
+[dir="rtl"] .kit-card__subtitle {
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+/* ─── Form ────────────────────────────────────────────────── */
+.kit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* ─── Field wrapper ──────────────────────────────────────── */
+.kit-field {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.kit-field__label {
+  font-family: var(--font-heading);
+  font-size: clamp(0.72rem, 1.4vw, 0.8rem);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  transition: color 0.25s ease;
+}
+
+[dir="rtl"] .kit-field__label {
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.kit-field--focused .kit-field__label {
+  color: var(--color-secondary);
+}
+
+/* input / textarea */
+.kit-field__input {
+  width: 100%;
+  background: color-mix(in srgb, var(--color-dark) 60%, transparent);
+  border: 1.5px solid color-mix(in srgb, var(--color-primary) 25%, transparent);
+  border-radius: 12px;
+  padding: 0.8rem 1.1rem;
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  color: var(--color-white);
+  outline: none;
+  transition:
+    border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    background   0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow   0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  caret-color: var(--color-primary);
+}
+
+.kit-field__input::placeholder {
+  color: color-mix(in srgb, var(--color-white) 28%, transparent);
+}
+
+.kit-field__input:focus {
+  border-color: color-mix(in srgb, var(--color-primary) 70%, transparent);
+  background: color-mix(in srgb, var(--color-dark-blue) 35%, transparent);
+  box-shadow:
+    0 0 0 3px color-mix(in srgb, var(--color-primary) 12%, transparent),
+    inset 0 0 16px color-mix(in srgb, var(--color-primary) 4%, transparent);
+}
+
+.kit-field__textarea {
+  resize: vertical;
+  min-height: 110px;
+  max-height: 280px;
+}
+
+/* animated bottom accent line */
+.kit-field__line {
+  position: absolute;
+  bottom: 0;
+  left: 12px;
+  right: 12px;
+  height: 2px;
+  border-radius: 99px;
+  background: linear-gradient(90deg, var(--color-secondary), var(--color-primary));
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+
+[dir="rtl"] .kit-field__line {
+  transform-origin: right center;
+}
+
+.kit-field--focused .kit-field__line {
+  transform: scaleX(1);
+}
+
+/* ─── Feedback messages ──────────────────────────────────── */
+.kit-feedback {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 0.75rem 1.1rem;
+  border-radius: 10px;
+  margin: 0;
+  animation: kitFadeIn 0.4s ease;
+}
+
+@keyframes kitFadeIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.kit-feedback--ok {
+  background: color-mix(in srgb, var(--color-secondary) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-secondary) 35%, transparent);
+  color: var(--color-secondary);
+}
+.kit-feedback--err {
+  background: color-mix(in srgb, #ff4d6d 12%, transparent);
+  border: 1px solid color-mix(in srgb, #ff4d6d 35%, transparent);
+  color: #ff8fa3;
+}
+
+.kit-feedback__icon {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+/* ─── Submit button ──────────────────────────────────────── */
+.kit-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  width: 100%;
+  max-width: 340px;
+  margin: 0.4rem auto 0;
+  padding: 0.9rem 2rem;
+  border: none;
+  border-radius: 99px;
+  cursor: pointer;
+  overflow: hidden;
+
+  /* gradient fill */
+  background: linear-gradient(90deg, var(--color-secondary), var(--color-primary));
+  font-family: var(--font-heading);
+  font-size: clamp(0.8rem, 1.8vw, 0.92rem);
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-dark);
+
+  transition:
+    transform     0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow    0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    filter        0.3s ease,
+    opacity       0.3s ease;
+}
+
+[dir="rtl"] .kit-btn {
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.kit-btn:hover:not(:disabled) {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow:
+    0 8px 30px color-mix(in srgb, var(--color-primary) 40%, transparent),
+    0 0 0 3px color-mix(in srgb, var(--color-primary) 20%, transparent);
+  filter: brightness(1.1);
+}
+
+.kit-btn:active:not(:disabled) {
+  transform: translateY(0) scale(0.98);
+}
+
+.kit-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+/* ripple overlay on hover */
+.kit-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 40%,
+    rgba(255,255,255,0.22) 50%,
+    transparent 60%
+  );
+  background-size: 200% 100%;
+  background-position: 200% 0;
+  transition: background-position 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: inherit;
+}
+.kit-btn:hover:not(:disabled)::before {
+  background-position: -200% 0;
+}
+
+/* ─── Spinner ────────────────────────────────────────────── */
+.kit-btn__spinner {
+  width: 16px;
+  height: 16px;
+  border: 2.5px solid color-mix(in srgb, var(--color-dark) 40%, transparent);
+  border-top-color: var(--color-dark);
+  border-radius: 50%;
+  animation: kitSpin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes kitSpin {
+  to { transform: rotate(360deg); }
+}
+
+/* ─── Responsive ─────────────────────────────────────────── */
+@media (max-width: 576px) {
+  .kit-card {
+    padding: 1.8rem 1.2rem;
+    border-radius: 16px;
+  }
+  .kit-btn {
+    max-width: 100%;
+  }
+}
+
+/* ─── Reduced motion ─────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .kit-card,
+  .kit-orb,
+  .kit-scan::before,
+  .kit-btn,
+  .kit-field__input,
+  .kit-field__line,
+  .kit-feedback {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

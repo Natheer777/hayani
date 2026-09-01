@@ -1,0 +1,22 @@
+:root {
+  --color-dark: #071018;
+  --color-dark-blue: #012840;
+  --color-primary: #00e5ff;
+  --color-secondary: #00f3e7;
+  --color-green: #00ff88;
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  --font-heading: "Dubai", sans-serif;
+  --font-body: "Dubai", sans-serif;
+}
+
+[dir="ltr"] {
+  --font-heading: "Dubai", sans-serif;
+  --font-body: "Myanmar", sans-serif;
+}
+
+[dir="rtl"] {
+  --font-heading: "Dubai", sans-serif;
+  --font-body: "Dubai", sans-serif;
+}

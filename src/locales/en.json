@@ -1,0 +1,208 @@
+{
+  "navbar": {
+    "home": "Home",
+    "about": "About Us",
+    "why": "Why Choose Us",
+    "products": "Products",
+    "services": "Services",
+    "partners": "Partners",
+    "contact": "Contact",
+    "language": "العربية"
+  },
+  "about": {
+    "title": "ABOUT US",
+    "intro_p1": "Al-Hayani Company is a Syrian pharmaceutical importation, marketing, and distribution company established in 1997.",
+    "intro_p2": "The company is officially registered with the Syrian Ministry of Health under Registration No. 3190 and with the Commercial Registry under Registration No. 13356.",
+    "intro_p3": "For nearly three decades, Al-Hayani Company has built a strong presence in the Syrian pharmaceutical market. We operate through 13 branches across Syria, supported by an established network of distributors, retail pharmacies, physicians, and other healthcare professionals.",
+    "services_title": "Our services and capabilities include:",
+    "services": {
+      "s1": "Registration of international pharmaceutical companies and their products with the Syrian Ministry of Health",
+      "s2": "Pharmaceutical importation and regulatory coordination",
+      "s3": "Nationwide warehousing, distribution, and market access",
+      "s4": "Physician, pharmacist, and healthcare-provider engagement",
+      "s5": "Product launch, promotion, and market-development support",
+      "s6": "Digital marketing and social media campaigns",
+      "s7": "Access to the Syrian healthcare market, which includes approximately 20,000 pharmacies and more than 25,000 physicians"
+    },
+    "partners_p": "We work closely with international pharmaceutical and healthcare companies seeking a knowledgeable, dependable, and long-term commercial partner in Syria. Our local experience, regulatory knowledge, and nationwide distribution capabilities enable us to support our partners throughout every stage—from registration and importation to product launch, promotion, and nationwide distribution.",
+    "mission_p": "Our mission is to improve access to high-quality healthcare products in Syria while building transparent, sustainable, and mutually beneficial partnerships with pharmaceutical manufacturers worldwide.",
+    "readMore": "READ MORE",
+    "collapse": "COLLAPSE"
+  },
+  "why": {
+    "title": "WHY CHOOSE US",
+    "items": {
+      "precision": {
+        "title": "Precision Accuracy",
+        "subtitle": "دقة المطابقة"
+      },
+      "security": {
+        "title": "Supply Chain Security",
+        "subtitle": "أمان سلاسل الإمداد"
+      },
+      "rapid": {
+        "title": "Rapid Response",
+        "subtitle": "سرعة الاستجابة"
+      },
+      "support": {
+        "title": "Continuous Support",
+        "subtitle": "دعم متواصل"
+      }
+    }
+  },
+  "trusted": {
+    "title": "TRUSTED BRANDS & PARTNERS"
+  },
+  "core": {
+    "title": "CORE SERVICES",
+    "items": {
+      "inventory": {
+        "title": "Inventory Management",
+        "subtitle": "إدارة المخزون"
+      },
+      "distribution": {
+        "title": "Fast Distribution",
+        "subtitle": "التوزيع السريع"
+      },
+      "quality": {
+        "title": "Quality Assurance",
+        "subtitle": "ضمان الجودة"
+      }
+    }
+  },
+  "quickstats": {
+    "title": "QUICK STATS",
+    "items": {
+      "availability": {
+        "label": "PRODUCT AVAILABILITY",
+        "value": "98",
+        "suffix": "%"
+      },
+      "shipments": {
+        "label": "COMPLETED SHIPMENTS",
+        "value": "12000",
+        "suffix": "+"
+      },
+      "pharmacies": {
+        "label": "PARTNER PHARMACIES",
+        "value": "20000",
+        "suffix": "+"
+      }
+    }
+  },
+  "contact": {
+    "title": "KEEP IN TOUCH",
+    "subtitle": "IF YOU HAVE ANY QUESTIONS OR NEED ASSISTANCE SEND TO US A MESSAGE AND WE WILL GET BACK TO YOU AS SOON AS POSSIBLE",
+    "name_label": "YOUR NAME",
+    "name_placeholder": "",
+    "email_label": "YOUR EMAIL",
+    "email_placeholder": "",
+    "message_label": "YOUR MESSAGE",
+    "message_placeholder": "",
+    "send_btn": "SEND MESSAGE",
+    "success": "Your message has been sent successfully!",
+    "error": "Something went wrong. Please try again."
+  },
+  "footer": {
+    "contact_title": "CONTACT",
+    "address": "DAMASCUS, SYRIA",
+    "phone": "+963 944242195",
+    "email": "Contact@hayani-pharma.com",
+    "copyright": "© 2026 HAYANI-PHARMA. All Rights Reserved.",
+    "legal_line1": "Official Syrian Ministry of Health License No. 3190 | Commercial Registry No. 13356.",
+    "legal_line2": "The content on this website is for informational and commercial purposes targeted at healthcare professionals and licensed partners. It does not constitute medical advice.",
+    "legal_line3": "Authorized distributor of pharmaceutical products across 13 branches in Syria."
+  },
+  "credentials": {
+    "items": {
+      "accreditation": {
+        "title": "Official Accreditation & Membership",
+        "text": "The establishment holds an official Membership Certificate from the Aleppo Chamber of Commerce and Industry for the year 2014, No. 1877, issued under Law No. 131 of 1959. Classified as an Individual Establishment, it has been awarded First Degree membership for engaging in wholesale drug trading, import, and export, reflecting its reputable commercial standing."
+      },
+      "academic": {
+        "title": "Academic Qualifications & Professional Credentials",
+        "text": "The Technical Manager and Founder holds a Bachelor's Degree in Pharmacy and Pharmaceutical Chemistry from the University of Damascus - Faculty of Pharmacy, granted on October 21, 1986, with a \"Good\" grade. The degree is authenticated and accompanied by a certified legal English translation dated June 14, 2012, bearing the signatures of the Dean, University President, and Minister of Higher Education."
+      },
+      "vision": {
+        "title": "Our Vision",
+        "text": "We strive to be the leading establishment in the field of pharmaceutical trade in Syria, by providing high-quality medicinal products, full compliance with legal and professional standards, and contributing to the enhancement of the healthcare sector."
+      },
+      "documentation": {
+        "title": "Official Documentation & Sources",
+        "text": "All information contained in this document is extracted from official documents licensed and authenticated by the competent Syrian governmental authorities. This document is intended for informational and professional purposes only."
+      }
+    }
+  },
+  "departments": {
+    "hero_label": "COMPANY DEPARTMENTS",
+    "hero_tag1": "QUALITY",
+    "hero_tag2": "RELIABILITY",
+    "hero_tag3": "SAFETY",
+    "about_badge": "ABOUT US",
+    "items": {
+      "warehouse": {
+        "title": "Main Warehouse",
+        "text": "The main warehouse at HAYANI PHARMA is managed in accordance with the highest international standards approved for pharmaceutical safety and storage. We rely on precise ventilation and temperature-control systems to ensure medicinal products retain their full efficacy and are protected from any damage."
+      },
+      "distribution": {
+        "title": "Warehouse — Preparation & Distribution Department",
+        "text": "This department represents the core operational artery of our warehouses, where orders are prepared with speed and ultimate precision. We utilize advanced digital systems for inventory tracking and shipment management to ensure medicines reach pharmacies and hospitals right on time."
+      },
+      "director": {
+        "title": "Director's Office",
+        "text": "Strategic planning and the vision of HAYANI PHARMA originate from this office, where administrative operations are managed with a mindful approach aimed at advancing the pharmaceutical sector. We are committed to building strong, reliable partnerships with major global and local companies to serve the healthcare sector."
+      },
+      "meeting": {
+        "title": "Meeting Room",
+        "text": "A dedicated space for making critical decisions and developing action plans in consultation with our specialized team of pharmacists and experts. Here, we carefully study the demands of the pharmaceutical market to deliver the best solutions and services to our clients across the region."
+      }
+    }
+  },
+  "partnership": {
+    "hero_title_1": "OUR",
+    "hero_title_2": "PARTNERSHIPS",
+    "hero_tag1": "COLLABORATION",
+    "hero_tag2": "GROWTH",
+    "hero_tag3": "SUCCESS",
+    "companies": {
+      "avenzor": {
+        "name": "Avenzor for Pharmaceutical Industries",
+        "overview": "A leading private Syrian pharmaceutical company established in 1991, with production starting in 1996. Its main facility is located in Rural Damascus (Saboura).",
+        "features": "Operates advanced production lines compliant with global cGMP standards, featuring an independent, dedicated facility for penicillins and antibiotics to prevent cross-contamination.",
+        "products": "Paradrin Night, Lostamin, Detrospam, eye drops, and broad-spectrum antibiotics."
+      },
+      "medico": {
+        "name": "Medico Labs",
+        "overview": "One of the oldest and most established private pharmaceutical companies in Syria, founded in Homs in 1958. Its modern facility spans 14,000 square meters along the Homs-Damascus highway.",
+        "features": "Holds ISO 9001 (Quality), ISO 14001 (Environmental), and OHSAS 18001 (Safety) certifications, featuring a specialized mono-dose line for preservative-free eye drops.",
+        "products": "Voltoned, Cold Free, Asprix, Ketofen, and Moxi-Drop."
+      },
+      "alfares": {
+        "name": "Al-Fares Pharma",
+        "overview": "A premier private Syrian pharmaceutical company established in 1991, with commercial production launching in May 1998 in Rural Damascus (Ein Menin).",
+        "features": "Equipped with an advanced Research & Development (R&D) lab, holds ISO 9001 quality certification, and exports products to several regional and international markets.",
+        "products": "Tablets, capsules, oral liquids and syrups, dry syrups, ointments, creams, and nutritional supplements."
+      },
+      "himalaya": {
+        "name": "Himalaya Wellness Company",
+        "overview": "A global multinational herbal health and pharmaceutical company founded in India in 1930. It specializes in science-backed Ayurvedic herbal medicines, supplements, and personal care products.",
+        "features": "Combines traditional herbal wisdom with modern scientific research, distributing its products in over 100 countries with key regional hubs in Dubai, Singapore, and Houston.",
+        "products": "Liv.52 (liver care), Koflet (cough syrup), Cystone (kidney health), and Neem face cleansers."
+      },
+      "unichima": {
+        "name": "Unichima Pharmaceuticals",
+        "overview": "A private Syrian pharmaceutical company established in Damascus in 1997, with its main manufacturing plant located on the Damascus International Airport highway.",
+        "features": "Strictly implements Good Manufacturing Practices (GMP) alongside a dedicated pharmacovigilance system to monitor drug safety and side effects.",
+        "products": "Opressor (cardiovascular), Danizen Forte, Demicylate 250 (hemostatic), and Tomapyrin."
+      },
+      "ibnhayyan": {
+        "name": "Ibn Hayyan Pharmaceuticals",
+        "overview": "Tracing its roots back to Al-Istiqama Pharmacy founded in Homs in 1908, the modern plant began operations in 1993 in Homs over a 20,000-square-meter floor space.",
+        "features": "Features independent, specialized production blocks for penicillins, cephalosporins, and injectables (ampoules/vials) to completely eliminate cross-contamination risks.",
+        "products": "Duspavin (colitis/spasms), Diclon Retard, Vascotroy, Lazin, and Naya C effervescent tablets."
+      }
+    },
+    "features_label": "KEY FEATURES",
+    "products_label": "TOP PRODUCTS"
+  }
+}

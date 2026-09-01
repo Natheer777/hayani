@@ -1,0 +1,241 @@
+/* ═══════════════════════════════════════════════════════════
+   PARTNER CARDS  —  6 company cards stacked vertically
+   Matches design: white logo strip + dark glass body
+═══════════════════════════════════════════════════════════ */
+
+/* ─── Section ────────────────────────────────────────────── */
+.pc-section {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-dark);
+  padding: clamp(3rem, 6vw, 5rem) 0 clamp(4rem, 8vw, 7rem);
+}
+
+/* ─── Ambient orbs ───────────────────────────────────────── */
+.pc-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.pc-orb--a {
+  width: clamp(300px, 40vw, 520px);
+  height: clamp(300px, 40vw, 520px);
+  background: radial-gradient(circle,
+    color-mix(in srgb, var(--color-primary) 11%, transparent), transparent 68%);
+  filter: blur(100px);
+  top: -10%; left: -6%;
+}
+.pc-orb--b {
+  width: clamp(240px, 32vw, 420px);
+  height: clamp(240px, 32vw, 420px);
+  background: radial-gradient(circle,
+    color-mix(in srgb, var(--color-secondary) 10%, transparent), transparent 68%);
+  filter: blur(90px);
+  bottom: 5%; right: -4%;
+}
+
+/* ─── Grid texture ───────────────────────────────────────── */
+.pc-grid-bg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--color-primary) 4%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--color-primary) 4%, transparent) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(ellipse 85% 70% at 50% 50%, black 20%, transparent 100%);
+  pointer-events: none;
+}
+
+/* ─── Container ──────────────────────────────────────────── */
+.pc-container {
+  position: relative;
+  z-index: 2;
+  width: min(860px, calc(100% - 2.5rem));
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.4rem, 3vw, 2rem);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   CARD
+═══════════════════════════════════════════════════════════ */
+.pc-card {
+  position: relative;
+  border: 1.5px solid color-mix(in srgb, var(--color-primary) 25%, transparent);
+  border-radius: 18px;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--color-dark-blue) 28%, transparent);
+  backdrop-filter: blur(18px) saturate(120%);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--color-primary) 6%, transparent),
+    0 12px 40px color-mix(in srgb, var(--color-dark) 40%, transparent);
+
+  /* entrance */
+  opacity: 0;
+  transform: translateY(36px);
+  transition:
+    opacity   0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.3s ease,
+    box-shadow   0.3s ease;
+  transition-delay: var(--delay, 0s);
+}
+.pc-card--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.pc-card:hover {
+  border-color: color-mix(in srgb, var(--color-primary) 55%, transparent);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--color-primary) 14%, transparent),
+    0 16px 52px color-mix(in srgb, var(--color-primary) 10%, transparent);
+}
+
+/* corner brackets */
+.pc-bracket {
+  position: absolute;
+  width: 16px; height: 16px;
+  pointer-events: none;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+.pc-card:hover .pc-bracket { opacity: 1; }
+
+.pc-bracket--tl {
+  top: 10px; left: 10px;
+  border-top:  2px solid var(--color-primary);
+  border-left: 2px solid var(--color-primary);
+  border-radius: 3px 0 0 0;
+}
+.pc-bracket--br {
+  bottom: 10px; right: 10px;
+  border-bottom: 2px solid var(--color-secondary);
+  border-right:  2px solid var(--color-secondary);
+  border-radius: 0 0 3px 0;
+}
+[dir="rtl"] .pc-bracket--tl {
+  left: unset; right: 10px;
+  border-left: none;
+  border-right: 2px solid var(--color-primary);
+  border-radius: 0 3px 0 0;
+}
+[dir="rtl"] .pc-bracket--br {
+  right: unset; left: 10px;
+  border-right: none;
+  border-left: 2px solid var(--color-secondary);
+  border-radius: 0 0 0 3px;
+}
+
+/* ── White logo strip ── */
+.pc-logo-strip {
+  width: 100%;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: clamp(0.9rem, 2.5vw, 1.4rem) clamp(1.2rem, 4vw, 2.2rem);
+  border-bottom: 1.5px solid color-mix(in srgb, var(--color-primary) 30%, transparent);
+}
+
+.pc-logo {
+  height: clamp(44px, 7vw, 72px);
+  width: auto;
+  max-width: 260px;
+  object-fit: contain;
+  display: block;
+  /* keep original logo colours */
+  filter: none;
+  user-select: none;
+}
+
+/* ── Card body ── */
+.pc-body {
+  padding: clamp(1.2rem, 3vw, 1.8rem) clamp(1.4rem, 4vw, 2.2rem) clamp(1.4rem, 3vw, 2rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+/* company name */
+.pc-name {
+  font-family: var(--font-heading);
+  font-size: clamp(1rem, 2.2vw, 1.28rem);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  margin: 0;
+  background: linear-gradient(90deg, var(--color-secondary), var(--color-primary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+[dir="rtl"] .pc-name { letter-spacing: 0; }
+
+/* overview paragraph */
+.pc-overview {
+  font-family: var(--font-body);
+  font-size: clamp(0.82rem, 1.6vw, 0.92rem);
+  line-height: 1.72;
+  color: color-mix(in srgb, var(--color-white) 72%, transparent);
+  margin: 0;
+}
+
+/* labelled block (features / products) */
+.pc-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.pc-block__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-heading);
+  font-size: clamp(0.68rem, 1.3vw, 0.76rem);
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+[dir="rtl"] .pc-block__label { letter-spacing: 0; text-transform: none; }
+
+.pc-block__dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  box-shadow: 0 0 6px var(--color-primary);
+  flex-shrink: 0;
+}
+
+.pc-block__text {
+  font-family: var(--font-body);
+  font-size: clamp(0.8rem, 1.5vw, 0.88rem);
+  line-height: 1.7;
+  color: color-mix(in srgb, var(--color-white) 65%, transparent);
+  margin: 0;
+  padding-inline-start: 1.1rem;
+  border-inline-start: 2px solid color-mix(in srgb, var(--color-primary) 28%, transparent);
+}
+
+.pc-block__text--products {
+  color: color-mix(in srgb, var(--color-white) 75%, transparent);
+  font-style: italic;
+}
+
+/* ─── Responsive ─────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .pc-logo-strip { justify-content: center; }
+  .pc-logo { max-width: 200px; }
+  .pc-body { padding: 1rem 1.1rem 1.2rem; }
+}
+
+/* ─── Reduced motion ─────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .pc-card {
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
