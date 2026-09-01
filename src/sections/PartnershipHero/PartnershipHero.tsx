@@ -1,8 +1,6 @@
 import { useRef } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, EffectFade } from 'swiper/modules'
-import 'swiper/css'
-import 'swiper/css/effect-fade'
 import './PartnershipHero.css'
 
 // import slide1 from '../../assets/HOME/sliderHome/Asset 3@4x.png'

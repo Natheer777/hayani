@@ -2,12 +2,6 @@ import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, EffectFade, Pagination, Navigation } from 'swiper/modules';
-
-import 'swiper/css';
-import 'swiper/css/effect-fade';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
-
 import './Header.css';
 
 import slide1 from '../../assets/HOME/sliderHome/Asset 3@4x.png';
