@@ -199,13 +199,31 @@
 .about-title {
   max-width: 620px;
   margin: 0;
-  color: var(--color-white);
   font-family: var(--font-heading), inherit;
   font-size: clamp(2.1rem, 4.2vw, 4.4rem);
   font-weight: 850;
   line-height: 1.08;
   letter-spacing: -0.045em;
   text-wrap: balance;
+
+  /* animated gradient text */
+  background: linear-gradient(
+    90deg,
+    var(--color-white)     0%,
+    var(--color-secondary) 40%,
+    var(--color-primary)   60%,
+    var(--color-white)     100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: aboutTitleShimmer 4s linear infinite;
+}
+
+@keyframes aboutTitleShimmer {
+  0%   { background-position: 0%   center; }
+  100% { background-position: 200% center; }
 }
 
 [dir='rtl'] .about-title {
