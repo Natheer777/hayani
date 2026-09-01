@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import logo from '../../assets/HOME/logo hayani pharma/Asset 26@4x.png'
+import logo from '../../assets/HOME/logo/Asset 26@4x.png'
 import './Footer.css'
 
 export default function Footer() {

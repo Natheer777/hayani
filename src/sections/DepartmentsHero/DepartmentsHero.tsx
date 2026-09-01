@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, EffectFade } from 'swiper/modules'
 import './DepartmentsHero.css'
 
-import slide2 from '../../assets/COMPANY DEPARTMENTS/صورة العامل في المستودع.png'
+import slide2 from '../../assets/COMPANY-DEPARTMENTS/warehouse-worker.png'
 
 const slides = [slide2]
 

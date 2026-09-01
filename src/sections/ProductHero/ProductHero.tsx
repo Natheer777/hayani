@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import './ProductHero.css'
-import heroImg from '../../assets/PRODUCT CATALOG/Asset 1@4x.png'
+import heroImg from '../../assets/PRODUCT-CATALOG/Asset 1@4x.png'
 
 export default function ProductHero() {
   const [loaded, setLoaded] = useState(false)

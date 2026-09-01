@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import './About.css';
-import aboutImage from '../../assets/HOME/صورة النقابة للهوم/Asset 6@4x.png';
+import aboutImage from '../../assets/HOME/syndicate-image/Asset 6@4x.png';
 
 export default function About() {
   const { t } = useTranslation();

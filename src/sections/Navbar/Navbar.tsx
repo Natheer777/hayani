@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useLocation } from 'react-router-dom';
 import './navbar.css';
-import logo from '../../assets/HOME/logo hayani pharma/Asset 26@4x.png';
+import logo from '../../assets/HOME/logo/Asset 26@4x.png';
 
 export default function Navbar() {
   const { t, i18n } = useTranslation();

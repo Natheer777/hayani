@@ -1,11 +1,11 @@
 import { useTranslation } from 'react-i18next';
 import './Trusted.css';
-import logo1 from '../../assets/HOME/لوغو الشركاء والبارتنر/Asset 17@8x.png';
-import logo2 from '../../assets/HOME/لوغو الشركاء والبارتنر/Asset 18@8x.png';
-import logo3 from '../../assets/HOME/لوغو الشركاء والبارتنر/Asset 19@8x.png';
-import logo4 from '../../assets/HOME/لوغو الشركاء والبارتنر/Asset 20@8x.png';
-import logo5 from '../../assets/HOME/لوغو الشركاء والبارتنر/Asset 21@8x.png';
-import logo6 from '../../assets/HOME/لوغو الشركاء والبارتنر/Asset 22@8x.png';
+import logo1 from '../../assets/HOME/partner-logos/Asset 17@8x.png';
+import logo2 from '../../assets/HOME/partner-logos/Asset 18@8x.png';
+import logo3 from '../../assets/HOME/partner-logos/Asset 19@8x.png';
+import logo4 from '../../assets/HOME/partner-logos/Asset 20@8x.png';
+import logo5 from '../../assets/HOME/partner-logos/Asset 21@8x.png';
+import logo6 from '../../assets/HOME/partner-logos/Asset 22@8x.png';
 
 const partnerLogos = [logo1, logo2, logo3, logo4, logo5, logo6];
 

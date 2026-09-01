@@ -1,5 +1,5 @@
 import './CredentialsHero.css'
-import heroImg from '../../assets/official credentials/Asset 1@4x.png'
+import heroImg from '../../assets/OFFICIAL-CREDENTIALS/Asset 1@4x.png'
 
 export default function CredentialsHero() {
   return (

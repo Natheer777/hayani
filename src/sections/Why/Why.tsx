@@ -1,10 +1,10 @@
 import { useTranslation } from 'react-i18next';
 import './Why.css';
 
-import iconPrecision from '../../assets/HOME/ايقوناتWhy Choose Us/Asset 7@4x.png';
-import iconSecurity from '../../assets/HOME/ايقوناتWhy Choose Us/Asset 8@4x.png';
-import iconRapid from '../../assets/HOME/ايقوناتWhy Choose Us/Asset 9@4x.png';
-import iconSupport from '../../assets/HOME/ايقوناتWhy Choose Us/Asset 10@4x.png';
+import iconPrecision from '../../assets/HOME/icons-why-choose-us/Asset 7@4x.png';
+import iconSecurity from '../../assets/HOME/icons-why-choose-us/Asset 8@4x.png';
+import iconRapid from '../../assets/HOME/icons-why-choose-us/Asset 9@4x.png';
+import iconSupport from '../../assets/HOME/icons-why-choose-us/Asset 10@4x.png';
 
 type WhyKey = 'precision' | 'security' | 'rapid' | 'support';
 

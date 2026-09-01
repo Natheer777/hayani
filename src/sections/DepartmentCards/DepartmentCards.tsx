@@ -2,10 +2,10 @@ import { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import './DepartmentCards.css'
 
-import imgWarehouse    from '../../assets/COMPANY DEPARTMENTS/المستودع.png'
-import imgWorker       from '../../assets/COMPANY DEPARTMENTS/صورة العامل في المستودع.png'
-import imgDirector     from '../../assets/COMPANY DEPARTMENTS/صورة غرفة المدير العام.jpeg'
-import imgMeeting      from '../../assets/COMPANY DEPARTMENTS/صورة غرفة الاجتماعات.jpeg'
+import imgWarehouse    from '../../assets/COMPANY-DEPARTMENTS/warehouse.png'
+import imgWorker       from '../../assets/COMPANY-DEPARTMENTS/warehouse-worker.png'
+import imgDirector     from '../../assets/COMPANY-DEPARTMENTS/director-office.jpeg'
+import imgMeeting      from '../../assets/COMPANY-DEPARTMENTS/meeting-room.jpeg'
 
 const DEPARTMENTS = [
   { key: 'warehouse',    img: imgWarehouse,  index: 1 },

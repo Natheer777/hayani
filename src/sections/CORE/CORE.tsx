@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import './Core.css';
-import iconInventory from '../../assets/HOME/ايقونات core serves/Asset 23@4x.png';
-import iconDistribution from '../../assets/HOME/ايقونات core serves/Asset 24@4x.png';
-import iconQuality from '../../assets/HOME/ايقونات core serves/Asset 25@4x.png';
+import iconInventory from '../../assets/HOME/icons-core-services/Asset 23@4x.png';
+import iconDistribution from '../../assets/HOME/icons-core-services/Asset 24@4x.png';
+import iconQuality from '../../assets/HOME/icons-core-services/Asset 25@4x.png';
 
 type CoreKey = 'inventory' | 'distribution' | 'quality';
 
