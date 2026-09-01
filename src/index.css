@@ -4,11 +4,6 @@
 @import 'swiper/css/pagination';
 @import 'swiper/css/navigation';
 
-/* ════════════════════════════════════════════════════════════
-   FONTS
-   Dubai   — headings (EN bold · AR regular)
-   Myanmar — EN body text (regular)
-════════════════════════════════════════════════════════════ */
 
 @font-face {
   font-family: 'Dubai';

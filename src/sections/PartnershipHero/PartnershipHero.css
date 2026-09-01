@@ -12,6 +12,8 @@
   min-height: 520px;
   overflow: hidden;
   background: var(--color-dark);
+  padding-top: var(--navbar-h);
+  box-sizing: border-box;
 }
 
 /* full-bleed image */

@@ -7,6 +7,9 @@
   --color-white: #ffffff;
   --color-black: #000000;
 
+  /* Navbar height — used by hero sections to offset below the fixed bar */
+  --navbar-h: 70px;
+
   /* Default (LTR / English) */
   --font-heading: "Dubai", sans-serif;   /* bold weight used on headings */
   --font-body: "Myanmar", sans-serif;    /* Myanmar Regular for EN body */

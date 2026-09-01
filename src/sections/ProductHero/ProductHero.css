@@ -10,6 +10,8 @@
   overflow: hidden;
   background: var(--color-dark);
   color: var(--color-white);
+  padding-top: var(--navbar-h);
+  box-sizing: border-box;
 }
 
 /* ── image ── */
