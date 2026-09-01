@@ -4,6 +4,10 @@
 @import 'swiper/css/pagination';
 @import 'swiper/css/navigation';
 
+:root {
+  color-scheme: dark;
+}
+
 *,
 *::before,
 *::after {
