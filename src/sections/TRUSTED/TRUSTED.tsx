@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import './Trusted.css';
+import './TRUSTED.css';
 import logo1 from '../../assets/HOME/partner-logos/Asset 17@8x.png';
 import logo2 from '../../assets/HOME/partner-logos/Asset 18@8x.png';
 import logo3 from '../../assets/HOME/partner-logos/Asset 19@8x.png';
