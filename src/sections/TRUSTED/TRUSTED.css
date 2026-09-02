@@ -5,7 +5,7 @@
 
 /* ─── Section ────────────────────────────────────────────── */
 .tr-section {
-  background: var(--color-dark);
+  background: transparent;
   padding: clamp(3rem, 6vw, 5rem) 0 clamp(3.5rem, 7vw, 6rem);
   overflow: hidden;
 }

@@ -7,7 +7,7 @@
 .qs-section {
   position: relative;
   overflow: hidden;
-  background: var(--color-dark);
+  background: transparent;
   padding: clamp(4rem, 8vw, 7rem) 0 clamp(4.5rem, 9vw, 8rem);
 }
 

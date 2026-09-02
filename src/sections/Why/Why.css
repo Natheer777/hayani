@@ -10,12 +10,7 @@
   width: 100%;
   overflow: hidden;
   padding: clamp(5rem, 9vw, 8.5rem) 0;
-  background:
-    linear-gradient(
-      180deg,
-      color-mix(in srgb, var(--color-dark-blue) 22%, var(--color-dark)),
-      var(--color-dark)
-    );
+  background: transparent;
 }
 
 .why-container {

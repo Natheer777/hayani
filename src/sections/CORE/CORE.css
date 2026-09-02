@@ -2,7 +2,7 @@
   position: relative;
   width: 100%;
   padding: 5rem 0 6rem;
-  background: var(--color-dark);
+  background: transparent;
   overflow: hidden;
 }
 

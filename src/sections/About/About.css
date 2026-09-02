@@ -17,12 +17,7 @@
   min-height: 760px;
   padding: clamp(5rem, 9vw, 9rem) 0;
   overflow: hidden;
-  background:
-    linear-gradient(
-      135deg,
-      color-mix(in srgb, var(--color-dark) 96%, black),
-      var(--color-dark-blue)
-    );
+  background: transparent;
 }
 
 /* Ambient background lighting */

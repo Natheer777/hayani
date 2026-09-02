@@ -7,7 +7,7 @@
 .ft-footer {
   position: relative;
   overflow: hidden;
-  background: var(--color-dark);
+  background: transparent;
 }
 
 /* ─── Ambient orbs ───────────────────────────────────────── */
