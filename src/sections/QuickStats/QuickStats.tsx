@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import './QuickStats.css'
+import '../../styles/animatedTitles.css'
 
 /* ─────────────────────────────────────────
    Animated counter hook
@@ -143,7 +144,7 @@ export default function QuickStats() {
       <div className="qs-container">
         {/* heading */}
         <div className="qs-header">
-          <h2 id="qs-heading" className="qs-title">
+          <h2 id="qs-heading" className="qs-title pulse-gradient-title">
             {t('quickstats.title')}
           </h2>
           <div className="qs-title-lines" aria-hidden="true">

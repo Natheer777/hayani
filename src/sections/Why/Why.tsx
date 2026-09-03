@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import './Why.css';
+import '../../styles/animatedTitles.css';
 
 import iconPrecision from '../../assets/HOME/icons-why-choose-us/Asset 7@4x.png';
 import iconSecurity from '../../assets/HOME/icons-why-choose-us/Asset 8@4x.png';
@@ -46,7 +47,7 @@ export default function Why() {
             <span className="why-label-line" />
           </span>
 
-          <h2 className="why-title">{t('why.title')}</h2>
+          <h2 className="why-title wave-gradient-title">{t('why.title')}</h2>
 
           <span className="why-title-accent" aria-hidden="true" />
         </header>

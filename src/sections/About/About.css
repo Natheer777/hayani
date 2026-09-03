@@ -859,3 +859,31 @@
     transition: none;
   }
 }
+
+/* Typewriter effect */
+.typewriter-cursor {
+  display: inline-block;
+  margin-inline-start: 2px;
+  color: var(--color-secondary);
+  font-weight: 400;
+  animation: typewriterBlink 0.8s steps(1) infinite;
+}
+
+@keyframes typewriterBlink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Disable blinking cursor animation if user prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .typewriter-cursor {
+    animation: none;
+    opacity: 1;
+  }
+}

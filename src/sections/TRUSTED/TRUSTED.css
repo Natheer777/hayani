@@ -43,8 +43,7 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
   margin: 0;
-  /* solid cyan text — matches screenshot */
-  color: var(--color-primary);
+  /* Animated gradient will be applied via class */
 }
 [dir="rtl"] .tr-title {
   letter-spacing: 0;

@@ -79,11 +79,7 @@
   line-height: 1.1;
   margin: 0 0 0.9rem;
 
-  /* gradient text */
-  background: linear-gradient(90deg, var(--color-secondary), var(--color-primary));
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  /* Animated gradient will be applied via class */
 }
 
 [dir="rtl"] .qs-title {

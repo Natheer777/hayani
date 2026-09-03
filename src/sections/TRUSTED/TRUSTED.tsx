@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import './TRUSTED.css';
+import '../../styles/animatedTitles.css';
 import logo1 from '../../assets/HOME/partner-logos/Asset 17@8x.png';
 import logo2 from '../../assets/HOME/partner-logos/Asset 18@8x.png';
 import logo3 from '../../assets/HOME/partner-logos/Asset 19@8x.png';
@@ -23,7 +24,7 @@ export default function Trusted() {
 
         {/* ── title pill — rounded border box ── */}
         <div className="tr-title-box">
-          <h2 id="tr-title" className="tr-title">{t('trusted.title')}</h2>
+          <h2 id="tr-title" className="tr-title shimmer-gradient-title">{t('trusted.title')}</h2>
         </div>
 
         {/* ── white marquee strip ── */}

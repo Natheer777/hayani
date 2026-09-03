@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import './CORE.css';
+import '../../styles/animatedTitles.css';
 import iconInventory from '../../assets/HOME/icons-core-services/Asset 23@4x.png';
 import iconDistribution from '../../assets/HOME/icons-core-services/Asset 24@4x.png';
 import iconQuality from '../../assets/HOME/icons-core-services/Asset 25@4x.png';
@@ -23,7 +24,7 @@ export default function Core() {
       <div className="core-container">
         <div className="core-title-pill">
           <span className="core-title-side-line" />
-          <h2 className="core-title">{t('core.title')}</h2>
+          <h2 className="core-title glow-gradient-title">{t('core.title')}</h2>
           <span className="core-title-side-line" />
         </div>
 

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import './PartnerCards.css'
+import TypewriterText from '../../components/TypewriterText'
 
 import img1 from '../../assets/PARTNERSHIPS/1.png'
 import img2 from '../../assets/PARTNERSHIPS/2.png'
@@ -30,9 +31,31 @@ interface CardProps {
 
 function PartnerCard({ index, companyKey, logo, visible }: CardProps) {
   const { t } = useTranslation()
+  const cardRef = useRef<HTMLElement>(null)
+  const [isCardVisible, setIsCardVisible] = useState(false)
+
+  useEffect(() => {
+    if (!visible) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !isCardVisible) {
+          setIsCardVisible(true)
+        }
+      },
+      { threshold: 0.3 }
+    )
+
+    if (cardRef.current) {
+      observer.observe(cardRef.current)
+    }
+
+    return () => observer.disconnect()
+  }, [visible, isCardVisible])
 
   return (
     <article
+      ref={cardRef}
       className={`pc-card${visible ? ' pc-card--visible' : ''}`}
       style={{ '--delay': `${index * 0.12}s` } as React.CSSProperties}
       aria-label={t(`partnership.companies.${companyKey}.name`)}
@@ -59,9 +82,13 @@ function PartnerCard({ index, companyKey, logo, visible }: CardProps) {
         </h3>
 
         {/* overview */}
-        <p className="pc-overview">
-          {t(`partnership.companies.${companyKey}.overview`)}
-        </p>
+        <TypewriterText
+          text={t(`partnership.companies.${companyKey}.overview`)}
+          speed={25}
+          delay={300}
+          className="pc-overview"
+          enabled={isCardVisible}
+        />
 
         {/* key features */}
         <div className="pc-block">
@@ -69,9 +96,13 @@ function PartnerCard({ index, companyKey, logo, visible }: CardProps) {
             <span className="pc-block__dot" aria-hidden="true" />
             {t('partnership.features_label')}
           </span>
-          <p className="pc-block__text">
-            {t(`partnership.companies.${companyKey}.features`)}
-          </p>
+          <TypewriterText
+            text={t(`partnership.companies.${companyKey}.features`)}
+            speed={25}
+            delay={1000}
+            className="pc-block__text"
+            enabled={isCardVisible}
+          />
         </div>
 
         {/* top products */}
@@ -80,9 +111,13 @@ function PartnerCard({ index, companyKey, logo, visible }: CardProps) {
             <span className="pc-block__dot" aria-hidden="true" />
             {t('partnership.products_label')}
           </span>
-          <p className="pc-block__text pc-block__text--products">
-            {t(`partnership.companies.${companyKey}.products`)}
-          </p>
+          <TypewriterText
+            text={t(`partnership.companies.${companyKey}.products`)}
+            speed={25}
+            delay={1800}
+            className="pc-block__text pc-block__text--products"
+            enabled={isCardVisible}
+          />
         </div>
       </div>
     </article>

@@ -239,3 +239,26 @@
     transform: none !important;
   }
 }
+
+/* ─── Typewriter effect ──────────────────────────────────── */
+.pc-overview .typewriter-cursor,
+.pc-block__text .typewriter-cursor {
+  display: inline-block;
+  margin-inline-start: 2px;
+  color: var(--color-primary);
+  font-weight: 400;
+  animation: typewriterBlink 0.8s steps(1) infinite;
+}
+
+@keyframes typewriterBlink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pc-overview .typewriter-cursor,
+  .pc-block__text .typewriter-cursor {
+    animation: none;
+    opacity: 1;
+  }
+}

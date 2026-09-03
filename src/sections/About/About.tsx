@@ -1,13 +1,40 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import './About.css';
 import aboutImage from '../../assets/HOME/syndicate-image/Asset 6@4x.png';
+import TypewriterText from '../../components/TypewriterText';
 
 export default function About() {
   const { t } = useTranslation();
   const [expanded, setExpanded] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   const serviceKeys = ['s1', 's2', 's3', 's4', 's5', 's6', 's7'] as const;
+
+  // Trigger typewriter effect when section becomes visible
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !isVisible) {
+            setIsVisible(true);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    const section = document.getElementById('about');
+    if (section) {
+      observer.observe(section);
+    }
+
+    return () => {
+      if (section) {
+        observer.unobserve(section);
+      }
+    };
+  }, [isVisible]);
 
   return (
     <section id="about" className="about-section">
@@ -35,8 +62,20 @@ export default function About() {
               </div>
 
               <div className="about-body">
-                <p className="about-text">{t('about.intro_p1')}</p>
-                <p className="about-text">{t('about.intro_p2')}</p>
+                <TypewriterText 
+                  text={t('about.intro_p1')}
+                  speed={30}
+                  delay={300}
+                  className="about-text"
+                  enabled={isVisible}
+                />
+                <TypewriterText 
+                  text={t('about.intro_p2')}
+                  speed={30}
+                  delay={1500}
+                  className="about-text"
+                  enabled={isVisible}
+                />
 
                 {expanded && (
                   <div

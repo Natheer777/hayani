@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react'
 import { useTranslation } from 'react-i18next'
+import emailjs from '@emailjs/browser'
+import { EMAIL_CONFIG } from '../../config/emailConfig'
 import './KeepInTouch.css'
+import '../../styles/animatedTitles.css'
 
-/* ─────────────────────────────────────────
-   Types
-───────────────────────────────────────── */
+
 type FormStatus = 'idle' | 'sending' | 'success' | 'error'
 
 interface FieldProps {
@@ -82,16 +83,34 @@ export default function KeepInTouch() {
     return () => observer.disconnect()
   }, [])
 
-  /* form submit — stub; wire up a real API endpoint here */
+  /* form submit — sends email via EmailJS */
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
     setStatus('sending')
+    
     try {
-      /* ── replace with your real fetch/axios call ── */
-      await new Promise(res => setTimeout(res, 1400))
+      // Prepare template parameters
+      const templateParams = {
+        from_name: name,
+        from_email: email,
+        message: message,
+        to_name: 'Haeani Team', // Your name/company name
+      }
+
+      // Send email using EmailJS
+      await emailjs.send(
+        EMAIL_CONFIG.SERVICE_ID,
+        EMAIL_CONFIG.TEMPLATE_ID,
+        templateParams,
+        EMAIL_CONFIG.PUBLIC_KEY
+      )
+
       setStatus('success')
-      setName(''); setEmail(''); setMessage('')
-    } catch {
+      setName('')
+      setEmail('')
+      setMessage('')
+    } catch (error) {
+      console.error('Email send error:', error)
       setStatus('error')
     } finally {
       setTimeout(() => setStatus('idle'), 4000)
@@ -126,7 +145,7 @@ export default function KeepInTouch() {
 
           {/* header */}
           <div className="kit-card__header">
-            <h2 id="kit-heading" className="kit-card__title">
+            <h2 id="kit-heading" className="kit-card__title flow-gradient-title">
               {t('contact.title')}
             </h2>
             <div className="kit-title-lines" aria-hidden="true">
