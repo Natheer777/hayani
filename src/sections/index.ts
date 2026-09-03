@@ -1,6 +1,8 @@
 export { default as Navbar } from './Navbar/Navbar'
 export { default as Header } from './Header/Header'
 export { default as About } from './About/About'
+export { default as AboutText } from './AboutText/AboutText'
+export { default as AboutImage } from './AboutImage/AboutImage'
 export { default as Why } from './Why/Why'
 export { default as Trusted } from './TRUSTED/TRUSTED'
 export { default as Core } from './CORE/CORE'

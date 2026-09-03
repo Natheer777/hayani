@@ -4,6 +4,7 @@ import {
   About,
   KeepInTouch,
   Footer,
+  AboutText,
 } from '../../sections/index'
 
 export default function Contact() {
@@ -11,7 +12,8 @@ export default function Contact() {
     <>
       <Navbar />
       <ContactHero />
-      <About />
+      <AboutText />
+      {/* <About /> */}
       <KeepInTouch />
       <Footer />
     </>

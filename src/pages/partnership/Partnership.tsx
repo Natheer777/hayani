@@ -6,6 +6,7 @@ import {
   QuickStats,
   KeepInTouch,
   Footer,
+  AboutImage,
 } from '../../sections/index'
 
 export default function Partnership() {
@@ -13,7 +14,8 @@ export default function Partnership() {
     <>
       <Navbar />
       <PartnershipHero />
-      <About />
+      {/* <About /> */}
+      <AboutImage />
       <PartnerCards />
       <QuickStats />
       <KeepInTouch />

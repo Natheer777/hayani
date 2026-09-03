@@ -1,0 +1,247 @@
+.about-image-section {
+  position: relative;
+  width: 100%;
+  padding: clamp(3rem, 6vw, 5rem) 0;
+  overflow: hidden;
+  background: transparent;
+}
+
+/* Image visual */
+.about-image-wrapper {
+  position: relative;
+  min-height: 570px;
+  display: grid;
+  place-items: center;
+  max-width: min(570px, calc(100% - 2.5rem));
+  margin: 0 auto;
+  animation: aboutImageEntrance 0.9s 0.1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.about-image-border {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: 4px;
+  border-radius: 34px;
+  background: linear-gradient(
+    145deg,
+    var(--color-secondary),
+    color-mix(in srgb, var(--color-primary) 72%, transparent) 45%,
+    transparent 85%
+  );
+  box-shadow:
+    0 35px 90px color-mix(in srgb, var(--color-black) 52%, transparent),
+    0 0 60px color-mix(in srgb, var(--color-primary) 18%, transparent);
+  transform: rotate(2.5deg);
+  transition:
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.6s ease;
+}
+
+.about-image-border:hover {
+  transform: rotate(0deg) translateY(-8px);
+  box-shadow:
+    0 45px 110px color-mix(in srgb, var(--color-black) 58%, transparent),
+    0 0 80px color-mix(in srgb, var(--color-secondary) 28%, transparent);
+}
+
+.about-image-inner {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 0.92;
+  border-radius: 30px;
+  background: var(--color-dark-blue);
+}
+
+.about-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: saturate(1.08) contrast(1.04);
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.about-image-border:hover .about-image {
+  transform: scale(1.06);
+}
+
+.image-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, transparent 45%, var(--color-dark) 130%),
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--color-secondary) 13%, transparent),
+      transparent 42%
+    );
+  pointer-events: none;
+}
+
+.image-highlight {
+  position: absolute;
+  top: 8%;
+  left: -25%;
+  width: 75%;
+  height: 140%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in srgb, var(--color-white) 15%, transparent),
+    transparent
+  );
+  transform: rotate(18deg);
+  animation: imageShine 7s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.image-orbit {
+  position: absolute;
+  z-index: 1;
+  width: 92%;
+  height: 76%;
+  border: 1px solid color-mix(in srgb, var(--color-secondary) 24%, transparent);
+  border-radius: 50%;
+  transform: rotate(-32deg);
+  pointer-events: none;
+}
+
+.orbit-one {
+  animation: orbitFloat 8s ease-in-out infinite;
+}
+
+.orbit-two {
+  width: 76%;
+  height: 92%;
+  border-color: color-mix(in srgb, var(--color-primary) 20%, transparent);
+  transform: rotate(45deg);
+  animation: orbitFloat 10s 1s ease-in-out infinite reverse;
+}
+
+.image-floating-dot {
+  position: absolute;
+  z-index: 3;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-secondary);
+  box-shadow: 0 0 20px var(--color-secondary);
+  animation: dotFloat 4s ease-in-out infinite;
+}
+
+.dot-one {
+  top: 17%;
+  right: 4%;
+}
+
+.dot-two {
+  bottom: 15%;
+  left: 5%;
+  width: 7px;
+  height: 7px;
+  animation-delay: -1.5s;
+}
+
+.dot-three {
+  top: 39%;
+  left: 0;
+  width: 5px;
+  height: 5px;
+  background: var(--color-primary);
+  box-shadow: 0 0 16px var(--color-primary);
+  animation-delay: -3s;
+}
+
+/* Animations */
+@keyframes aboutImageEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(35px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes imageShine {
+  0%,
+  45%,
+  100% {
+    transform: translateX(-30%) rotate(18deg);
+  }
+  65% {
+    transform: translateX(220%) rotate(18deg);
+  }
+}
+
+@keyframes orbitFloat {
+  0%,
+  100% {
+    transform: rotate(-32deg) scale(1);
+  }
+  50% {
+    transform: rotate(-25deg) scale(1.04);
+  }
+}
+
+@keyframes dotFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+  .about-image-section {
+    padding: 2rem 0;
+  }
+
+  .about-image-wrapper {
+    min-height: 360px;
+  }
+
+  .about-image-border {
+    width: 88%;
+    border-radius: 25px;
+    transform: rotate(1.5deg);
+  }
+
+  .about-image-inner {
+    border-radius: 22px;
+  }
+
+  .image-orbit {
+    width: 90%;
+    height: 70%;
+  }
+
+  .dot-one {
+    right: 1%;
+  }
+
+  .dot-two {
+    left: 1%;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .about-image-wrapper,
+  .image-highlight,
+  .image-orbit,
+  .image-floating-dot {
+    animation: none;
+  }
+
+  .about-image-border,
+  .about-image {
+    transition: none;
+  }
+}
