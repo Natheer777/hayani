@@ -1,7 +1,7 @@
 import {
   Navbar,
   PartnershipHero,
-  About,
+
   PartnerCards,
   QuickStats,
   KeepInTouch,

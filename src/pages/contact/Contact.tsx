@@ -1,7 +1,7 @@
 import {
   Navbar,
   ContactHero,
-  About,
+
   KeepInTouch,
   Footer,
   AboutText,

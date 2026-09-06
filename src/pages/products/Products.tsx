@@ -20,7 +20,7 @@ export default function Products() {
     currentPage,
     totalPages,
     totalResults,
-    searchParams,
+
     setSearchParams,
   } = useProducts({
     lang: i18n.language as 'ar' | 'en',
