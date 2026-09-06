@@ -95,7 +95,6 @@
   font-weight: 900;
   letter-spacing: 0.06em;
   /* Animated gradient will be applied via class */
-}
   color: transparent;
   font-family: var(--font-heading), inherit;
   text-shadow: 0 0 36px color-mix(in srgb, var(--color-primary) 28%, transparent);
