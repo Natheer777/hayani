@@ -103,6 +103,25 @@
     "success": "تم إرسال رسالتك بنجاح!",
     "error": "حدث خطأ ما. يرجى المحاولة مرة أخرى."
   },
+  "products": {
+    "searchTitle": "البحث عن المنتجات",
+    "searchSubtitle": "ابحث عن المنتجات الصيدلانية حسب الاسم أو الشركة أو الفئة",
+    "searchPlaceholder": "ابحث باسم المنتج...",
+    "companyLabel": "الشركة",
+    "allCompanies": "جميع الشركات",
+    "categoryLabel": "الفئة",
+    "allCategories": "جميع الفئات",
+    "searchButton": "بحث",
+    "resetButton": "إعادة تعيين",
+    "searching": "جاري البحث...",
+    "loading": "جاري تحميل المنتجات...",
+    "errorTitle": "خطأ في تحميل المنتجات",
+    "noProductsTitle": "لا توجد منتجات",
+    "noProductsMessage": "حاول تعديل معايير البحث أو الفلاتر",
+    "showingResults": "عرض {{from}}-{{to}} من {{total}} منتج",
+    "previousPage": "الصفحة السابقة",
+    "nextPage": "الصفحة التالية"
+  },
   "footer": {
     "contact_title": "تواصل معنا",
     "address": "دمشق، سوريا",

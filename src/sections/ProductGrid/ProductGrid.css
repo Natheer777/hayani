@@ -1,0 +1,301 @@
+.product-grid-section {
+  position: relative;
+  width: 100%;
+  padding: clamp(2rem, 4vw, 3rem) 0 clamp(3rem, 6vw, 5rem);
+  background: transparent;
+}
+
+.product-grid-container {
+  width: min(1400px, calc(100% - 2.5rem));
+  margin: 0 auto;
+}
+
+/* States */
+.loading-state,
+.error-state,
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  min-height: 400px;
+  padding: 3rem 1.5rem;
+  text-align: center;
+}
+
+.loading-spinner {
+  width: 60px;
+  height: 60px;
+  border: 4px solid color-mix(in srgb, var(--color-secondary) 20%, transparent);
+  border-top-color: var(--color-secondary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+.error-state svg,
+.empty-state svg {
+  color: color-mix(in srgb, var(--color-secondary) 60%, transparent);
+}
+
+.error-state h3,
+.empty-state h3 {
+  margin: 0;
+  font-family: var(--font-heading), inherit;
+  font-size: clamp(1.3rem, 2vw, 1.6rem);
+  font-weight: 700;
+  color: var(--color-white);
+}
+
+.error-state p,
+.empty-state p,
+.loading-state p {
+  margin: 0;
+  max-width: 500px;
+  color: color-mix(in srgb, var(--color-white) 70%, transparent);
+  font-family: var(--font-body), inherit;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Results Info */
+.results-info {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.results-info p {
+  margin: 0;
+  color: color-mix(in srgb, var(--color-white) 65%, transparent);
+  font-family: var(--font-body), inherit;
+  font-size: 0.95rem;
+}
+
+/* Product Grid */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: clamp(1.5rem, 3vw, 2rem);
+  margin-bottom: 3rem;
+}
+
+/* Product Card */
+.product-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid
+    color-mix(in srgb, var(--color-secondary) 15%, transparent);
+  border-radius: 18px;
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--color-white) 6%, transparent),
+    color-mix(in srgb, var(--color-dark-blue) 25%, transparent)
+  );
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  border-color: color-mix(in srgb, var(--color-secondary) 40%, transparent);
+  box-shadow: 0 15px 40px
+    color-mix(in srgb, var(--color-secondary) 15%, transparent);
+}
+
+/* Product Info */
+.product-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.5rem;
+  flex: 1;
+}
+
+.product-category-badge {
+  align-self: flex-start;
+  padding: 0.4rem 0.85rem;
+  margin-bottom: 0.5rem;
+  border-radius: 20px;
+  background: linear-gradient(
+    135deg,
+    var(--color-secondary),
+    var(--color-primary)
+  );
+  color: var(--color-white);
+  font-family: var(--font-heading), inherit;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+[dir='rtl'] .product-category-badge {
+  letter-spacing: 0;
+}
+
+.product-name {
+  margin: 0;
+  font-family: var(--font-heading), inherit;
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--color-white);
+}
+
+.product-scientific {
+  margin: 0;
+  color: color-mix(in srgb, var(--color-secondary) 80%, var(--color-white));
+  font-family: var(--font-body), inherit;
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
+.product-company {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0;
+  color: color-mix(in srgb, var(--color-white) 60%, transparent);
+  font-family: var(--font-body), inherit;
+  font-size: 0.85rem;
+}
+
+.product-company svg {
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
+.product-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+.product-badge {
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--color-primary) 15%, transparent);
+  color: var(--color-primary);
+  font-family: var(--font-body), inherit;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.product-description {
+  margin: 0.5rem 0 0;
+  color: color-mix(in srgb, var(--color-white) 65%, transparent);
+  font-family: var(--font-body), inherit;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding-top: 1rem;
+}
+
+.pagination-btn,
+.pagination-page {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 42px;
+  height: 42px;
+  padding: 0.5rem;
+  border: 1px solid
+    color-mix(in srgb, var(--color-secondary) 25%, transparent);
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--color-white) 5%, transparent);
+  color: var(--color-white);
+  font-family: var(--font-heading), inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.pagination-btn:hover:not(:disabled),
+.pagination-page:hover {
+  background: color-mix(in srgb, var(--color-secondary) 20%, transparent);
+  border-color: var(--color-secondary);
+}
+
+.pagination-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.pagination-pages {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.pagination-page.active {
+  background: linear-gradient(
+    135deg,
+    var(--color-secondary),
+    var(--color-primary)
+  );
+  border-color: transparent;
+}
+
+/* RTL Support */
+[dir='rtl'] .pagination-btn svg {
+  transform: scaleX(-1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .pagination-pages {
+    gap: 0.35rem;
+  }
+
+  .pagination-btn,
+  .pagination-page {
+    min-width: 38px;
+    height: 38px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .loading-spinner {
+    animation: none;
+  }
+
+  .product-card,
+  .product-image,
+  .pagination-btn,
+  .pagination-page {
+    transition: none;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

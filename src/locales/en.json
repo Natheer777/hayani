@@ -103,6 +103,25 @@
     "success": "Your message has been sent successfully!",
     "error": "Something went wrong. Please try again."
   },
+  "products": {
+    "searchTitle": "Search Products",
+    "searchSubtitle": "Find pharmaceutical products by name, company, or category",
+    "searchPlaceholder": "Search by product name...",
+    "companyLabel": "Company",
+    "allCompanies": "All Companies",
+    "categoryLabel": "Category",
+    "allCategories": "All Categories",
+    "searchButton": "Search",
+    "resetButton": "Reset",
+    "searching": "Searching...",
+    "loading": "Loading products...",
+    "errorTitle": "Error Loading Products",
+    "noProductsTitle": "No Products Found",
+    "noProductsMessage": "Try adjusting your search criteria or filters",
+    "showingResults": "Showing {{from}}-{{to}} of {{total}} products",
+    "previousPage": "Previous page",
+    "nextPage": "Next page"
+  },
   "footer": {
     "contact_title": "CONTACT",
     "address": "DAMASCUS, SYRIA",
