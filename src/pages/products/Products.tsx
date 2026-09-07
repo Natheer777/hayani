@@ -23,8 +23,9 @@ export default function Products() {
 
     setSearchParams,
   } = useProducts({
+    company_id: 2,
     lang: i18n.language as 'ar' | 'en',
-    limit: 12,
+    limit: 10,
   });
 
   const handleSearch = (params: {

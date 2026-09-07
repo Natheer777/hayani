@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react'
 import { useTranslation } from 'react-i18next'
-import emailjs from '@emailjs/browser'
-import { EMAIL_CONFIG } from '../../config/emailConfig'
 import './KeepInTouch.css'
 import '../../styles/animatedTitles.css'
+
+const MAIL_ENDPOINT = 'https://hayani-pharma.com/hayani/send_mail.php'
 
 
 type FormStatus = 'idle' | 'sending' | 'success' | 'error'
@@ -83,34 +83,33 @@ export default function KeepInTouch() {
     return () => observer.disconnect()
   }, [])
 
-  /* form submit — sends email via EmailJS */
+  /* form submit — sends email via PHP backend */
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
     setStatus('sending')
-    
+
     try {
-      // Prepare template parameters
-      const templateParams = {
-        from_name: name,
-        from_email: email,
-        message: message,
-        to_name: 'Haeani Team', // Your name/company name
+      const response = await fetch(MAIL_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          from_name:  name,
+          from_email: email,
+          message:    message,
+        }),
+      })
+
+      const data = await response.json() as { status: string }
+
+      if (data.status === 'success') {
+        setStatus('success')
+        setName('')
+        setEmail('')
+        setMessage('')
+      } else {
+        setStatus('error')
       }
-
-      // Send email using EmailJS
-      await emailjs.send(
-        EMAIL_CONFIG.SERVICE_ID,
-        EMAIL_CONFIG.TEMPLATE_ID,
-        templateParams,
-        EMAIL_CONFIG.PUBLIC_KEY
-      )
-
-      setStatus('success')
-      setName('')
-      setEmail('')
-      setMessage('')
-    } catch (error) {
-      console.error('Email send error:', error)
+    } catch {
       setStatus('error')
     } finally {
       setTimeout(() => setStatus('idle'), 4000)
