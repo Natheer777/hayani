@@ -134,8 +134,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: clamp(130px, 16vw, 220px);
-  height: clamp(56px, 7vw, 90px);
+  width: clamp(180px, 25vw, 300px);
+  height: clamp(90px, 12vw, 120px);
   padding: 0.5rem 1rem;
   /* no background — logos sit directly on the white strip */
   transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
@@ -167,8 +167,8 @@
     border-radius: 10px;
   }
   .tr-logo-slot {
-    width: clamp(100px, 22vw, 160px);
-    height: clamp(44px, 9vw, 70px);
+    width: clamp(120px, 26vw, 200px);
+    height: clamp(54px, 11vw, 88px);
   }
   .tr-track { gap: clamp(1rem, 3vw, 2.5rem); }
   .tr-fade  { width: 40px; }
@@ -176,8 +176,8 @@
 
 @media (max-width: 480px) {
   .tr-logo-slot {
-    width: clamp(85px, 26vw, 130px);
-    height: clamp(36px, 10vw, 56px);
+    width: clamp(100px, 30vw, 160px);
+    height: clamp(44px, 12vw, 70px);
     padding: 0.4rem 0.6rem;
   }
   .tr-track { gap: 1rem; padding-inline: 0.75rem; }
