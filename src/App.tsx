@@ -5,10 +5,13 @@ import "bootstrap/dist/js/bootstrap.bundle";
 import { Home, Partnership, Departments, Contact, Credentials, Products } from './pages/index'
 import AnimatedBackground from './components/AnimatedBackground'
 import FloatingSocial from './components/FloatingSocial'
+import Spinner from './components/Spinner'
 
 function App() {
   return (
     <>
+      <Spinner minDisplayTime={4000} playbackRate={2} />
+
       <AnimatedBackground />
       <div style={{ position: 'relative', zIndex: 1 }}>
         <BrowserRouter>

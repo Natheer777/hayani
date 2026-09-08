@@ -7,6 +7,49 @@ import type {
 
 const API_BASE_URL = 'https://hayani-pharma.com/hayani';
 
+// Helper function to create user-friendly error messages
+function createErrorMessage(error: unknown, lang: string = 'en'): string {
+  if (error instanceof Error) {
+    // Network or fetch errors
+    if (error.message.includes('Failed to fetch') || error.message.includes('NetworkError')) {
+      return lang === 'ar' 
+        ? 'فشل الاتصال بالخادم. يرجى التحقق من الاتصال بالإنترنت والمحاولة مرة أخرى.'
+        : 'Failed to connect to server. Please check your internet connection and try again.';
+    }
+    
+    // HTTP errors
+    if (error.message.includes('404')) {
+      return lang === 'ar'
+        ? 'عذراً، لم يتم العثور على البيانات المطلوبة. يرجى المحاولة لاحقاً.'
+        : 'Sorry, the requested data was not found. Please try again later.';
+    }
+    
+    if (error.message.includes('500')) {
+      return lang === 'ar'
+        ? 'حدث خطأ في الخادم. يرجى المحاولة لاحقاً.'
+        : 'Server error occurred. Please try again later.';
+    }
+    
+    if (error.message.includes('403')) {
+      return lang === 'ar'
+        ? 'غير مصرح بالوصول إلى هذه البيانات.'
+        : 'Access to this data is forbidden.';
+    }
+    
+    // Timeout errors
+    if (error.message.includes('timeout')) {
+      return lang === 'ar'
+        ? 'انتهت مهلة الطلب. يرجى المحاولة مرة أخرى.'
+        : 'Request timed out. Please try again.';
+    }
+  }
+  
+  // Generic error
+  return lang === 'ar'
+    ? 'حدث خطأ غير متوقع. يرجى المحاولة لاحقاً.'
+    : 'An unexpected error occurred. Please try again later.';
+}
+
 /**
  * Search for products with filters
  */
@@ -42,14 +85,16 @@ export async function searchProducts(
     console.log('Response status:', response.status);
 
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+      const errorMsg = createErrorMessage(new Error(`HTTP error! status: ${response.status}`), params.lang);
+      throw new Error(errorMsg);
     }
 
     const data: SearchResponse = await response.json();
     return data;
   } catch (error) {
     console.error('Error searching products:', error);
-    throw error;
+    const errorMsg = createErrorMessage(error, params.lang);
+    throw new Error(errorMsg);
   }
 }
 
@@ -61,14 +106,16 @@ export async function getCompanies(): Promise<CompaniesResponse> {
     const response = await fetch(`${API_BASE_URL}/get_companies.php`);
 
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+      const errorMsg = createErrorMessage(new Error(`HTTP error! status: ${response.status}`), 'en');
+      throw new Error(errorMsg);
     }
 
     const data: CompaniesResponse = await response.json();
     return data;
   } catch (error) {
     console.error('Error fetching companies:', error);
-    throw error;
+    const errorMsg = createErrorMessage(error, 'en');
+    throw new Error(errorMsg);
   }
 }
 
@@ -80,13 +127,15 @@ export async function getCategories(): Promise<CategoriesResponse> {
     const response = await fetch(`${API_BASE_URL}/get_categories.php`);
 
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+      const errorMsg = createErrorMessage(new Error(`HTTP error! status: ${response.status}`), 'en');
+      throw new Error(errorMsg);
     }
 
     const data: CategoriesResponse = await response.json();
     return data;
   } catch (error) {
     console.error('Error fetching categories:', error);
-    throw error;
+    const errorMsg = createErrorMessage(error, 'en');
+    throw new Error(errorMsg);
   }
 }
