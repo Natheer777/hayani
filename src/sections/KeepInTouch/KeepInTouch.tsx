@@ -83,36 +83,133 @@ export default function KeepInTouch() {
     return () => observer.disconnect()
   }, [])
 
-  /* form submit — sends email via PHP backend */
+  /* form submit — sends email via PHP backend with multi-format support */
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
     setStatus('sending')
 
+    // Build application/x-www-form-urlencoded payload (PHP reads this via $_POST natively)
+    const params = new URLSearchParams()
+    params.append('from_name',  name)
+    params.append('from_email', email)
+    params.append('message',    message)
+    const formBody = params.toString()
+
+    // Also prepare JSON for endpoints that prefer it
+    const jsonBody = JSON.stringify({
+      from_name:  name,
+      from_email: email,
+      message:    message,
+    })
+
     try {
-      const response = await fetch(MAIL_ENDPOINT, {
+      // 1) Try URL-encoded first — PHP $_POST works natively with this
+      let response = await fetch(MAIL_ENDPOINT, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          from_name:  name,
-          from_email: email,
-          message:    message,
-        }),
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
+          'Accept': 'application/json, text/plain, */*',
+        },
+        body: formBody,
       })
 
-      const data = await response.json() as { status: string }
+      // 2) Fallback: if server does not like form-urlencoded (e.g. 415), try JSON
+      if (response.status === 415) {
+        response = await fetch(MAIL_ENDPOINT, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json, text/plain, */*',
+          },
+          body: jsonBody,
+        })
+      }
 
-      if (data.status === 'success') {
+      // 3) Second fallback: multipart FormData (another PHP-friendly format)
+      if (!response.ok && response.status !== 415) {
+        const fd = new FormData()
+        fd.append('from_name',  name)
+        fd.append('from_email', email)
+        fd.append('message',    message)
+        const secondTry = await fetch(MAIL_ENDPOINT, { method: 'POST', body: fd })
+        if (secondTry.ok) response = secondTry
+      }
+
+      // Always read as text first to avoid JSON parse crashes
+      const rawText = await response.text()
+      let data: { status?: string; success?: boolean | string; message?: string; error?: string } = {}
+
+      try {
+        const parsed = JSON.parse(rawText)
+        if (parsed && typeof parsed === 'object') data = parsed
+      } catch {
+        // Not valid JSON — detect success/failure from plain text keywords
+        const lower = rawText.toLowerCase().trim()
+        if (
+          lower.includes('success') ||
+          lower.includes('message sent') ||
+          lower.includes('email sent') ||
+          lower.includes('ok') ||
+          lower.includes('sent successfully') ||
+          lower.includes('تم الإرسال') ||
+          lower.includes('تم بنجاح') ||
+          lower.includes('تم') ||
+          lower === '1' ||
+          lower === 'true'
+        ) {
+          data = { status: 'success' }
+        } else if (
+          lower.includes('error') ||
+          lower.includes('failed') ||
+          lower.includes('fail') ||
+          lower.includes('خطأ') ||
+          lower.includes('فشل') ||
+          lower === '0' ||
+          lower === 'false'
+        ) {
+          data = { status: 'error', message: rawText }
+        } else if (response.ok && rawText.length <= 4) {
+          // Tiny / empty body with 2xx — lean toward success
+          data = { status: 'success' }
+        }
+      }
+
+      const ok =
+        response.ok &&
+        (
+          data.status  === 'success' ||
+          data.success === true      ||
+          data.success === 'true'    ||
+          // Backstop: HTTP 2xx + no explicit failure marker = treat as success
+          (
+            data.status  === undefined &&
+            data.success === undefined &&
+            data.error   === undefined &&
+            response.status >= 200 &&
+            response.status < 300
+          )
+        )
+
+      if (ok) {
         setStatus('success')
         setName('')
         setEmail('')
         setMessage('')
       } else {
+        // eslint-disable-next-line no-console
+        console.warn('[KeepInTouch] Mail endpoint rejected request:', {
+          status:   response.status,
+          rawText,
+          parsed:   data,
+        })
         setStatus('error')
       }
-    } catch {
+    } catch (err) {
+      // eslint-disable-next-line no-console
+      console.error('[KeepInTouch] Network / fetch error:', err)
       setStatus('error')
     } finally {
-      setTimeout(() => setStatus('idle'), 4000)
+      setTimeout(() => setStatus('idle'), 5000)
     }
   }
 
