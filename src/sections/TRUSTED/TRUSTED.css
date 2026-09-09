@@ -189,4 +189,222 @@
   .tr-track     { animation: none !important; }
   .tr-logo-slot { transition: none !important; }
   .tr-logo      { transition: none !important; }
+  .tr-cta,
+  .tr-cta *,
+  .tr-cta::before,
+  .tr-cta::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   DISCOVER PRODUCTS CTA BUTTON
+   Futuristic glassmorphic pill with corner brackets, glow, scan
+═══════════════════════════════════════════════════════════ */
+.tr-cta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  margin-top: clamp(0.4rem, 1.2vw, 1rem);
+  padding: clamp(0.95rem, 1.6vw, 1.15rem) clamp(2rem, 4.2vw, 3.2rem);
+  min-height: 56px;
+  font-family: var(--font-heading), inherit;
+  font-size: clamp(0.9rem, 1.2vw, 1.05rem);
+  font-weight: 750;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-white);
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid color-mix(in srgb, var(--color-secondary) 55%, transparent);
+  border-radius: 999px;
+  background:
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--color-secondary) 10%, transparent),
+      color-mix(in srgb, var(--color-primary) 14%, transparent) 50%,
+      color-mix(in srgb, var(--color-dark-blue) 30%, transparent)
+    );
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--color-secondary) 10%, transparent) inset,
+    0 12px 32px color-mix(in srgb, var(--color-black) 50%, transparent),
+    0 0 24px color-mix(in srgb, var(--color-primary) 18%, transparent);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  overflow: hidden;
+  isolation: isolate;
+  transition:
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s ease,
+    border-color 0.3s ease,
+    letter-spacing 0.35s ease;
+  animation: trCtaEntrance 0.7s 0.3s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+[dir="rtl"] .tr-cta {
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.tr-cta:hover {
+  transform: translateY(-4px) scale(1.02);
+  border-color: color-mix(in srgb, var(--color-secondary) 85%, transparent);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--color-secondary) 22%, transparent) inset,
+    0 20px 48px color-mix(in srgb, var(--color-black) 58%, transparent),
+    0 0 42px color-mix(in srgb, var(--color-primary) 34%, transparent),
+    0 0 72px color-mix(in srgb, var(--color-secondary) 22%, transparent);
+  letter-spacing: 0.2em;
+}
+
+[dir="rtl"] .tr-cta:hover {
+  letter-spacing: 0;
+}
+
+/* inner ambient glow */
+.tr-cta__glow {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(
+    circle at 50% 50%,
+    color-mix(in srgb, var(--color-secondary) 18%, transparent),
+    transparent 65%
+  );
+  opacity: 0.7;
+  animation: trCtaGlow 3.4s ease-in-out infinite alternate;
+}
+
+/* scanning line sweep */
+.tr-cta__scan {
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    100deg,
+    transparent,
+    color-mix(in srgb, var(--color-white) 32%, transparent) 50%,
+    transparent
+  );
+  transform: skewX(-18deg);
+  animation: trCtaScan 4.2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* corner brackets */
+.tr-cta__corner {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border-color: var(--color-secondary);
+  border-style: solid;
+  border-width: 0;
+  filter: drop-shadow(0 0 6px var(--color-secondary));
+  opacity: 0.9;
+  pointer-events: none;
+  transition:
+    width 0.3s ease,
+    height 0.3s ease,
+    opacity 0.3s ease;
+}
+
+.tr-cta__corner--tl { top: 6px; left: 14px;  border-width: 2px 0 0 2px; border-radius: 14px 0 0 0; }
+.tr-cta__corner--tr { top: 6px; right: 14px; border-width: 2px 2px 0 0; border-radius: 0 14px 0 0; }
+.tr-cta__corner--bl { bottom: 6px; left: 14px;  border-width: 0 0 2px 2px; border-radius: 0 0 0 14px; }
+.tr-cta__corner--br { bottom: 6px; right: 14px; border-width: 0 2px 2px 0; border-radius: 0 0 14px 0; }
+
+.tr-cta:hover .tr-cta__corner {
+  width: 30px;
+  height: 30px;
+  opacity: 1;
+  border-color: var(--color-primary);
+  filter: drop-shadow(0 0 8px var(--color-primary));
+}
+
+/* label */
+.tr-cta__label {
+  position: relative;
+  z-index: 1;
+  background: linear-gradient(
+    90deg,
+    var(--color-white),
+    var(--color-secondary),
+    var(--color-primary),
+    var(--color-white)
+  );
+  background-size: 250% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: trCtaShimmer 4.5s linear infinite;
+}
+
+/* arrow */
+.tr-cta__arrow {
+  position: relative;
+  z-index: 1;
+  color: var(--color-secondary);
+  flex: 0 0 auto;
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    color 0.3s ease;
+  filter: drop-shadow(0 0 6px var(--color-secondary));
+}
+
+.tr-cta:hover .tr-cta__arrow {
+  color: var(--color-white);
+  filter: drop-shadow(0 0 10px var(--color-primary));
+}
+
+[dir="ltr"] .tr-cta:hover .tr-cta__arrow { transform: translateX(6px); }
+[dir="rtl"] .tr-cta:hover .tr-cta__arrow { transform: translateX(-6px) scaleX(-1); }
+[dir="rtl"] .tr-cta__arrow { transform: scaleX(-1); }
+
+/* ─── CTA keyframes ─────────────────────────────────────── */
+@keyframes trCtaEntrance {
+  from { opacity: 0; transform: translateY(18px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes trCtaGlow {
+  0%   { opacity: 0.5; transform: scale(1); }
+  100% { opacity: 1;   transform: scale(1.15); }
+}
+
+@keyframes trCtaScan {
+  0%,
+  55%  { transform: translateX(0) skewX(-18deg); }
+  100% { transform: translateX(420%) skewX(-18deg); }
+}
+
+@keyframes trCtaShimmer {
+  0%   { background-position: 0%   center; }
+  100% { background-position: 250% center; }
+}
+
+/* ─── CTA responsive ─────────────────────────────────────── */
+@media (max-width: 768px) {
+  .tr-cta {
+    padding: 0.9rem 1.8rem;
+    min-height: 50px;
+    gap: 0.6rem;
+  }
+  .tr-cta__corner { width: 18px; height: 18px; }
+  .tr-cta__corner--tl { top: 5px; left: 12px; }
+  .tr-cta__corner--tr { top: 5px; right: 12px; }
+  .tr-cta__corner--bl { bottom: 5px; left: 12px; }
+  .tr-cta__corner--br { bottom: 5px; right: 12px; }
+}
+
+@media (max-width: 480px) {
+  .tr-cta {
+    width: 100%;
+    padding: 0.85rem 1.4rem;
+    font-size: 0.88rem;
+  }
 }

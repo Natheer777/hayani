@@ -1,0 +1,55 @@
+/* ═══════════════════════════════════════════════════════════
+   ABOUT HERO  —  image only, no text overlay
+═══════════════════════════════════════════════════════════ */
+
+.abh-hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--color-dark);
+}
+
+.abh-bg {
+  position: absolute;
+  top: var(--navbar-h);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: calc(100% - var(--navbar-h));
+  object-fit: cover;
+  object-position: center center;
+  user-select: none;
+  pointer-events: none;
+}
+
+.abh-scrim {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  z-index: 2;
+  background: linear-gradient(
+    to top,
+    color-mix(in srgb, var(--color-dark) 60%, transparent),
+    transparent
+  );
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .abh-hero {
+    height: auto;
+    padding-top: var(--navbar-h);
+  }
+  .abh-bg {
+    position: relative;
+    top: 0;
+    height: auto;
+    width: 100%;
+    object-fit: contain;
+    object-position: center top;
+  }
+}

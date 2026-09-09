@@ -12,19 +12,19 @@ type WhyKey = 'precision' | 'security' | 'rapid' | 'support';
 const whyItems: { key: WhyKey; icon: string }[] = [
   {
     key: 'precision',
-    icon: iconPrecision,
+    icon: iconSupport,
   },
   {
     key: 'security',
-    icon: iconSecurity,
-  },
-  {
-    key: 'rapid',
     icon: iconRapid,
   },
   {
+    key: 'rapid',
+    icon: iconSecurity,
+  },
+  {
     key: 'support',
-    icon: iconSupport,
+    icon: iconPrecision,
   },
 ];
 

@@ -233,9 +233,9 @@
 
 .core-icon-wrapper {
   position: relative;
-  width: 60%;
+  width: 80%;
   aspect-ratio: 1 / 1;
-  margin-top: 0.5rem;
+  /* margin-top: 0.5rem; */
   flex-shrink: 0;
   display: flex;
   align-items: center;
@@ -439,7 +439,7 @@
   }
 
   .core-icon-wrapper {
-    width: 58%;
+    width: 100%;
   }
 }
 
@@ -455,7 +455,7 @@
   }
 
   .core-icon-wrapper {
-    width: 62%;
+    width: 100%;
   }
 }
 
@@ -487,7 +487,7 @@
   }
 
   .core-icon-wrapper {
-    width: 44%;
+    width: 100%;
   }
 
   .core-bottom-accent {
@@ -528,7 +528,7 @@
   }
 
   .core-icon-wrapper {
-    width: 52%;
+    width: 100%;
   }
 
   .core-bottom-accent {

@@ -519,8 +519,8 @@
   }
 
   .why-icon-wrapper {
-    width: min(70vw, 14rem);
-    margin-block: 1.5rem 1.75rem;
+         width: min(70vw, 21rem);
+        margin-block: 0px;
   }
 
   .why-icon {

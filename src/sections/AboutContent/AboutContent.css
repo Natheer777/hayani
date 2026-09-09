@@ -1,0 +1,184 @@
+/* ═══════════════════════════════════════════════════════════
+   ABOUT CONTENT SECTION
+═══════════════════════════════════════════════════════════ */
+
+.about-content-section {
+  position: relative;
+  padding: clamp(3rem, 8vw, 6rem) clamp(1rem, 4vw, 2rem);
+  background: var(--color-dark);
+  overflow: hidden;
+}
+
+.about-content-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ─── Header ─────────────────────────────────────────────── */
+
+.about-content-header {
+  text-align: center;
+  margin-bottom: clamp(2.5rem, 6vw, 4rem);
+}
+
+.about-content-title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  color: var(--color-white);
+  margin: 0 0 1.5rem 0;
+  letter-spacing: 0.05em;
+  background: linear-gradient(
+    135deg,
+    var(--color-white) 0%,
+    var(--color-primary) 50%,
+    var(--color-secondary) 100%
+  );
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: aboutTitleShimmer 4s ease-in-out infinite;
+}
+
+@keyframes aboutTitleShimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.about-title-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 0 auto;
+  max-width: 200px;
+}
+
+.about-title-line span {
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-secondary), var(--color-primary));
+  flex: 1;
+}
+
+.about-title-line span:nth-child(2) {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  box-shadow: 0 0 12px var(--color-primary);
+}
+
+/* ─── Body Content ───────────────────────────────────────── */
+
+.about-content-body {
+  color: var(--color-white);
+  line-height: 1.8;
+}
+
+.about-paragraph {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 2vw, 1.125rem);
+  margin-bottom: 1.5rem;
+  color: color-mix(in srgb, var(--color-white) 85%, transparent);
+}
+
+/* ─── Services Section ──────────────────────────────────── */
+
+.about-services-heading {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  color: var(--color-primary);
+  margin: 2.5rem 0 1.5rem;
+}
+
+.about-services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0;
+}
+
+.about-service-card {
+  position: relative;
+  padding: 1.5rem;
+  background: color-mix(in srgb, var(--color-dark-blue) 40%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-primary) 20%, transparent);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.about-service-card:hover {
+  border-color: var(--color-primary);
+  background: color-mix(in srgb, var(--color-dark-blue) 60%, transparent);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px color-mix(in srgb, var(--color-primary) 20%, transparent);
+}
+
+.service-number-badge {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.875rem;
+  color: var(--color-primary);
+  background: color-mix(in srgb, var(--color-primary) 15%, transparent);
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  margin-bottom: 0.75rem;
+}
+
+.service-text {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+  color: color-mix(in srgb, var(--color-white) 85%, transparent);
+}
+
+/* ─── Mission Quote ──────────────────────────────────────── */
+
+.about-mission-quote {
+  position: relative;
+  margin: 2.5rem 0;
+  padding: 2rem 2rem 2rem 3rem;
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--color-primary) 10%, transparent),
+    color-mix(in srgb, var(--color-secondary) 10%, transparent)
+  );
+  border-left: 4px solid var(--color-primary);
+  border-radius: 8px;
+}
+
+.quote-mark {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  font-size: 3rem;
+  line-height: 1;
+  color: var(--color-primary);
+  opacity: 0.3;
+}
+
+.about-mission-quote p {
+  font-family: var(--font-heading);
+  font-size: clamp(1.125rem, 2.5vw, 1.375rem);
+  font-style: italic;
+  margin: 0;
+  color: var(--color-white);
+}
+
+/* ─── Responsive ─────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .about-services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-mission-quote {
+    padding: 1.5rem 1.5rem 1.5rem 2.5rem;
+  }
+}

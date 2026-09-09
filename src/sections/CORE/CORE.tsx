@@ -8,9 +8,9 @@ import iconQuality from '../../assets/HOME/icons-core-services/Asset 25@4x.png';
 type CoreKey = 'inventory' | 'distribution' | 'quality';
 
 const coreItems: { key: CoreKey; icon: string }[] = [
-  { key: 'inventory', icon: iconInventory },
+  { key: 'inventory', icon: iconQuality },
   { key: 'distribution', icon: iconDistribution },
-  { key: 'quality', icon: iconQuality },
+  { key: 'quality', icon: iconInventory },
 ];
 
 export default function Core() {

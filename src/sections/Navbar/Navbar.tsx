@@ -27,11 +27,11 @@ export default function Navbar() {
 
   const navLinks = [
     { label: t('navbar.home'),        href: homeHref('#home'),     page: false },
-    { label: t('navbar.about'),       href: homeHref('#about'),    page: false },
-    { label: t('navbar.why'),         href: homeHref('#why'),      page: false },
+    { label: t('navbar.about'),       href: '/about',              page: true  },
     { label: t('navbar.products'),    href: '/products',           page: true  },
     { label: t('navbar.services'),    href: '/departments',        page: true  },
     { label: t('navbar.partners'),    href: '/partnership',        page: true  },
+    { label: t('navbar.credentials'), href: '/credentials',        page: true  },
     { label: t('navbar.contact'),     href: '/contact',            page: true  },
   ];
 

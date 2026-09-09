@@ -4,8 +4,9 @@
     "about": "About Us",
     "why": "Why Choose Us",
     "products": "Products",
-    "services": "Services",
+    "services": "Company Department",
     "partners": "Partners",
+    "credentials": "Credentials",
     "contact": "Contact",
     "language": "العربية"
   },
@@ -51,7 +52,8 @@
     }
   },
   "trusted": {
-    "title": "TRUSTED BRANDS & PARTNERS"
+    "title": "TRUSTED BRANDS & PARTNERS",
+    "discover_products": "DISCOVER PRODUCTS"
   },
   "core": {
     "title": "CORE SERVICES",
@@ -85,7 +87,7 @@
       },
       "pharmacies": {
         "label": "PARTNER PHARMACIES",
-        "value": "20000",
+        "value": "440",
         "suffix": "+"
       }
     }
