@@ -123,6 +123,61 @@
   gap: 2.25rem;
 }
 
+/* Core cards are hidden until the grid gains .is-revealed via scroll */
+.core-grid .core-card {
+  --reveal-delay: calc(var(--reveal-index, 0) * 140ms);
+  animation: none;
+  opacity: 0;
+  filter: blur(8px);
+  transform:
+    translateY(56px)
+    scale(0.92)
+    rotateX(calc((var(--reveal-index, 0) * 2 - 1) * 4deg));
+  transform-style: preserve-3d;
+  transition:
+    opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.45s ease;
+  transition-delay: var(--reveal-delay), var(--reveal-delay), var(--reveal-delay), 0s, 0s;
+  will-change: transform, opacity, filter;
+}
+
+.core-grid.is-revealed .core-card {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0) scale(1) rotateX(0);
+}
+
+/* Glow sweep as each card lands */
+.core-grid.is-revealed .core-card {
+  animation: coreCardLandGlow 1.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(var(--reveal-delay) + 0.6s);
+}
+
+@keyframes coreCardLandGlow {
+  0% {
+    box-shadow:
+      0 16px 60px color-mix(in srgb, var(--color-black) 45%, transparent),
+      inset 0 1px 0 color-mix(in srgb, var(--color-white) 10%, transparent),
+      0 0 60px color-mix(in srgb, var(--color-primary) 9%, transparent);
+  }
+  50% {
+    box-shadow:
+      0 28px 90px color-mix(in srgb, var(--color-black) 55%, transparent),
+      0 0 48px color-mix(in srgb, var(--color-primary) 30%, transparent),
+      0 0 120px color-mix(in srgb, var(--color-secondary) 22%, transparent),
+      inset 0 1px 0 color-mix(in srgb, var(--color-white) 16%, transparent);
+  }
+  100% {
+    box-shadow:
+      0 16px 60px color-mix(in srgb, var(--color-black) 45%, transparent),
+      0 0 30px color-mix(in srgb, var(--color-primary) 12%, transparent),
+      inset 0 1px 0 color-mix(in srgb, var(--color-white) 10%, transparent);
+  }
+}
+
 .core-card {
   position: relative;
   aspect-ratio: 1 / 1;
@@ -149,13 +204,11 @@
   overflow: hidden;
   cursor: default;
   isolation: isolate;
+  /* hover-only transitions here; scroll-reveal transitions live above in .core-grid .core-card */
   transition:
     transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
     box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1),
     border-color 0.45s ease;
-  opacity: 0;
-  transform: translateY(32px);
-  animation: coreCardIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 @keyframes coreCardIn {
@@ -439,7 +492,7 @@
   }
 
   .core-icon-wrapper {
-    width: 100%;
+    width: 80%;
   }
 }
 
@@ -455,7 +508,7 @@
   }
 
   .core-icon-wrapper {
-    width: 100%;
+    width: 80%;
   }
 }
 
@@ -487,7 +540,7 @@
   }
 
   .core-icon-wrapper {
-    width: 100%;
+    width: 80%;
   }
 
   .core-bottom-accent {
@@ -528,12 +581,89 @@
   }
 
   .core-icon-wrapper {
-    width: 100%;
+    width: 80%;
   }
 
   .core-bottom-accent {
     margin-top: 2.25rem;
     width: 68%;
     height: 4px;
+  }
+}
+
+
+@media (max-width: 1024px) {
+  .why-grid .why-card {
+    --reveal-delay: calc(var(--reveal-index, 0) * 90ms);
+    transform:
+      translateY(36px)
+      translateX(calc(((var(--reveal-index, 0) % 2) * 2 - 1) * -32px))
+
+      scale(0.96);
+  }
+  .why-grid--rtl .why-card {
+    transform:
+      translateY(36px)
+      translateX(calc(((var(--reveal-index, 0) % 2) * 2 - 1) * 32px))
+      scale(0.96);
+  }
+
+  .core-grid .core-card {
+    --reveal-delay: calc(var(--reveal-index, 0) * 110ms);
+    transform: translateY(44px) scale(0.94) rotateX(calc((var(--reveal-index, 0) * 2 - 1) * 2.5deg));
+  }
+}
+
+@media (max-width: 768px) {
+  .why-grid .why-card,
+  .why-grid--rtl .why-card {
+    --reveal-delay: calc(var(--reveal-index, 0) * 75ms);
+    filter: blur(4px);
+    transform:
+      translateY(30px)
+      translateX(calc((var(--reveal-index, 0) * 12px) - 18px))
+      scale(0.97);
+  }
+
+  .core-grid .core-card {
+    --reveal-delay: calc(var(--reveal-index, 0) * 90ms);
+    filter: blur(4px);
+    transform: translateY(34px) scale(0.96) rotateX(0);
+  }
+}
+
+@media (max-width: 576px) {
+  .why-grid .why-card,
+  .why-grid--rtl .why-card {
+    --reveal-delay: calc(var(--reveal-index, 0) * 60ms);
+    filter: blur(0);
+    transform: translateY(22px) translateX(0) scale(0.985);
+  }
+
+  .core-grid .core-card {
+    --reveal-delay: calc(var(--reveal-index, 0) * 70ms);
+    filter: blur(0);
+    transform: translateY(24px) scale(0.98) rotateX(0);
+  }
+}
+
+/* Accessibility: disable reveal animations entirely for users who asked */
+@media (prefers-reduced-motion: reduce) {
+  .core-grid .core-card,
+  .core-grid.is-revealed .core-card {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .core-title-pill,
+  .core-card,
+  .core-icon-wrapper,
+  .core-icon-glow,
+  .core-bottom-accent {
+    transition: none !important;
+    animation: none !important;
   }
 }

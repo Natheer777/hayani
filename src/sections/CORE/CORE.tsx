@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import './CORE.css';
 import '../../styles/animatedTitles.css';
@@ -14,7 +15,33 @@ const coreItems: { key: CoreKey; icon: string }[] = [
 ];
 
 export default function Core() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const gridRef = useRef<HTMLDivElement | null>(null);
+  const isRTL = i18n.resolvedLanguage === 'ar';
+
+  useEffect(() => {
+    const grid = gridRef.current;
+    if (!grid) return;
+
+    let rafId = 0;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            rafId = requestAnimationFrame(() => grid.classList.add('is-revealed'));
+            observer.unobserve(entry.target);
+          }
+        }
+      },
+      { threshold: 0.15, rootMargin: '0px 0px -80px 0px' }
+    );
+
+    observer.observe(grid);
+    return () => {
+      if (rafId) cancelAnimationFrame(rafId);
+      observer.disconnect();
+    };
+  }, []);
 
   return (
     <section id="services" className="core-section">
@@ -28,12 +55,17 @@ export default function Core() {
           <span className="core-title-side-line" />
         </div>
 
-        <div className="core-grid">
+        <div
+          ref={gridRef}
+          className={`core-grid${isRTL ? ' core-grid--rtl' : ''}`}
+        >
           {coreItems.map((item, index) => (
             <article
               key={item.key}
               className="core-card"
-              style={{ animationDelay: `${0.1 * index}s` }}
+              style={{
+                ['--reveal-index' as string]: index,
+              }}
             >
               <div className="core-card-shine" />
 

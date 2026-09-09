@@ -10,7 +10,7 @@ import Spinner from './components/Spinner'
 function App() {
   return (
     <>
-      <Spinner minDisplayTime={40000} playbackRate={2} />
+      <Spinner minDisplayTime={4000} playbackRate={2} />
 
       <AnimatedBackground />
       <div style={{ position: 'relative', zIndex: 1 }}>

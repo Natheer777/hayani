@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import './Why.css';
 import '../../styles/animatedTitles.css';
@@ -29,7 +30,33 @@ const whyItems: { key: WhyKey; icon: string }[] = [
 ];
 
 export default function Why() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const gridRef = useRef<HTMLDivElement | null>(null);
+  const isRTL = i18n.resolvedLanguage === 'ar';
+
+  useEffect(() => {
+    const grid = gridRef.current;
+    if (!grid) return;
+
+    let rafId = 0;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            rafId = requestAnimationFrame(() => grid.classList.add('is-revealed'));
+            observer.unobserve(entry.target);
+          }
+        }
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -80px 0px' }
+    );
+
+    observer.observe(grid);
+    return () => {
+      if (rafId) cancelAnimationFrame(rafId);
+      observer.disconnect();
+    };
+  }, []);
 
   return (
     <section id="why" className="why-section">
@@ -52,13 +79,16 @@ export default function Why() {
           <span className="why-title-accent" aria-hidden="true" />
         </header>
 
-        <div className="why-grid">
+        <div
+          ref={gridRef}
+          className={`why-grid${isRTL ? ' why-grid--rtl' : ''}`}
+        >
           {whyItems.map((item, index) => (
             <article
               key={item.key}
               className="why-card"
               style={{
-                animationDelay: `${index * 100}ms`,
+                ['--reveal-index' as string]: index,
               }}
             >
               <div className="why-card-header">
