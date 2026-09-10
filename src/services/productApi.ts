@@ -7,6 +7,33 @@ import type {
 
 const API_BASE_URL = 'https://hayani-pharma.com/hayani';
 
+function buildEmptySearchResponse(lang: string = 'en'): SearchResponse {
+  return {
+    status: 'success',
+    message: lang === 'ar' ? 'لم يتم العثور على منتجات مطابقة.' : 'No matching products were found.',
+    data: {
+      pagination: {
+        current_page: 1,
+        per_page: 0,
+        total_items: 0,
+        total_pages: 0,
+      },
+      language: lang,
+      results: [],
+    },
+  }
+}
+
+function isNoProductsFoundMessage(message: string): boolean {
+  const normalizedMessage = message.toLowerCase()
+
+  return (
+    normalizedMessage.includes('no products found') ||
+    normalizedMessage.includes('no products') ||
+    normalizedMessage.includes('matching your criteria')
+  )
+}
+
 // Helper function to create user-friendly error messages
 function createErrorMessage(error: unknown, lang: string = 'en'): string {
   if (error instanceof Error) {
@@ -84,12 +111,39 @@ export async function searchProducts(
 
     console.log('Response status:', response.status);
 
+    const rawText = await response.text();
+    let data: SearchResponse | null = null;
+
+    try {
+      data = JSON.parse(rawText) as SearchResponse;
+    } catch {
+      data = null;
+    }
+
+    const responseMessage = data?.message || rawText || '';
+
+    if (response.status === 404 && isNoProductsFoundMessage(responseMessage)) {
+      return buildEmptySearchResponse(params.lang);
+    }
+
     if (!response.ok) {
-      const errorMsg = createErrorMessage(new Error(`HTTP error! status: ${response.status}`), params.lang);
+      const errorMsg = createErrorMessage(
+        new Error(responseMessage || `HTTP error! status: ${response.status}`),
+        params.lang
+      );
       throw new Error(errorMsg);
     }
 
-    const data: SearchResponse = await response.json();
+    if (!data) {
+      throw new Error(params.lang === 'ar'
+        ? 'حدث خطأ غير متوقع. يرجى المحاولة لاحقاً.'
+        : 'An unexpected error occurred. Please try again later.')
+    }
+
+    if (data.status === 'error' && isNoProductsFoundMessage(data.message || '')) {
+      return buildEmptySearchResponse(params.lang);
+    }
+
     return data;
   } catch (error) {
     console.error('Error searching products:', error);

@@ -118,6 +118,19 @@
   cursor: not-allowed;
 }
 
+.search-input--error {
+  border-color: color-mix(in srgb, #ff4d6d 70%, transparent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, #ff4d6d 12%, transparent);
+}
+
+.search-validation-message {
+  margin: 0;
+  color: #ff9fb1;
+  font-family: var(--font-body), inherit;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
 .search-select {
   cursor: pointer;
 }

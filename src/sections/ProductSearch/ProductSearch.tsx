@@ -3,6 +3,9 @@ import { useTranslation } from 'react-i18next';
 import './ProductSearch.css';
 import type { Company } from '../../types/product.types';
 
+const ARABIC_TEXT_REGEX = /[\u0600-\u06FF]/
+const ENGLISH_TEXT_REGEX = /[A-Za-z]/
+
 interface ProductSearchProps {
   companies: Company[];
   categories: string[];
@@ -26,9 +29,33 @@ export default function ProductSearch({
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCompany, setSelectedCompany] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
+  const [queryValidationError, setQueryValidationError] = useState('');
+
+  const validateQueryLanguage = (value: string) => {
+    const trimmedValue = value.trim()
+
+    if (!trimmedValue) {
+      return ''
+    }
+
+    if (isRTL) {
+      return ENGLISH_TEXT_REGEX.test(trimmedValue) ? t('products.searchLanguageArabicOnly') : ''
+    }
+
+    return ARABIC_TEXT_REGEX.test(trimmedValue) ? t('products.searchLanguageEnglishOnly') : ''
+  }
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
+
+    const validationMessage = validateQueryLanguage(searchQuery)
+
+    if (validationMessage) {
+      setQueryValidationError(validationMessage)
+      return
+    }
+
+    setQueryValidationError('')
 
     onSearch({
       q: searchQuery || undefined,
@@ -41,6 +68,7 @@ export default function ProductSearch({
     setSearchQuery('');
     setSelectedCompany('');
     setSelectedCategory('');
+    setQueryValidationError('');
     onSearch({});
   };
 
@@ -73,12 +101,25 @@ export default function ProductSearch({
             <input
               id="search-query"
               type="text"
-              className="search-input"
+              className={`search-input${queryValidationError ? ' search-input--error' : ''}`}
               placeholder={t('products.searchPlaceholder')}
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              onChange={(e) => {
+                const nextValue = e.target.value
+                setSearchQuery(nextValue)
+
+                if (queryValidationError) {
+                  setQueryValidationError(validateQueryLanguage(nextValue))
+                }
+              }}
               disabled={loading}
+              aria-invalid={Boolean(queryValidationError)}
             />
+            {queryValidationError && (
+              <p className="search-validation-message" role="alert" aria-live="polite">
+                {queryValidationError}
+              </p>
+            )}
           </div>
 
           {/* Company Filter */}

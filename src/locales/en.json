@@ -121,7 +121,9 @@
     "loading": "Loading products...",
     "errorTitle": "Error Loading Products",
     "noProductsTitle": "No Products Found",
-    "noProductsMessage": "Try adjusting your search criteria or filters",
+    "noProductsMessage": "No matching products were found. Try a different product name or adjust the filters.",
+    "searchLanguageArabicOnly": "When the site is in Arabic, please search using the product name in Arabic only.",
+    "searchLanguageEnglishOnly": "When the site is in English, please search using the product name in English only.",
     "showingResults": "Showing {{from}}-{{to}} of {{total}} products",
     "previousPage": "Previous page",
     "nextPage": "Next page"
