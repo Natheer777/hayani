@@ -103,7 +103,9 @@
     "message_placeholder": "",
     "send_btn": "SEND MESSAGE",
     "success": "Your message has been sent successfully!",
-    "error": "Something went wrong. Please try again."
+    "error": "Something went wrong. Please try again.",
+    "required_fields": "Please fill in all required fields.",
+    "invalid_email": "Please enter a valid email address containing @"
   },
   "products": {
     "searchTitle": "Search Products",

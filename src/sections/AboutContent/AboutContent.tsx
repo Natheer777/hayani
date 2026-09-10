@@ -3,7 +3,7 @@ import './AboutContent.css'
 
 export default function AboutContent() {
   const { t } = useTranslation()
-  const serviceKeys = ['s1', 's2', 's3', 's4', 's5', 's6', 's7'] as const
+  const serviceKeys = ['s1', 's2', 's3', 's4', 's5', 's6'] as const
 
   return (
     <section className="about-content-section">

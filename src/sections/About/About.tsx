@@ -9,7 +9,7 @@ export default function About() {
   const [expanded, setExpanded] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
 
-  const serviceKeys = ['s1', 's2', 's3', 's4', 's5', 's6', 's7'] as const;
+  const serviceKeys = ['s1', 's2', 's3', 's4', 's5', 's6'] as const;
 
   // Trigger typewriter effect when section becomes visible
   useEffect(() => {

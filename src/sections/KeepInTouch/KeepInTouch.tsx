@@ -3,10 +3,10 @@ import { useTranslation } from 'react-i18next'
 import './KeepInTouch.css'
 import '../../styles/animatedTitles.css'
 
-const MAIL_ENDPOINT = 'https://hayani-pharma.com/hayani/send_mail.php'
+const MAIL_ENDPOINT = 'https://hayani-pharma.com/send.php'
 
 
-type FormStatus = 'idle' | 'sending' | 'success' | 'error'
+type FormStatus = 'idle' | 'sending' | 'success' | 'error' | 'invalid'
 
 interface FieldProps {
   id: string
@@ -16,16 +16,17 @@ interface FieldProps {
   onChange: (v: string) => void
   multiline?: boolean
   required?: boolean
+  error?: boolean
 }
 
 /* ─────────────────────────────────────────
    Labelled field (input or textarea)
 ───────────────────────────────────────── */
-function Field({ id, label, type = 'text', value, onChange, multiline, required }: FieldProps) {
+function Field({ id, label, type = 'text', value, onChange, multiline, required, error }: FieldProps) {
   const [focused, setFocused] = useState(false)
 
   return (
-    <div className={`kit-field${focused ? ' kit-field--focused' : ''}${value ? ' kit-field--filled' : ''}`}>
+    <div className={`kit-field${focused ? ' kit-field--focused' : ''}${value ? ' kit-field--filled' : ''}${error ? ' kit-field--error' : ''}`}>
       <label className="kit-field__label" htmlFor={id}>
         {label}
       </label>
@@ -40,6 +41,7 @@ function Field({ id, label, type = 'text', value, onChange, multiline, required 
           required={required}
           rows={4}
           aria-required={required}
+          aria-invalid={error}
         />
       ) : (
         <input
@@ -52,6 +54,7 @@ function Field({ id, label, type = 'text', value, onChange, multiline, required 
           onBlur={() => setFocused(false)}
           required={required}
           aria-required={required}
+          aria-invalid={error}
         />
       )}
       {/* animated bottom border */}
@@ -63,6 +66,8 @@ function Field({ id, label, type = 'text', value, onChange, multiline, required 
 /* ─────────────────────────────────────────
    Section
 ───────────────────────────────────────── */
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
 export default function KeepInTouch() {
   const { t } = useTranslation()
   const sectionRef = useRef<HTMLElement>(null)
@@ -72,6 +77,8 @@ export default function KeepInTouch() {
   const [email, setEmail]     = useState('')
   const [message, setMessage] = useState('')
   const [status, setStatus]   = useState<FormStatus>('idle')
+  const [emailError, setEmailError] = useState(false)
+  const [fieldsEmpty, setFieldsEmpty] = useState(false)
 
   /* entrance observer */
   useEffect(() => {
@@ -83,9 +90,33 @@ export default function KeepInTouch() {
     return () => observer.disconnect()
   }, [])
 
+  useEffect(() => {
+    if (email) {
+      setEmailError(!EMAIL_REGEX.test(email))
+    } else {
+      setEmailError(false)
+    }
+  }, [email])
+
   /* form submit — sends email via PHP backend with multi-format support */
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
+
+    if (!name.trim() || !email.trim() || !message.trim()) {
+      setFieldsEmpty(true)
+      setStatus('invalid')
+      setTimeout(() => setStatus('idle'), 4000)
+      return
+    }
+
+    if (!EMAIL_REGEX.test(email)) {
+      setEmailError(true)
+      setStatus('invalid')
+      setTimeout(() => setStatus('idle'), 4000)
+      return
+    }
+
+    setFieldsEmpty(false)
     setStatus('sending')
 
     // Build application/x-www-form-urlencoded payload (PHP reads this via $_POST natively)
@@ -195,6 +226,8 @@ export default function KeepInTouch() {
         setName('')
         setEmail('')
         setMessage('')
+        setEmailError(false)
+        setFieldsEmpty(false)
       } else {
         // eslint-disable-next-line no-console
         console.warn('[KeepInTouch] Mail endpoint rejected request:', {
@@ -271,6 +304,7 @@ export default function KeepInTouch() {
               value={email}
               onChange={setEmail}
               required
+              error={emailError}
             />
             <Field
               id="kit-message"
@@ -292,6 +326,18 @@ export default function KeepInTouch() {
               <p className="kit-feedback kit-feedback--err" role="alert" aria-live="assertive">
                 <span className="kit-feedback__icon" aria-hidden="true">✕</span>
                 {t('contact.error')}
+              </p>
+            )}
+            {status === 'invalid' && (
+              <p className="kit-feedback kit-feedback--err" role="alert" aria-live="assertive">
+                <span className="kit-feedback__icon" aria-hidden="true">⚠</span>
+                {fieldsEmpty ? t('contact.required_fields') : (emailError ? t('contact.invalid_email') : t('contact.error'))}
+              </p>
+            )}
+            {emailError && status !== 'invalid' && (
+              <p className="kit-feedback kit-feedback--warn" role="alert" aria-live="polite">
+                <span className="kit-feedback__icon" aria-hidden="true">⚠</span>
+                {t('contact.invalid_email')}
               </p>
             )}
 
