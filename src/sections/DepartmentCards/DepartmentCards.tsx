@@ -1,39 +1,38 @@
-import { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import './DepartmentCards.css'
 
-import imgWarehouse    from '../../assets/COMPANY-DEPARTMENTS/warehouse.png'
-import imgWorker       from '../../assets/COMPANY-DEPARTMENTS/warehouse-worker.png'
-import imgDirector     from '../../assets/COMPANY-DEPARTMENTS/director-office.jpeg'
-import imgMeeting      from '../../assets/COMPANY-DEPARTMENTS/meeting-room.jpeg'
+import imgMain from '../../assets/COMPANY-DEPARTMENTS/warehouse.png'
 
-const DEPARTMENTS = [
-  { key: 'warehouse',    img: imgWarehouse,  index: 1 },
-  { key: 'distribution', img: imgWorker,     index: 2 },
-  { key: 'director',     img: imgDirector,   index: 3 },
-  { key: 'meeting',      img: imgMeeting,    index: 4 },
+const DEPARTMENTS = [{ key: 'mainCenter', img: imgMain, index: 1 }] as const
+
+const GOVERNORATES = [
+  'damascus',
+  'rifDimashq',
+  'aleppo',
+  'homs',
+  'hama',
+  'latakia',
+  'tartus',
+  'deirEzzor',
+  'alHasakah',
+  'daraa',
+  'asSuwayda',
+  'idlib',
+  'quneitra',
 ] as const
 
-/* ── single row ── */
 interface RowProps {
   deptKey: string
   img: string
   index: number
-  reverse: boolean
-  visible: boolean
 }
 
-function DepartmentRow({ deptKey, img, index, reverse, visible }: RowProps) {
+function DepartmentRow({ deptKey, img, index }: RowProps) {
   const { t } = useTranslation()
 
   return (
-    <div
-      className={`dc-row${reverse ? ' dc-row--reverse' : ''}${visible ? ' dc-row--visible' : ''}`}
-      style={{ '--delay': `${(index - 1) * 0.12}s` } as React.CSSProperties}
-    >
-      {/* image pane */}
+    <div className="dc-row" style={{ '--delay': `${(index - 1) * 0.12}s` } as React.CSSProperties}>
       <div className="dc-img-wrap">
-        {/* corner brackets */}
         <span className="dc-bracket dc-bracket--tl" aria-hidden="true" />
         <span className="dc-bracket dc-bracket--br" aria-hidden="true" />
 
@@ -44,15 +43,12 @@ function DepartmentRow({ deptKey, img, index, reverse, visible }: RowProps) {
           loading="lazy"
           draggable={false}
         />
-        {/* index badge */}
         <span className="dc-index" aria-hidden="true">
           {String(index).padStart(2, '0')}
         </span>
       </div>
 
-      {/* text pane */}
       <div className="dc-text">
-        {/* top accent line */}
         <div className="dc-text__bar" aria-hidden="true" />
 
         <h2 className="dc-text__title">
@@ -67,44 +63,34 @@ function DepartmentRow({ deptKey, img, index, reverse, visible }: RowProps) {
   )
 }
 
-/* ── section ── */
 export default function DepartmentCards() {
-  const sectionRef = useRef<HTMLElement>(null)
-  const [visible, setVisible]   = useState(false)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { setVisible(true); observer.disconnect() } },
-      { threshold: 0.06 }
-    )
-    if (sectionRef.current) observer.observe(sectionRef.current)
-    return () => observer.disconnect()
-  }, [])
+  const { t } = useTranslation()
 
   return (
-    <section
-      id="departments"
-      className="dc-section"
-      ref={sectionRef}
-      aria-label="Company departments"
-    >
-      {/* ambient orbs */}
+    <section id="departments" className="dc-section" aria-label="Company departments">
       <div className="dc-orb dc-orb--a" aria-hidden="true" />
       <div className="dc-orb dc-orb--b" aria-hidden="true" />
-      <div className="dc-grid-bg"       aria-hidden="true" />
+      <div className="dc-grid-bg" aria-hidden="true" />
 
       <div className="dc-container">
         {DEPARTMENTS.map(({ key, img, index }) => (
-          <DepartmentRow
-            key={key}
-            deptKey={key}
-            img={img}
-            index={index}
-            /* alternate layout: odd = image-left, even = image-right */
-            reverse={index % 2 === 0}
-            visible={visible}
-          />
+          <DepartmentRow key={key} deptKey={key} img={img} index={index} />
         ))}
+
+        <div className="dc-network">
+          <div className="dc-network__head">
+            <span className="dc-network__eyebrow">{t('departments.network.eyebrow')}</span>
+            <h3 className="dc-network__title">{t('departments.network.title')}</h3>
+          </div>
+
+          <ul className="dc-network__list">
+            {GOVERNORATES.map((item) => (
+              <li key={item} className="dc-network__item">
+                {t(`departments.network.items.${item}`)}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </section>
   )

@@ -13,13 +13,14 @@ void i18n
       en: { translation: en },
       ar: { translation: ar },
     },
+    lng: 'en',
     fallbackLng: 'en',
     supportedLngs: ['en', 'ar'],
     interpolation: {
       escapeValue: false,
     },
     detection: {
-      order: ['localStorage', 'navigator', 'htmlTag'],
+      order: ['localStorage', 'htmlTag'],
       caches: ['localStorage'],
     },
   });

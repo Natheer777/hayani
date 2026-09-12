@@ -116,3 +116,10 @@ a:focus-visible {
 [dir="rtl"] #root {
   direction: rtl;
 }
+
+[dir="rtl"] img,
+[dir="rtl"] svg {
+  display: block;
+  visibility: visible;
+  opacity: 1;
+}

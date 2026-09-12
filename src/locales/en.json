@@ -32,22 +32,29 @@
   },
   "why": {
     "title": "WHY CHOOSE US",
+    "intro": "We are a trusted pharmaceutical partner focused on compliance, speed, and long-term business value for healthcare providers and licensed distributors.",
+    "highlights": {
+      "registration": "Regulatory registration and market-entry expertise",
+      "distribution": "Strong nationwide distribution and reliable supply chain",
+      "support": "Responsive service and dedicated commercial support",
+      "partnerships": "Long-term partnerships built on trust and quality"
+    },
     "items": {
       "precision": {
         "title": "Precision Accuracy",
-        "subtitle": "دقة المطابقة"
+        "subtitle": "We work with strict operational discipline to ensure reliable product handling and accurate market execution."
       },
       "security": {
         "title": "Supply Chain Security",
-        "subtitle": "أمان سلاسل الإمداد"
+        "subtitle": "Our network is designed to protect product quality, continuity, and distribution confidence."
       },
       "rapid": {
         "title": "Rapid Response",
-        "subtitle": "سرعة الاستجابة"
+        "subtitle": "We move quickly to meet market needs, solve operational challenges, and support growth."
       },
       "support": {
         "title": "Continuous Support",
-        "subtitle": "دعم متواصل"
+        "subtitle": "We provide ongoing guidance and partnership throughout every stage of the commercial journey."
       }
     }
   },
@@ -165,21 +172,28 @@
     "hero_tag3": "SAFETY",
     "about_badge": "ABOUT US",
     "items": {
-      "warehouse": {
-        "title": "Main Warehouse",
-        "text": "The main warehouse at HAYANI PHARMA is managed in accordance with the highest international standards approved for pharmaceutical safety and storage. We rely on precise ventilation and temperature-control systems to ensure medicinal products retain their full efficacy and are protected from any damage."
-      },
-      "distribution": {
-        "title": "Warehouse — Preparation & Distribution Department",
-        "text": "This department represents the core operational artery of our warehouses, where orders are prepared with speed and ultimate precision. We utilize advanced digital systems for inventory tracking and shipment management to ensure medicines reach pharmacies and hospitals right on time."
-      },
-      "director": {
-        "title": "Director's Office",
-        "text": "Strategic planning and the vision of HAYANI PHARMA originate from this office, where administrative operations are managed with a mindful approach aimed at advancing the pharmaceutical sector. We are committed to building strong, reliable partnerships with major global and local companies to serve the healthcare sector."
-      },
-      "meeting": {
-        "title": "Meeting Room",
-        "text": "A dedicated space for making critical decisions and developing action plans in consultation with our specialized team of pharmacists and experts. Here, we carefully study the demands of the pharmaceutical market to deliver the best solutions and services to our clients across the region."
+      "mainCenter": {
+        "title": "Main Distribution Center",
+        "text": "Hayani Pharma operates its main distribution center as the strategic hub for warehousing, preparation, and supply coordination. Through this center, we manage efficient stock handling and reliable pharmaceutical distribution across the Syrian market."
+      }
+    },
+    "network": {
+      "eyebrow": "Distribution Network",
+      "title": "Coverage across 13 governorates in Syria",
+      "items": {
+        "damascus": "Damascus",
+        "rifDimashq": "Rif Dimashq",
+        "aleppo": "Aleppo",
+        "homs": "Homs",
+        "hama": "Hama",
+        "latakia": "Latakia",
+        "tartus": "Tartus",
+        "deirEzzor": "Deir Ezzor",
+        "alHasakah": "Al-Hasakah",
+        "daraa": "Daraa",
+        "asSuwayda": "As-Suwayda",
+        "idlib": "Idlib",
+        "quneitra": "Quneitra"
       }
     }
   },

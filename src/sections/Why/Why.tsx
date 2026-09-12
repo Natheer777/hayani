@@ -29,6 +29,13 @@ const whyItems: { key: WhyKey; icon: string }[] = [
   },
 ];
 
+const whyHighlights = [
+  'why.highlights.registration',
+  'why.highlights.distribution',
+  'why.highlights.support',
+  'why.highlights.partnerships',
+] as const;
+
 export default function Why() {
   const { t, i18n } = useTranslation();
   const gridRef = useRef<HTMLDivElement | null>(null);
@@ -78,6 +85,17 @@ export default function Why() {
 
           <span className="why-title-accent" aria-hidden="true" />
         </header>
+
+        <div className="why-intro">
+          <p className="why-intro__text">{t('why.intro')}</p>
+          <ul className="why-intro__list">
+            {whyHighlights.map((key) => (
+              <li key={key} className="why-intro__item">
+                {t(key)}
+              </li>
+            ))}
+          </ul>
+        </div>
 
         <div
           ref={gridRef}
