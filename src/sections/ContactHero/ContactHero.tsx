@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import './ContactHero.css'
 
-import heroImg from '../../assets/CONTACT-US/Asset 1@4x.png'
+import heroImg from '../../assets/HOME/sliderHome/Asset 3@4x.png'
 
 export default function ContactHero() {
   const progressRef = useRef<HTMLSpanElement>(null)
