@@ -1,0 +1,49 @@
+{
+  "siteName": "Hayani Pharma",
+  "siteUrl": "https://hayani-pharma.com",
+  "defaultImage": "https://hayani-pharma.com/icon.png",
+  "routes": {
+    "/": {
+      "title": "Hayani Pharma | Pharmaceutical Distribution in Syria",
+      "description": "Hayani Pharma imports, markets, and distributes pharmaceutical products in Syria, supporting healthcare companies with nationwide market access.",
+      "heading": "Hayani Pharma",
+      "summary": "Syrian pharmaceutical importation, marketing, and distribution company established in 1997, with nationwide distribution capabilities and healthcare partnerships."
+    },
+    "/about": {
+      "title": "About Hayani Pharma | Pharmaceutical Partner in Syria",
+      "description": "Learn about Hayani Pharma, a Syrian pharmaceutical importation, marketing, and distribution company serving healthcare partners since 1997.",
+      "heading": "About Hayani Pharma",
+      "summary": "Hayani Pharma is a Syrian pharmaceutical importation, marketing, and distribution company established in 1997 and registered with the Syrian Ministry of Health."
+    },
+    "/products": {
+      "title": "Pharmaceutical Products | Hayani Pharma",
+      "description": "Explore Hayani Pharma's pharmaceutical product catalog and search products by name, company, or category.",
+      "heading": "Pharmaceutical Products",
+      "summary": "Search the Hayani Pharma product catalog by product name, pharmaceutical company, or category."
+    },
+    "/departments": {
+      "title": "Company Departments | Hayani Pharma",
+      "description": "Discover Hayani Pharma's distribution center, warehousing, supply coordination, and pharmaceutical distribution network across Syria.",
+      "heading": "Company Departments",
+      "summary": "Hayani Pharma operates a main distribution center and a network covering 13 governorates in Syria."
+    },
+    "/partnership": {
+      "title": "Pharmaceutical Partnerships | Hayani Pharma",
+      "description": "Learn how Hayani Pharma partners with pharmaceutical and healthcare companies seeking market access and distribution in Syria.",
+      "heading": "Our Partnerships",
+      "summary": "Hayani Pharma works with pharmaceutical and healthcare companies on registration, importation, product launch, promotion, and distribution in Syria."
+    },
+    "/credentials": {
+      "title": "Official Credentials | Hayani Pharma",
+      "description": "Review Hayani Pharma's official credentials, memberships, professional qualifications, and company documentation.",
+      "heading": "Official Credentials",
+      "summary": "Hayani Pharma presents official company credentials, professional qualifications, and documentation for informational and professional purposes."
+    },
+    "/contact": {
+      "title": "Contact Hayani Pharma | Syria",
+      "description": "Contact Hayani Pharma in Damascus, Syria for pharmaceutical distribution, market access, and healthcare partnership enquiries.",
+      "heading": "Contact Hayani Pharma",
+      "summary": "Contact Hayani Pharma in Damascus, Syria about pharmaceutical products, distribution, and commercial partnerships."
+    }
+  }
+}

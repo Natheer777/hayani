@@ -12,6 +12,7 @@ import {
 export default function Partnership() {
   return (
     <>
+      <h1 className="seo-only-heading">Our Partnerships</h1>
       <Navbar />
       <PartnershipHero />
       {/* <About /> */}

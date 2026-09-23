@@ -48,6 +48,7 @@ export default function Products() {
 
   return (
     <>
+      <h1 className="seo-only-heading">Pharmaceutical Products</h1>
       <Navbar />
       <ProductHero />
       <div id="product-search">

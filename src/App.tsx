@@ -6,6 +6,7 @@ import { Home, About, Partnership, Departments, Contact, Credentials, Products }
 import AnimatedBackground from './components/AnimatedBackground'
 import FloatingSocial from './components/FloatingSocial'
 import Spinner from './components/Spinner'
+import Seo from './seo/Seo'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <AnimatedBackground />
       <div style={{ position: 'relative', zIndex: 1 }}>
         <BrowserRouter>
+          <Seo />
           <FloatingSocial />
           <Routes>
             <Route path="/" element={<Home />} />

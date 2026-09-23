@@ -4,6 +4,7 @@ import { About, Core, Footer, Header, Navbar, Trusted, Why, QuickStats, KeepInTo
 export default function home() {
     return (
         <>
+            <h1 className="seo-only-heading">Hayani Pharma</h1>
             <Navbar />
             <Header />
             <About />
