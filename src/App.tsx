@@ -2,7 +2,7 @@ import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle";
-import { Home, About, Partnership, Departments, Contact, Credentials, Products } from './pages/index'
+import { Home, About, Partnership, Departments, Contact, Credentials, Products, PartnerWithUs } from './pages/index'
 import AnimatedBackground from './components/AnimatedBackground'
 import FloatingSocial from './components/FloatingSocial'
 import Spinner from './components/Spinner'
@@ -26,6 +26,7 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/credentials" element={<Credentials />} />
             <Route path="/products" element={<Products />} />
+            <Route path="/partner-with-us" element={<PartnerWithUs />} />
           </Routes>
         </BrowserRouter>
       </div>

@@ -52,7 +52,7 @@ for (const [path, metadata] of Object.entries(seoData.routes)) {
     .replace('<html lang="en">', '<html lang="en">')
     .replace('<title>Hayani Pharma | Pharmaceutical Distribution in Syria</title>', `<title>${escapeHtml(metadata.title)}</title>`)
     .replace('content="Hayani Pharma imports, markets, and distributes pharmaceutical products in Syria."', `content="${escapeHtml(metadata.description)}"`)
-    .replace('content="noindex, follow"', 'content="index, follow"')
+    .replace('content="index, follow"', 'content="index, follow"')
     .replace('href="https://hayani-pharma.com/"', `href="${canonical}"`)
     .replace('content="Hayani Pharma | Pharmaceutical Distribution in Syria"', `content="${escapeHtml(metadata.title)}"`)
     .replace('content="https://hayani-pharma.com/"', `content="${canonical}"`)

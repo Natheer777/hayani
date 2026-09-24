@@ -31,6 +31,7 @@ export default function Navbar() {
     { label: t('navbar.products'),    href: '/products',           page: true  },
     { label: t('navbar.services'),    href: '/departments',        page: true  },
     { label: t('navbar.partners'),    href: '/partnership',        page: true  },
+    { label: t('partnerWithUs.navLabel'), href: '/partner-with-us',   page: true  },
     { label: t('navbar.credentials'), href: '/credentials',        page: true  },
     { label: t('navbar.contact'),     href: '/contact',            page: true  },
   ];

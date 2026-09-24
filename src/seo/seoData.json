@@ -1,7 +1,7 @@
 {
   "siteName": "Hayani Pharma",
   "siteUrl": "https://hayani-pharma.com",
-  "defaultImage": "https://hayani-pharma.com/icon.png",
+  "defaultImage": "https://hayani-pharma.com/favicon.svg",
   "routes": {
     "/": {
       "title": "Hayani Pharma | Pharmaceutical Distribution in Syria",
@@ -32,6 +32,12 @@
       "description": "Learn how Hayani Pharma partners with pharmaceutical and healthcare companies seeking market access and distribution in Syria.",
       "heading": "Our Partnerships",
       "summary": "Hayani Pharma works with pharmaceutical and healthcare companies on registration, importation, product launch, promotion, and distribution in Syria."
+    },
+    "/partner-with-us": {
+      "title": "Partner With Hayani Pharma | Pharmaceutical Market Access",
+      "description": "Partner with Hayani Pharma for pharmaceutical registration, importation, distribution, market development, and export opportunities in Syria and emerging markets.",
+      "heading": "Partner With Us",
+      "summary": "Hayani Pharma welcomes pharmaceutical, biotechnology, medical-device, diagnostic, consumer-health, and nutritional-product manufacturers seeking an experienced commercial partner."
     },
     "/credentials": {
       "title": "Official Credentials | Hayani Pharma",
