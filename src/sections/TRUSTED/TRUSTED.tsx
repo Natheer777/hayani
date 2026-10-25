@@ -2,14 +2,21 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import './TRUSTED.css';
 import '../../styles/animatedTitles.css';
-import logo1 from '../../assets/HOME/partner-logos/Asset 17@8x.png';
-import logo2 from '../../assets/HOME/partner-logos/Asset 18@8x.png';
-import logo3 from '../../assets/HOME/partner-logos/Asset 19@8x.png';
-import logo4 from '../../assets/HOME/partner-logos/Asset 20@8x.png';
-import logo5 from '../../assets/HOME/partner-logos/Asset 21@8x.png';
-import logo6 from '../../assets/HOME/partner-logos/Asset 22@8x.png';
+import logo1 from '../../assets/HOME/partner-logos/Asset 17@8x.webp';
+import logo2 from '../../assets/HOME/partner-logos/Asset 18@8x.webp';
+import logo3 from '../../assets/HOME/partner-logos/Asset 19@8x.webp';
+import logo4 from '../../assets/HOME/partner-logos/Asset 20@8x.webp';
+import logo5 from '../../assets/HOME/partner-logos/Asset 21@8x.webp';
+import logo6 from '../../assets/HOME/partner-logos/Asset 22@8x.webp';
 
-const partnerLogos = [logo1, logo2, logo3, logo4, logo5, logo6];
+const partnerLogos = [
+  { src: logo1, companyKey: 'alfares' },
+  { src: logo2, companyKey: 'himalaya' },
+  { src: logo3, companyKey: 'ibnhayyan' },
+  { src: logo4, companyKey: 'unichima' },
+  { src: logo5, companyKey: 'medico' },
+  { src: logo6, companyKey: 'avenzor' },
+];
 
 export default function Trusted() {
   const { t, i18n } = useTranslation();
@@ -48,15 +55,16 @@ export default function Trusted() {
             <div className={`tr-track${isRTL ? ' tr-track--rtl' : ''}`}>
               {loop.map((src, i) => (
                 <div
-                  key={`${i}-${src.slice(-14)}`}
+                  key={`${i}-${src.src.slice(-14)}`}
                   className="tr-logo-slot"
                   aria-hidden={i >= partnerLogos.length}
                 >
                   <img
-                    src={src}
-                    alt={i < partnerLogos.length ? `Partner ${i + 1}` : ''}
+                    src={src.src}
+                    alt={i < partnerLogos.length ? t(`partnership.companies.${src.companyKey}.name`) : ''}
                     className="tr-logo"
                     loading="lazy"
+                    decoding="async"
                     draggable={false}
                   />
                 </div>

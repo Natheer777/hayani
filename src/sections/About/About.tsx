@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import './About.css';
-import aboutImage from '../../assets/HOME/syndicate-image/Asset 6@4x.png';
+import aboutImage from '../../assets/HOME/syndicate-image/Asset 6@4x.webp';
 import TypewriterText from '../../components/TypewriterText';
 
 export default function About() {
@@ -160,8 +160,10 @@ export default function About() {
             <div className="about-image-inner">
               <img
                 src={aboutImage}
-                alt="Al-Hayani Company"
+                alt="Pharmacists' syndicate building in Damascus"
                 className="about-image"
+                loading="lazy"
+                decoding="async"
               />
 
               <div className="image-overlay" />

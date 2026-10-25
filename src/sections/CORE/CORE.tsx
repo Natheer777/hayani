@@ -2,9 +2,9 @@ import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import './CORE.css';
 import '../../styles/animatedTitles.css';
-import iconInventory from '../../assets/HOME/icons-core-services/Asset 23@4x.png';
-import iconDistribution from '../../assets/HOME/icons-core-services/Asset 24@4x.png';
-import iconQuality from '../../assets/HOME/icons-core-services/Asset 25@4x.png';
+import iconInventory from '../../assets/HOME/icons-core-services/Asset 23@4x.webp';
+import iconDistribution from '../../assets/HOME/icons-core-services/Asset 24@4x.webp';
+import iconQuality from '../../assets/HOME/icons-core-services/Asset 25@4x.webp';
 
 type CoreKey = 'inventory' | 'distribution' | 'quality';
 
@@ -73,9 +73,10 @@ export default function Core() {
                 <div className="core-icon-glow" />
                 <img
                   src={item.icon}
-                  alt={t(`core.items.${item.key}.title`)}
+                  alt=""
                   className="core-icon"
                   loading="lazy"
+                  decoding="async"
                 />
                 <div className="core-icon-shine-top" />
                 <div className="core-icon-shine-bottom" />

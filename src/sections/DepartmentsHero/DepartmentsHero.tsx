@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, EffectFade } from 'swiper/modules'
 import './DepartmentsHero.css'
 
-import slide2 from '../../assets/COMPANY-DEPARTMENTS/warehouse-worker.png'
+import slide2 from '../../assets/COMPANY-DEPARTMENTS/warehouse-worker.webp'
 
 const slides = [slide2]
 
@@ -40,7 +40,15 @@ export default function DepartmentsHero() {
       >
         {slides.map((src, i) => (
           <SwiperSlide key={i} aria-roledescription="slide">
-            <img src={src} alt="" className="dh-slide-img" draggable={false} />
+            <img
+              src={src}
+              alt=""
+              className="dh-slide-img"
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
+              draggable={false}
+            />
           </SwiperSlide>
         ))}
       </Swiper>

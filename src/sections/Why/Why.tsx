@@ -3,10 +3,10 @@ import { useTranslation } from 'react-i18next';
 import './Why.css';
 import '../../styles/animatedTitles.css';
 
-import iconPrecision from '../../assets/HOME/icons-why-choose-us/Asset 7@4x.png';
-import iconSecurity from '../../assets/HOME/icons-why-choose-us/Asset 8@4x.png';
-import iconRapid from '../../assets/HOME/icons-why-choose-us/Asset 9@4x.png';
-import iconSupport from '../../assets/HOME/icons-why-choose-us/Asset 10@4x.png';
+import iconPrecision from '../../assets/HOME/icons-why-choose-us/Asset 7@4x.webp';
+import iconSecurity from '../../assets/HOME/icons-why-choose-us/Asset 8@4x.webp';
+import iconRapid from '../../assets/HOME/icons-why-choose-us/Asset 9@4x.webp';
+import iconSupport from '../../assets/HOME/icons-why-choose-us/Asset 10@4x.webp';
 
 type WhyKey = 'precision' | 'security' | 'rapid' | 'support';
 
@@ -125,9 +125,10 @@ export default function Why() {
 
                 <img
                   src={item.icon}
-                  alt={t(`why.items.${item.key}.title`)}
+                  alt=""
                   className="why-icon"
                   loading="lazy"
+                  decoding="async"
                 />
               </div>
 

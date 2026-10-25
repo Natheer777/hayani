@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import './ContactHero.css'
 
-import heroImg from '../../assets/HOME/sliderHome/Asset 3@4x.png'
+import heroImg from '../../assets/HOME/sliderHome/Asset 3@4x.webp'
 
 export default function ContactHero() {
   const progressRef = useRef<HTMLSpanElement>(null)
@@ -13,7 +13,15 @@ export default function ContactHero() {
       aria-label="Contact us hero"
     >
       {/* background image */}
-      <img src={heroImg} alt="" className="ch-bg" draggable={false} />
+      <img
+        src={heroImg}
+        alt=""
+        className="ch-bg"
+        loading="eager"
+        fetchPriority="high"
+        decoding="async"
+        draggable={false}
+      />
 
       {/* bottom scrim */}
       <div className="ch-scrim" aria-hidden="true" />

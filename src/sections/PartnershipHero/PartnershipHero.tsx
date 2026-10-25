@@ -3,9 +3,9 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, EffectFade } from 'swiper/modules'
 import './PartnershipHero.css'
 
-// import slide1 from '../../assets/HOME/sliderHome/Asset 3@4x.png'
-import slide2 from '../../assets/HOME/sliderHome/Asset 4@4x.png'
-// import slide3 from '../../assets/HOME/sliderHome/Asset 5@4x.png'
+// import slide1 from '../../assets/HOME/sliderHome/Asset 3@4x.webp'
+import slide2 from '../../assets/HOME/sliderHome/Asset 4@4x.webp'
+// import slide3 from '../../assets/HOME/sliderHome/Asset 5@4x.webp'
 
 const slides = [ slide2]
 
@@ -36,7 +36,15 @@ export default function PartnershipHero() {
       >
         {slides.map((src, i) => (
           <SwiperSlide key={i} aria-roledescription="slide">
-            <img src={src} alt="" className="ph-slide-img" draggable={false} />
+            <img
+              src={src}
+              alt=""
+              className="ph-slide-img"
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
+              draggable={false}
+            />
           </SwiperSlide>
         ))}
       </Swiper>

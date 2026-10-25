@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
-import logo from '../../assets/HOME/logo/Asset 26@4x.png'
+import logo from '../../assets/HOME/logo/Asset 26@4x.webp'
 import './Footer.css'
 
 export default function Footer() {
@@ -42,7 +42,13 @@ export default function Footer() {
 
             {/* logo */}
             <Link to="/" className="ft-logo-link" aria-label="Hayani Pharma — back to home">
-              <img src={logo} alt="Hayani Pharma" className="ft-logo" />
+              <img
+                src={logo}
+                alt="Hayani Pharma"
+                className="ft-logo"
+                loading="lazy"
+                decoding="async"
+              />
             </Link>
 
             {/* contact block */}

@@ -1,5 +1,5 @@
 import './AboutImage.css';
-import aboutImage from '../../assets/HOME/syndicate-image/Asset 6@4x.png';
+import aboutImage from '../../assets/HOME/syndicate-image/Asset 6@4x.webp';
 
 export default function AboutImage() {
   return (
@@ -12,8 +12,10 @@ export default function AboutImage() {
           <div className="about-image-inner">
             <img
               src={aboutImage}
-              alt="Al-Hayani Company"
+              alt="Pharmacists' syndicate building in Damascus"
               className="about-image"
+              loading="lazy"
+              decoding="async"
             />
 
             <div className="image-overlay" />

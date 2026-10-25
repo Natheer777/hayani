@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next'
 import './DepartmentCards.css'
 
-import imgMain from '../../assets/COMPANY-DEPARTMENTS/warehouse.png'
+import imgMain from '../../assets/COMPANY-DEPARTMENTS/warehouse.webp'
 
 const DEPARTMENTS = [{ key: 'mainCenter', img: imgMain, index: 1 }] as const
 
@@ -38,9 +38,10 @@ function DepartmentRow({ deptKey, img, index }: RowProps) {
 
         <img
           src={img}
-          alt={t(`departments.items.${deptKey}.title`)}
+          alt="Pharmaceutical warehouse with stocked shelves and an inventory desk"
           className="dc-img"
           loading="lazy"
+          decoding="async"
           draggable={false}
         />
         <span className="dc-index" aria-hidden="true">

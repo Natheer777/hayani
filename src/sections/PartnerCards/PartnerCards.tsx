@@ -3,12 +3,12 @@ import { useTranslation } from 'react-i18next'
 import './PartnerCards.css'
 import TypewriterText from '../../components/TypewriterText'
 
-import img1 from '../../assets/PARTNERSHIPS/1.png'
-import img2 from '../../assets/PARTNERSHIPS/2.png'
-import img5 from '../../assets/PARTNERSHIPS/3.png'
-import img6 from '../../assets/PARTNERSHIPS/4.png'
-import img3 from '../../assets/PARTNERSHIPS/5.png'
-import img4 from '../../assets/PARTNERSHIPS/6.png'
+import img1 from '../../assets/PARTNERSHIPS/1.webp'
+import img2 from '../../assets/PARTNERSHIPS/2.webp'
+import img5 from '../../assets/PARTNERSHIPS/3.webp'
+import img6 from '../../assets/PARTNERSHIPS/4.webp'
+import img3 from '../../assets/PARTNERSHIPS/5.webp'
+import img4 from '../../assets/PARTNERSHIPS/6.webp'
 
 const COMPANY_KEYS = [
   'avenzor',
@@ -68,9 +68,10 @@ function PartnerCard({ index, companyKey, logo, visible }: CardProps) {
       <div className="pc-logo-strip">
         <img
           src={logo}
-          alt={t(`partnership.companies.${companyKey}.name`)}
+          alt=""
           className="pc-logo"
           loading="lazy"
+          decoding="async"
           draggable={false}
         />
       </div>

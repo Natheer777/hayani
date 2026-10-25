@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useLocation } from 'react-router-dom';
 import './navbar.css';
-import logo from '../../assets/HOME/logo/Asset 26@4x.png';
+import logo from '../../assets/HOME/logo/Asset 26@4x.webp';
 
 export default function Navbar() {
   const { t, i18n } = useTranslation();
@@ -41,7 +41,12 @@ export default function Navbar() {
       <div className="navbar-container">
         <div className="navbar-brand">
           <Link to="/">
-            <img src={logo} alt="Hayani Pharma" className="navbar-logo" />
+            <img
+              src={logo}
+              alt="Hayani Pharma"
+              className="navbar-logo"
+              decoding="async"
+            />
           </Link>
         </div>
 

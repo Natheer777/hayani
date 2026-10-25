@@ -4,9 +4,9 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, EffectFade, Pagination, Navigation } from 'swiper/modules';
 import './Header.css';
 
-import slide1 from '../../assets/HOME/sliderHome/Asset 3@4x.png';
-import slide2 from '../../assets/HOME/sliderHome/Asset 4@4x.png';
-import slide3 from '../../assets/HOME/sliderHome/Asset 5@4x.png';
+import slide1 from '../../assets/HOME/sliderHome/Asset 3@4x.webp';
+import slide2 from '../../assets/HOME/sliderHome/Asset 4@4x.webp';
+import slide3 from '../../assets/HOME/sliderHome/Asset 5@4x.webp';
 
 const slides = [
   { image: slide1, id: 1 },
@@ -50,6 +50,9 @@ export default function Header() {
               src={slide.image}
               alt=""
               className="hdr-slide-img"
+              loading={slide.id === 1 ? 'eager' : 'lazy'}
+              fetchPriority={slide.id === 1 ? 'high' : 'low'}
+              decoding="async"
               draggable={false}
             />
             {/* bottom scrim keeps pagination readable */}

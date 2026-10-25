@@ -1,5 +1,5 @@
 import './CredentialsHero.css'
-import heroImg from '../../assets/OFFICIAL-CREDENTIALS/Asset 1@4x.png'
+import heroImg from '../../assets/OFFICIAL-CREDENTIALS/Asset 1@4x.webp'
 
 export default function CredentialsHero() {
   return (
@@ -8,7 +8,15 @@ export default function CredentialsHero() {
       className="crh-hero"
       aria-label="Official credentials hero"
     >
-      <img src={heroImg} alt="" className="crh-bg" draggable={false} />
+      <img
+        src={heroImg}
+        alt=""
+        className="crh-bg"
+        loading="eager"
+        fetchPriority="high"
+        decoding="async"
+        draggable={false}
+      />
       <div className="crh-scrim" aria-hidden="true" />
       <div className="crh-progress" aria-hidden="true">
         <span className="crh-progress__fill" />
