@@ -38,6 +38,8 @@ function DepartmentRow({ deptKey, img, index }: RowProps) {
 
         <img
           src={img}
+          width={2752}
+          height={1536}
           alt="Pharmaceutical warehouse with stocked shelves and an inventory desk"
           className="dc-img"
           loading="lazy"

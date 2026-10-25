@@ -27,6 +27,14 @@ function App() {
             <Route path="/credentials" element={<Credentials />} />
             <Route path="/products" element={<Products />} />
             <Route path="/partner-with-us" element={<PartnerWithUs />} />
+            <Route path="/ar" element={<Home />} />
+            <Route path="/ar/about" element={<About />} />
+            <Route path="/ar/partnership" element={<Partnership />} />
+            <Route path="/ar/departments" element={<Departments />} />
+            <Route path="/ar/contact" element={<Contact />} />
+            <Route path="/ar/credentials" element={<Credentials />} />
+            <Route path="/ar/products" element={<Products />} />
+            <Route path="/ar/partner-with-us" element={<PartnerWithUs />} />
           </Routes>
         </BrowserRouter>
       </div>

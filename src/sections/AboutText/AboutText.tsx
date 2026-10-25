@@ -8,7 +8,7 @@ export default function AboutText() {
   const [expanded, setExpanded] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
 
-  const serviceKeys = ['s1', 's2', 's3', 's4', 's5', 's6', 's7'] as const;
+  const serviceKeys = ['s1', 's2', 's3', 's4', 's5', 's6'] as const;
 
   // Trigger typewriter effect when section becomes visible
   useEffect(() => {
@@ -48,7 +48,8 @@ export default function AboutText() {
           <div className="glass-card-line" />
 
           <div className="about-text-card-content">
-            <h2 className="about-text-title">{t('about.title')}</h2>
+            <span className="about-text-eyebrow">{t('home.about.title')}</span>
+            <h2 className="about-text-title">{t('home.about.heading')}</h2>
 
             <div className="about-text-title-line">
               <span />
@@ -58,14 +59,14 @@ export default function AboutText() {
 
             <div className="about-text-body">
               <TypewriterText
-                text={t('about.intro_p1')}
+                text={t('home.about.intro_p1')}
                 speed={30}
                 delay={300}
                 className="about-text-text"
                 enabled={isVisible}
               />
               <TypewriterText
-                text={t('about.intro_p2')}
+                text={t('home.about.intro_p2')}
                 speed={30}
                 delay={1500}
                 className="about-text-text"
@@ -78,10 +79,10 @@ export default function AboutText() {
                   className="about-text-expanded"
                   aria-live="polite"
                 >
-                  <p className="about-text-text">{t('about.intro_p3')}</p>
+                  <p className="about-text-text">{t('home.about.intro_p3')}</p>
 
                   <h3 className="about-text-services-title">
-                    {t('about.services_title')}
+                    {t('home.about.services_title')}
                   </h3>
 
                   <ul className="about-text-services-list">
@@ -94,17 +95,17 @@ export default function AboutText() {
                         <span className="service-bullet" />
 
                         <span className="service-text">
-                          {t(`about.services.${key}`)}
+                          {t(`home.about.services.${key}`)}
                         </span>
                       </li>
                     ))}
                   </ul>
 
-                  <p className="about-text-text">{t('about.partners_p')}</p>
+                  <p className="about-text-text">{t('home.about.partners_p')}</p>
 
                   <p className="about-text-text about-text-mission">
                     <span className="mission-mark">"</span>
-                    {t('about.mission_p')}
+                    {t('home.about.mission_p')}
                   </p>
                 </div>
               )}

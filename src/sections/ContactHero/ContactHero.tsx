@@ -15,6 +15,8 @@ export default function ContactHero() {
       {/* background image */}
       <img
         src={heroImg}
+        width={2266}
+        height={1264}
         alt=""
         className="ch-bg"
         loading="eager"

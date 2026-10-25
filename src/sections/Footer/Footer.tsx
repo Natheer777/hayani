@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
+import { localizePath } from '../../seo/paths'
 import logo from '../../assets/HOME/logo/Asset 26@4x.webp'
 import './Footer.css'
 
 export default function Footer() {
-  const { t } = useTranslation()
+  const { i18n, t } = useTranslation()
 
   const footerRef = useRef<HTMLElement>(null)
   const [visible, setVisible] = useState(false)
@@ -41,9 +42,11 @@ export default function Footer() {
           <div className="ft-inner">
 
             {/* logo */}
-            <Link to="/" className="ft-logo-link" aria-label="Hayani Pharma — back to home">
+            <Link to={localizePath('/', i18n.resolvedLanguage)} className="ft-logo-link" aria-label="Hayani Pharma — back to home">
               <img
                 src={logo}
+                width={474}
+                height={165}
                 alt="Hayani Pharma"
                 className="ft-logo"
                 loading="lazy"

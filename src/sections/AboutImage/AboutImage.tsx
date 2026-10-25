@@ -12,6 +12,8 @@ export default function AboutImage() {
           <div className="about-image-inner">
             <img
               src={aboutImage}
+              width={2239}
+              height={739}
               alt="Pharmacists' syndicate building in Damascus"
               className="about-image"
               loading="lazy"

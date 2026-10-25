@@ -105,6 +105,7 @@
 }
 
 .about-text-title {
+  display: block;
   max-width: 620px;
   margin: 0;
   font-family: var(--font-heading), inherit;
@@ -127,6 +128,16 @@
   background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: aboutTextTitleShimmer 4s linear infinite;
+}
+
+.about-text-eyebrow {
+  display: block;
+  margin-bottom: 0.75rem;
+  color: var(--color-primary);
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
 }
 
 @keyframes aboutTextTitleShimmer {

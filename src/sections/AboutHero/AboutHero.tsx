@@ -6,6 +6,8 @@ export default function AboutHero() {
     <section id="about-hero" className="abh-hero" aria-label="About us hero">
       <img
         src={heroImg}
+        width={2239}
+        height={739}
         alt=""
         className="abh-bg"
         loading="eager"

@@ -73,6 +73,8 @@ export default function Core() {
                 <div className="core-icon-glow" />
                 <img
                   src={item.icon}
+                  width={758}
+                  height={758}
                   alt=""
                   className="core-icon"
                   loading="lazy"

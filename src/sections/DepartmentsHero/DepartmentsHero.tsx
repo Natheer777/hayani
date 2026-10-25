@@ -42,6 +42,8 @@ export default function DepartmentsHero() {
           <SwiperSlide key={i} aria-roledescription="slide">
             <img
               src={src}
+              width={2752}
+              height={1536}
               alt=""
               className="dh-slide-img"
               loading="eager"

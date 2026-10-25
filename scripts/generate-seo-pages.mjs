@@ -7,6 +7,7 @@ const clientRoot = join(root, '..')
 const distRoot = join(clientRoot, 'dist')
 const source = await readFile(join(distRoot, 'index.html'), 'utf8')
 const seoData = JSON.parse(await readFile(join(clientRoot, 'src', 'seo', 'seoData.json'), 'utf8'))
+const arLocale = JSON.parse(await readFile(join(clientRoot, 'src', 'locales', 'ar.json'), 'utf8'))
 
 const escapeHtml = (value) => value
   .replaceAll('&', '&amp;')
@@ -15,18 +16,39 @@ const escapeHtml = (value) => value
   .replaceAll('"', '&quot;')
   .replaceAll("'", '&#39;')
 
-const routeLinks = Object.entries(seoData.routes)
-  .map(([path, metadata]) => `<a href="${path}">${escapeHtml(metadata.heading)}</a>`)
-  .join(' | ')
+const arabicRoutes = Object.fromEntries(
+  Object.keys(seoData.routes).map((path) => {
+    const key = path === '/' ? 'home' : path.slice(1)
+    const metadata = key === 'home' || key === 'about' ? arLocale.seo[key] : arLocale.seo.routes[key]
+    return [path, metadata]
+  })
+)
+const localizedPath = (path, language) => language === 'ar'
+  ? `/ar${path === '/' ? '' : path}`
+  : path
+const absoluteUrl = (path, language) => `${seoData.siteUrl}${localizedPath(path, language) || '/'}`
+const localizedRoutes = [
+  ...Object.entries(seoData.routes).map(([path, metadata]) => ({ path, language: 'en', metadata })),
+  ...Object.entries(arabicRoutes).map(([path, metadata]) => ({ path, language: 'ar', metadata })),
+]
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${Object.keys(seoData.routes).map((path) => `  <url><loc>${seoData.siteUrl}${path === '/' ? '/' : path}</loc></url>`).join('\n')}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+${Object.keys(seoData.routes).map((path) => `  <url>
+    <loc>${absoluteUrl(path, 'en')}</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="${absoluteUrl(path, 'en')}" />
+    <xhtml:link rel="alternate" hreflang="ar" href="${absoluteUrl(path, 'ar')}" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="${absoluteUrl(path, 'en')}" />
+  </url>`).join('\n')}
 </urlset>
 `
 
-for (const [path, metadata] of Object.entries(seoData.routes)) {
-  const canonical = `${seoData.siteUrl}${path === '/' ? '/' : path}`
-  const noscript = `<noscript><main><h1>${escapeHtml(metadata.heading)}</h1><p>${escapeHtml(metadata.summary)}</p><nav aria-label="Site pages">${routeLinks}</nav></main></noscript>`
+for (const { path, language, metadata } of localizedRoutes) {
+  const canonical = absoluteUrl(path, language)
+  const localizedLinks = Object.entries(language === 'ar' ? arabicRoutes : seoData.routes)
+    .map(([routePath, routeMetadata]) => `<a href="${localizedPath(routePath, language)}">${escapeHtml(routeMetadata.heading)}</a>`)
+    .join(' | ')
+  const homeLabel = language === 'ar' ? 'الرئيسية' : 'Home'
+  const noscript = `<noscript><main><h1>${escapeHtml(metadata.heading)}</h1><p>${escapeHtml(metadata.summary)}</p><nav aria-label="${homeLabel}">${localizedLinks}</nav></main></noscript>`
   const schema = JSON.stringify([
     {
       '@context': 'https://schema.org',
@@ -43,23 +65,25 @@ for (const [path, metadata] of Object.entries(seoData.routes)) {
       '@context': 'https://schema.org',
       '@type': 'BreadcrumbList',
       itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Home', item: `${seoData.siteUrl}/` },
+        { '@type': 'ListItem', position: 1, name: homeLabel, item: absoluteUrl('/', language) },
         ...(path === '/' ? [] : [{ '@type': 'ListItem', position: 2, name: metadata.heading, item: canonical }]),
       ],
     },
   ])
   const html = source
-    .replace('<html lang="en">', '<html lang="en">')
-    .replace('<title>Hayani Pharma | Pharmaceutical Distribution in Syria</title>', `<title>${escapeHtml(metadata.title)}</title>`)
-    .replace('content="Hayani Pharma imports, markets, and distributes pharmaceutical products in Syria."', `content="${escapeHtml(metadata.description)}"`)
+    .replace(/<html lang="[^"]*">/, `<html lang="${language}" dir="${language === 'ar' ? 'rtl' : 'ltr'}">`)
+    .replace(/<title>.*?<\/title>/, `<title>${escapeHtml(metadata.title)}</title>`)
+    .replace(/<meta name="description" content="[^"]*" \/>/, `<meta name="description" content="${escapeHtml(metadata.description)}" />`)
     .replace('content="index, follow"', 'content="index, follow"')
-    .replace('href="https://hayani-pharma.com/"', `href="${canonical}"`)
-    .replace('content="Hayani Pharma | Pharmaceutical Distribution in Syria"', `content="${escapeHtml(metadata.title)}"`)
-    .replace('content="https://hayani-pharma.com/"', `content="${canonical}"`)
-    .replace('</head>', `  <meta name="twitter:title" content="${escapeHtml(metadata.title)}" />\n  <meta name="twitter:description" content="${escapeHtml(metadata.description)}" />\n  <meta name="twitter:image" content="${seoData.defaultImage}" />\n  <script type="application/ld+json" data-seo-schema>${schema}</script>\n</head>`)
+    .replace(/<link rel="canonical" href="[^"]*" \/>/, `<link rel="canonical" href="${canonical}" />`)
+    .replace(/<meta property="og:title" content="[^"]*" \/>/, `<meta property="og:title" content="${escapeHtml(metadata.title)}" />`)
+    .replace(/<meta property="og:description" content="[^"]*" \/>/, `<meta property="og:description" content="${escapeHtml(metadata.description)}" />`)
+    .replace(/<meta property="og:url" content="[^"]*" \/>/, `<meta property="og:url" content="${canonical}" />`)
+    .replace('</head>', `  <link rel="alternate" hreflang="en" href="${absoluteUrl(path, 'en')}" />\n  <link rel="alternate" hreflang="ar" href="${absoluteUrl(path, 'ar')}" />\n  <link rel="alternate" hreflang="x-default" href="${absoluteUrl(path, 'en')}" />\n  <meta name="twitter:title" content="${escapeHtml(metadata.title)}" />\n  <meta name="twitter:description" content="${escapeHtml(metadata.description)}" />\n  <meta name="twitter:image" content="${seoData.defaultImage}" />\n  <script type="application/ld+json" data-seo-schema>${schema}</script>\n</head>`)
     .replace('<div id="root"></div>', `<div id="root"></div>\n${noscript}`)
 
-  const output = path === '/' ? join(distRoot, 'index.html') : join(distRoot, path.slice(1), 'index.html')
+  const routePath = localizedPath(path, language).replace(/^\//, '')
+  const output = routePath ? join(distRoot, routePath, 'index.html') : join(distRoot, 'index.html')
   await mkdir(dirname(output), { recursive: true })
   await writeFile(output, html)
 }

@@ -6,6 +6,8 @@ export default function ProductHero() {
     <section id="product-hero" className="prh-hero" aria-label="Product catalog hero">
       <img
         src={heroImg}
+        width={2266}
+        height={1265}
         alt=""
         className="prh-bg"
         loading="eager"

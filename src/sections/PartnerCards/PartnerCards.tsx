@@ -68,6 +68,8 @@ function PartnerCard({ index, companyKey, logo, visible }: CardProps) {
       <div className="pc-logo-strip">
         <img
           src={logo}
+          width={1875}
+          height={581}
           alt=""
           className="pc-logo"
           loading="lazy"

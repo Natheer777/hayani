@@ -53,7 +53,8 @@ export default function About() {
             <div className="glass-card-line" />
 
             <div className="about-card-content">
-              <h2 className="about-title">{t('about.title')}</h2>
+              <span className="about-eyebrow">{t('home.about.title')}</span>
+              <h2 className="about-title">{t('home.about.heading')}</h2>
 
               <div className="about-title-line">
                 <span />
@@ -63,14 +64,14 @@ export default function About() {
 
               <div className="about-body">
                 <TypewriterText 
-                  text={t('about.intro_p1')}
+                  text={t('home.about.intro_p1')}
                   speed={30}
                   delay={300}
                   className="about-text"
                   enabled={isVisible}
                 />
                 <TypewriterText 
-                  text={t('about.intro_p2')}
+                  text={t('home.about.intro_p2')}
                   speed={30}
                   delay={1500}
                   className="about-text"
@@ -83,10 +84,10 @@ export default function About() {
                     className="about-expanded"
                     aria-live="polite"
                   >
-                    <p className="about-text">{t('about.intro_p3')}</p>
+                    <p className="about-text">{t('home.about.intro_p3')}</p>
 
                     <h3 className="about-services-title">
-                      {t('about.services_title')}
+                      {t('home.about.services_title')}
                     </h3>
 
                     <ul className="about-services-list">
@@ -98,18 +99,16 @@ export default function About() {
 
                           <span className="service-bullet" />
 
-                          <span className="service-text">
-                            {t(`about.services.${key}`)}
-                          </span>
+                          <span className="service-text">{t(`home.about.services.${key}`)}</span>
                         </li>
                       ))}
                     </ul>
 
-                    <p className="about-text">{t('about.partners_p')}</p>
+                    <p className="about-text">{t('home.about.partners_p')}</p>
 
                     <p className="about-text about-mission">
                       <span className="mission-mark">“</span>
-                      {t('about.mission_p')}
+                      {t('home.about.mission_p')}
                     </p>
                   </div>
                 )}
@@ -160,6 +159,8 @@ export default function About() {
             <div className="about-image-inner">
               <img
                 src={aboutImage}
+                width={2239}
+                height={739}
                 alt="Pharmacists' syndicate building in Damascus"
                 className="about-image"
                 loading="lazy"

@@ -1,15 +1,17 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './navbar.css';
 import logo from '../../assets/HOME/logo/Asset 26@4x.webp';
+import { localizePath, stripLanguagePrefix } from '../../seo/paths';
 
 export default function Navbar() {
   const { t, i18n } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
-  const isHome = location.pathname === '/';
+  const navigate = useNavigate();
+  const isHome = location.pathname === '/' || location.pathname === '/ar';
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 30);
@@ -20,29 +22,33 @@ export default function Navbar() {
   const toggleLanguage = () => {
     const next = i18n.resolvedLanguage === 'ar' ? 'en' : 'ar';
     void i18n.changeLanguage(next);
+    navigate(`${localizePath(stripLanguagePrefix(location.pathname), next)}${location.hash}`);
   };
 
   /* anchor links resolve against the home page */
-  const homeHref = (hash: string) => isHome ? hash : `/${hash}`;
+  const homeHref = (hash: string) => isHome ? hash : `${localizePath('/', i18n.resolvedLanguage)}${hash}`;
+  const pageHref = (path: string) => localizePath(path, i18n.resolvedLanguage);
 
   const navLinks = [
     { label: t('navbar.home'),        href: homeHref('#home'),     page: false },
-    { label: t('navbar.about'),       href: '/about',              page: true  },
-    { label: t('navbar.products'),    href: '/products',           page: true  },
-    { label: t('navbar.services'),    href: '/departments',        page: true  },
-    { label: t('navbar.partners'),    href: '/partnership',        page: true  },
-    { label: t('partnerWithUs.navLabel'), href: '/partner-with-us',   page: true  },
-    { label: t('navbar.credentials'), href: '/credentials',        page: true  },
-    { label: t('navbar.contact'),     href: '/contact',            page: true  },
+    { label: t('navbar.about'),       href: pageHref('/about'),              page: true  },
+    { label: t('navbar.products'),    href: pageHref('/products'),           page: true  },
+    { label: t('navbar.services'),    href: pageHref('/departments'),        page: true  },
+    { label: t('navbar.partners'),    href: pageHref('/partnership'),        page: true  },
+    { label: t('partnerWithUs.navLabel'), href: pageHref('/partner-with-us'), page: true  },
+    { label: t('navbar.credentials'), href: pageHref('/credentials'),        page: true  },
+    { label: t('navbar.contact'),     href: pageHref('/contact'),            page: true  },
   ];
 
   return (
     <nav className={`navbar-wrapper ${isScrolled ? 'navbar-scrolled' : ''}`}>
       <div className="navbar-container">
         <div className="navbar-brand">
-          <Link to="/">
+          <Link to={pageHref('/')}>
             <img
               src={logo}
+              width={474}
+              height={165}
               alt="Hayani Pharma"
               className="navbar-logo"
               decoding="async"

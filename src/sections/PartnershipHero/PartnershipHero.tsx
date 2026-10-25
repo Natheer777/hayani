@@ -38,6 +38,8 @@ export default function PartnershipHero() {
           <SwiperSlide key={i} aria-roledescription="slide">
             <img
               src={src}
+              width={2265}
+              height={1264}
               alt=""
               className="ph-slide-img"
               loading="eager"

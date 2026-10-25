@@ -77,11 +77,11 @@ export default function Why() {
         <header className="why-header">
           <span className="why-label">
             <span className="why-label-line" />
-            <span>Why choose us</span>
+            <span>{t('why.title')}</span>
             <span className="why-label-line" />
           </span>
 
-          <h2 className="why-title wave-gradient-title">{t('why.title')}</h2>
+          <h2 className="why-title wave-gradient-title">{t('why.heading')}</h2>
 
           <span className="why-title-accent" aria-hidden="true" />
         </header>
@@ -125,6 +125,8 @@ export default function Why() {
 
                 <img
                   src={item.icon}
+                  width={767}
+                  height={767}
                   alt=""
                   className="why-icon"
                   loading="lazy"

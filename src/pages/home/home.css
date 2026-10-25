@@ -1,0 +1,23 @@
+.home-seo-intro {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: clamp(3rem, 7vw, 5rem) clamp(1.25rem, 5vw, 3rem);
+  color: var(--color-white);
+  text-align: center;
+}
+
+.home-seo-intro h1 {
+  margin: 0 auto 1.25rem;
+  color: var(--color-primary);
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1.2;
+}
+
+.home-seo-intro p {
+  max-width: 900px;
+  margin: 0 auto;
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  line-height: 1.8;
+}

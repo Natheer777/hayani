@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
+import { localizePath } from '../../seo/paths';
 import './TRUSTED.css';
 import '../../styles/animatedTitles.css';
 import logo1 from '../../assets/HOME/partner-logos/Asset 17@8x.webp';
@@ -10,12 +11,12 @@ import logo5 from '../../assets/HOME/partner-logos/Asset 21@8x.webp';
 import logo6 from '../../assets/HOME/partner-logos/Asset 22@8x.webp';
 
 const partnerLogos = [
-  { src: logo1, companyKey: 'alfares' },
-  { src: logo2, companyKey: 'himalaya' },
-  { src: logo3, companyKey: 'ibnhayyan' },
-  { src: logo4, companyKey: 'unichima' },
-  { src: logo5, companyKey: 'medico' },
-  { src: logo6, companyKey: 'avenzor' },
+  { src: logo1, companyKey: 'alfares', width: 1057, height: 328 },
+  { src: logo2, companyKey: 'himalaya', width: 1030, height: 319 },
+  { src: logo3, companyKey: 'ibnhayyan', width: 994, height: 309 },
+  { src: logo4, companyKey: 'unichima', width: 974, height: 303 },
+  { src: logo5, companyKey: 'medico', width: 1119, height: 347 },
+  { src: logo6, companyKey: 'avenzor', width: 1136, height: 353 },
 ];
 
 export default function Trusted() {
@@ -61,6 +62,8 @@ export default function Trusted() {
                 >
                   <img
                     src={src.src}
+                    width={src.width}
+                    height={src.height}
                     alt={i < partnerLogos.length ? t(`partnership.companies.${src.companyKey}.name`) : ''}
                     className="tr-logo"
                     loading="lazy"
@@ -75,7 +78,7 @@ export default function Trusted() {
         </div>{/* /tr-strip */}
 
         {/* ── discover products CTA ── */}
-        <Link to="/products" className="tr-cta">
+        <Link to={localizePath('/products', i18n.resolvedLanguage)} className="tr-cta">
           <span className="tr-cta__glow" aria-hidden="true" />
           <span className="tr-cta__scan" aria-hidden="true" />
           <span className="tr-cta__corner tr-cta__corner--tl" aria-hidden="true" />

@@ -20,7 +20,7 @@ void i18n
       escapeValue: false,
     },
     detection: {
-      order: ['localStorage', 'htmlTag'],
+      order: ['htmlTag', 'localStorage'],
       caches: ['localStorage'],
     },
   });

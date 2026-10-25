@@ -1,4 +1,36 @@
 {
+  "seo": {
+    "home": {
+      "title": "Hayani Pharma | Pharmaceutical Partner in Syria",
+      "description": "Explore pharmaceutical importation, registration, marketing, distribution and storage services in Syria. Partner with Hayani Pharma to explore business opportunities."
+    },
+    "about": {
+      "title": "About Hayani Pharma | Our Company & Expertise",
+      "description": "Discover Hayani Pharma’s background, pharmaceutical services, and role in the Syrian market, from importation and registration to marketing and distribution."
+    }
+  },
+  "home": {
+    "heading": "Your Trusted Pharmaceutical Partner in Syria",
+    "intro": "From pharmaceutical importation and registration to marketing, distribution, and storage, Hayani Pharma supports pharmaceutical business operations in Syria. Established in 1997, we aim to build lasting partnerships with international pharmaceutical companies and support the needs of the local healthcare sector.",
+    "about": {
+      "title": "ABOUT US",
+      "heading": "Who is Hayani Pharma?",
+      "intro_p1": "The company is registered with the Syrian Ministry of Health under Registration No. 3190 and with the Commercial Registry under Registration No. 13356.",
+      "intro_p2": "With decades of experience in the Syrian pharmaceutical market, Al-Hayani operates through a network that includes 13 branches across Syria, supported by relationships with distributors, pharmacies, physicians, and other healthcare professionals.",
+      "intro_p3": "Our services support pharmaceutical companies and healthcare organizations throughout the product journey in Syria.",
+      "services_title": "Our Services and Capabilities",
+      "services": {
+        "s1": "Pharmaceutical Registration: Supporting the registration of pharmaceutical products and international pharmaceutical companies in accordance with applicable Syrian regulatory requirements.",
+        "s2": "Pharmaceutical Importation: Coordinating pharmaceutical importation and related regulatory processes.",
+        "s3": "Warehousing and Distribution: Supporting pharmaceutical storage, distribution, and market access across Syria.",
+        "s4": "Healthcare Professional Engagement: Building professional relationships with physicians, pharmacists, and other healthcare providers.",
+        "s5": "Product Launch and Marketing: Supporting product launches, promotional activities, and pharmaceutical market development.",
+        "s6": "Digital Marketing: Supporting product awareness through digital marketing and social media activities."
+      },
+      "partners_p": "We work with international pharmaceutical and healthcare companies seeking a reliable, long-term business partner in Syria. Our local market experience and knowledge of pharmaceutical operations help us support our partners across key stages of the product journey, from registration and importation to marketing and distribution.",
+      "mission_p": "To improve access to high-quality healthcare products in Syria while building transparent, sustainable, and mutually beneficial partnerships."
+    }
+  },
   "navbar": {
     "home": "Home",
     "about": "About Us",
@@ -12,27 +44,33 @@
   },
   "about": {
     "title": "ABOUT US",
-    "intro_p1": "Al-Hayani Company is a Syrian pharmaceutical importation, marketing, and distribution company established in 1997.",
-    "intro_p2": "The company is officially registered with the Syrian Ministry of Health under Registration No. 3190 and with the Commercial Registry under Registration No. 13356.",
-    "intro_p3": "For nearly three decades, Al-Hayani Company has built a strong presence in the Syrian pharmaceutical market. We operate through 13 branches across Syria, supported by an established network of distributors, retail pharmacies, physicians, and other healthcare professionals.",
-    "services_title": "Our services and capabilities include:",
+    "pageHeading": "Hayani Pharma Pharmaceutical Industries Company in Syria",
+    "intro_p1": "Established in 1997, Hayani Pharma is a Syrian company specializing in pharmaceutical importation, registration, marketing, distribution, and storage. We work with pharmaceutical companies and healthcare-sector organizations interested in developing their activities in the Syrian market.",
+    "intro_p2": "The company is registered with the Syrian Ministry of Health under Registration No. 3190 and with the Commercial Registry under Registration No. 13356.",
+    "intro_p3": "We work with pharmaceutical companies and healthcare-sector organizations interested in developing their activities in the Syrian market.",
+    "experience_title": "Our Experience in the Syrian Pharmaceutical Market",
+    "experience_p1": "With decades of experience in the Syrian pharmaceutical market, Hayani Pharma operates through 13 branches across Syria and maintains professional relationships with distributors, pharmacies, physicians, and other healthcare professionals. This local presence supports our work with international pharmaceutical companies seeking to establish and develop their activities in Syria.",
+    "experience_p2": "Our understanding of the local market helps us work with partners on the practical and commercial aspects of introducing pharmaceutical products and developing their market presence.",
+    "services_title": "Our Pharmaceutical Services",
     "services": {
-      "s1": "Registration of international pharmaceutical companies and their products with the Syrian Ministry of Health",
-      "s2": "Pharmaceutical importation and regulatory coordination",
-      "s3": "Nationwide warehousing, distribution, and market access",
-      "s4": "Physician, pharmacist, and healthcare-provider engagement",
-      "s5": "Product launch, promotion, and market-development support",
-      "s6": "Digital marketing and social media campaigns",
-      "s7": "Access to the Syrian healthcare market, which includes approximately 20,000 pharmacies and more than 25,000 physicians"
+      "s1": "We support the registration of international pharmaceutical companies and their products in accordance with applicable Syrian regulatory requirements.",
+      "s2": "We provide pharmaceutical importation services and coordinate related processes to support the supply of products to the Syrian market.",
+      "s3": "We provide pharmaceutical storage and distribution services to support the movement and availability of products within the market.",
+      "s4": "We support pharmaceutical marketing activities, product promotion, and market development to help partners introduce their products and strengthen their presence in Syria.",
+      "s5": "We build professional relationships with physicians, pharmacists, and other healthcare professionals as part of our engagement with the local healthcare sector.",
+      "s6": "We provide digital marketing and social media support to help raise awareness of pharmaceutical products and communicate with relevant audiences, in accordance with applicable requirements."
     },
-    "partners_p": "We work closely with international pharmaceutical and healthcare companies seeking a knowledgeable, dependable, and long-term commercial partner in Syria. Our local experience, regulatory knowledge, and nationwide distribution capabilities enable us to support our partners throughout every stage—from registration and importation to product launch, promotion, and nationwide distribution.",
-    "mission_p": "Our mission is to improve access to high-quality healthcare products in Syria while building transparent, sustainable, and mutually beneficial partnerships with pharmaceutical manufacturers worldwide.",
+    "partner_title": "Your Partner in the Syrian Pharmaceutical Market",
+    "partners_p": "We work with international pharmaceutical manufacturers and healthcare organizations seeking to explore business opportunities in Syria. Our approach emphasizes local market knowledge, professional communication, and collaboration to support long-term business relationships.",
+    "mission_title": "Our Mission",
+    "mission_p": "Our mission is to contribute to access to quality healthcare products in Syria while building transparent, sustainable, and mutually beneficial partnerships with pharmaceutical manufacturers around the world.",
     "readMore": "READ MORE",
     "collapse": "COLLAPSE"
   },
   "why": {
     "title": "WHY CHOOSE US",
-    "intro": "We are a trusted pharmaceutical partner focused on compliance, speed, and long-term business value for healthcare providers and licensed distributors.",
+    "heading": "Your pharmaceutical partner in the Syrian market",
+    "intro": "We support pharmaceutical partners and healthcare organizations in Syria through pharmaceutical registration, marketing, distribution, and supply services, with a focus on regulatory compliance, responsive communication, and long-term business relationships.",
     "highlights": {
       "registration": "Regulatory registration and market-entry expertise",
       "distribution": "Strong nationwide distribution and reliable supply chain",
@@ -41,20 +79,20 @@
     },
     "items": {
       "precision": {
-        "title": "Precision Accuracy",
-        "subtitle": "We work with strict operational discipline to ensure reliable product handling and accurate market execution."
+        "title": "Operational Precision",
+        "subtitle": "We focus on careful product handling and organized operations across our pharmaceutical services."
       },
       "security": {
-        "title": "Supply Chain Security",
-        "subtitle": "Our network is designed to protect product quality, continuity, and distribution confidence."
+        "title": "Reliable Supply Operations",
+        "subtitle": "We work to support product availability and continuity through coordinated supply and distribution operations."
       },
       "rapid": {
-        "title": "Rapid Response",
-        "subtitle": "We move quickly to meet market needs, solve operational challenges, and support growth."
+        "title": "Responsive Service",
+        "subtitle": "We value clear communication and timely responses to our partners' business needs and inquiries."
       },
       "support": {
-        "title": "Continuous Support",
-        "subtitle": "We provide ongoing guidance and partnership throughout every stage of the commercial journey."
+        "title": "Long-Term Partnerships",
+        "subtitle": "We aim to build lasting business relationships through collaboration, transparency, and shared goals."
       }
     }
   },

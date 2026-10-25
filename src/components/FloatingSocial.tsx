@@ -1,10 +1,13 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
+import { localizePath } from '../seo/paths'
 import './FloatingSocial.css'
 
 const FloatingSocial = () => {
   const [isExpanded, setIsExpanded] = useState(true)
   const navigate = useNavigate()
+  const { i18n } = useTranslation()
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -27,7 +30,7 @@ const FloatingSocial = () => {
     {
       id: 'contact',
       label: 'Keep In Touch',
-      onClick: () => navigate('/contact'),
+      onClick: () => navigate(localizePath('/contact', i18n.resolvedLanguage)),
       icon: (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M12 2C6.477 2 2 6.477 2 12c0 1.592.376 3.095 1.043 4.427l-1.005 3.59a.5.5 0 0 0 .616.615l3.59-1.005A9.96 9.96 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -38,7 +41,7 @@ const FloatingSocial = () => {
     {
       id: 'home',
       label: 'Home',
-      onClick: () => navigate('/'),
+      onClick: () => navigate(localizePath('/', i18n.resolvedLanguage)),
       icon: (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>

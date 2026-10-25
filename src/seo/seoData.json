@@ -4,16 +4,16 @@
   "defaultImage": "https://hayani-pharma.com/favicon.svg",
   "routes": {
     "/": {
-      "title": "Hayani Pharma | Pharmaceutical Distribution in Syria",
-      "description": "Hayani Pharma imports, markets, and distributes pharmaceutical products in Syria, supporting healthcare companies with nationwide market access.",
+      "title": "Hayani Pharma | Pharmaceutical Partner in Syria",
+      "description": "Explore pharmaceutical importation, registration, marketing, distribution and storage services in Syria. Partner with Hayani Pharma to explore business opportunities.",
       "heading": "Hayani Pharma",
       "summary": "Syrian pharmaceutical importation, marketing, and distribution company established in 1997, with nationwide distribution capabilities and healthcare partnerships."
     },
     "/about": {
-      "title": "About Hayani Pharma | Pharmaceutical Partner in Syria",
-      "description": "Learn about Hayani Pharma, a Syrian pharmaceutical importation, marketing, and distribution company serving healthcare partners since 1997.",
-      "heading": "About Hayani Pharma",
-      "summary": "Hayani Pharma is a Syrian pharmaceutical importation, marketing, and distribution company established in 1997 and registered with the Syrian Ministry of Health."
+      "title": "About Hayani Pharma | Our Company & Expertise",
+      "description": "Discover Hayani Pharma’s background, pharmaceutical services, and role in the Syrian market, from importation and registration to marketing and distribution.",
+      "heading": "Hayani Pharma Pharmaceutical Industries Company in Syria",
+      "summary": "Established in 1997, Hayani Pharma is a Syrian company specializing in pharmaceutical importation, registration, marketing, distribution, and storage."
     },
     "/products": {
       "title": "Pharmaceutical Products | Hayani Pharma",

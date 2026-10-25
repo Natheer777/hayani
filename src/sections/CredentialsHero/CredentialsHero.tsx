@@ -10,6 +10,8 @@ export default function CredentialsHero() {
     >
       <img
         src={heroImg}
+        width={2265}
+        height={1265}
         alt=""
         className="crh-bg"
         loading="eager"

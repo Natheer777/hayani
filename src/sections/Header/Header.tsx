@@ -9,9 +9,9 @@ import slide2 from '../../assets/HOME/sliderHome/Asset 4@4x.webp';
 import slide3 from '../../assets/HOME/sliderHome/Asset 5@4x.webp';
 
 const slides = [
-  { image: slide1, id: 1 },
-  { image: slide2, id: 2 },
-  { image: slide3, id: 3 },
+  { image: slide1, id: 1, width: 2266, height: 1264 },
+  { image: slide2, id: 2, width: 2265, height: 1264 },
+  { image: slide3, id: 3, width: 2265, height: 1264 },
 ];
 
 export default function Header() {
@@ -48,6 +48,8 @@ export default function Header() {
           <SwiperSlide key={slide.id} aria-roledescription="slide">
             <img
               src={slide.image}
+              width={slide.width}
+              height={slide.height}
               alt=""
               className="hdr-slide-img"
               loading={slide.id === 1 ? 'eager' : 'lazy'}
