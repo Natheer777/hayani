@@ -7,6 +7,14 @@
     "about": {
       "title": "About Hayani Pharma | Our Company & Expertise",
       "description": "Discover Hayani Pharma’s background, pharmaceutical services, and role in the Syrian market, from importation and registration to marketing and distribution."
+    },
+    "routes": {
+      "faq": {
+        "title": "Frequently Asked Questions | Hayani Pharma",
+        "description": "Find answers about Hayani Pharma’s pharmaceutical distribution, registration, market access, and healthcare services in Syria.",
+        "heading": "Frequently Asked Questions",
+        "summary": "Answers to common questions about Hayani Pharma’s pharmaceutical services and distribution network in Syria."
+      }
     }
   },
   "home": {
@@ -31,6 +39,51 @@
       "mission_p": "To improve access to high-quality healthcare products in Syria while building transparent, sustainable, and mutually beneficial partnerships."
     }
   },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "items": [
+      {
+        "question": "What is the core business of Hayani Pharma in Syria?",
+        "answer": "Hayani Pharma is a leading pharmaceutical importation, marketing, and distribution company in Syria. Established in 1997, it provides comprehensive logistical services for healthcare providers."
+      },
+      {
+        "question": "Is Hayani Pharma officially licensed by the Syrian Ministry of Health?",
+        "answer": "Yes, Hayani Pharma is officially registered and licensed by the Syrian Ministry of Health under Registration No. 3190 and Commercial Registry No. 13356."
+      },
+      {
+        "question": "Which regions in Syria are covered by Hayani Pharma’s distribution network?",
+        "answer": "The company covers all Syrian governorates and regions through a nationwide logistics network featuring 13 dedicated distribution branches."
+      },
+      {
+        "question": "How does Hayani Pharma ensure the safety of sensitive medications during transit and storage?",
+        "answer": "We strictly comply with Cold Chain protocols and Good Distribution Practices (GDP), utilizing climate-controlled warehouses and transport vehicles equipped with real-time temperature sensors."
+      },
+      {
+        "question": "What core services does Hayani Pharma offer to healthcare partners and pharmacies?",
+        "answer": "Our services include pharmaceutical inventory management, fast distribution logistics, strict quality assurance, compliant storage, and ongoing commercial support."
+      },
+      {
+        "question": "How can pharmacies and clinical institutions partner or place orders with Hayani Pharma?",
+        "answer": "Healthcare providers can directly contact any of our 13 branch commercial offices or reach out via email to review available product lines and arrange procurement."
+      },
+      {
+        "question": "Does the company offer market-entry and registration services for international partners?",
+        "answer": "Yes, we provide product registration assistance, regulatory guidance, and strategic market-entry planning for pharmaceutical partners looking for long-term growth in Syria."
+      },
+      {
+        "question": "What therapeutic categories and product lines does the company distribute?",
+        "answer": "We distribute a comprehensive range of licensed pharmaceutical categories and medical products serving various clinical specialties."
+      },
+      {
+        "question": "How does Hayani Pharma’s inventory management help prevent drug shortages?",
+        "answer": "We utilize advanced inventory forecasting systems to maintain strategic safety stock, ensuring continuous drug supply for pharmacies and hospitals without disruption."
+      },
+      {
+        "question": "How can I contact the main headquarters of Hayani Pharma?",
+        "answer": "You can contact our Damascus headquarters by phone at +963 944242195 or via email at Contact@hayani-pharma.com during business working hours."
+      }
+    ]
+  },
   "navbar": {
     "home": "Home",
     "about": "About Us",
@@ -40,6 +93,7 @@
     "partners": "Partners",
     "credentials": "Credentials",
     "contact": "Contact",
+    "faq": "FAQ",
     "language": "العربية"
   },
   "about": {

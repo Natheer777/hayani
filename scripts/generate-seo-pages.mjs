@@ -8,6 +8,7 @@ const distRoot = join(clientRoot, 'dist')
 const source = await readFile(join(distRoot, 'index.html'), 'utf8')
 const seoData = JSON.parse(await readFile(join(clientRoot, 'src', 'seo', 'seoData.json'), 'utf8'))
 const arLocale = JSON.parse(await readFile(join(clientRoot, 'src', 'locales', 'ar.json'), 'utf8'))
+const enLocale = JSON.parse(await readFile(join(clientRoot, 'src', 'locales', 'en.json'), 'utf8'))
 
 const escapeHtml = (value) => value
   .replaceAll('&', '&amp;')
@@ -49,16 +50,57 @@ for (const { path, language, metadata } of localizedRoutes) {
     .join(' | ')
   const homeLabel = language === 'ar' ? 'الرئيسية' : 'Home'
   const noscript = `<noscript><main><h1>${escapeHtml(metadata.heading)}</h1><p>${escapeHtml(metadata.summary)}</p><nav aria-label="${homeLabel}">${localizedLinks}</nav></main></noscript>`
-  const schema = JSON.stringify([
+  const graph = [
     {
       '@context': 'https://schema.org',
-      '@type': 'Organization',
+      '@type': 'MedicalBusiness',
       name: seoData.siteName,
+      alternateName: 'شركة الحياني للأدوية',
       url: seoData.siteUrl,
-      logo: seoData.defaultImage,
-      email: 'mailto:Contact@hayani-pharma.com',
-      telephone: '+963 944242195',
+      logo: `${seoData.siteUrl}/icon.png`,
+      description: seoData.routes['/'].summary,
+      foundingDate: '1997',
       address: { '@type': 'PostalAddress', addressLocality: 'Damascus', addressCountry: 'SY' },
+      contactPoint: {
+        '@type': 'ContactPoint',
+        telephone: '+963944242195',
+        contactType: 'sales',
+        email: 'Contact@hayani-pharma.com',
+        availableLanguage: ['Arabic', 'English'],
+      },
+      identifier: [
+        { '@type': 'PropertyValue', name: 'Ministry of Health License', value: '3190' },
+        { '@type': 'PropertyValue', name: 'Commercial Registry', value: '13356' },
+      ],
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Service',
+      serviceType: 'Pharmaceutical Distribution & Inventory Management',
+      provider: { '@type': 'MedicalBusiness', name: seoData.siteName, url: seoData.siteUrl },
+      areaServed: { '@type': 'Country', name: 'Syria' },
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: 'Pharmaceutical Services',
+        itemListElement: [
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'Fast Pharmaceutical Distribution',
+              description: 'Nationwide delivery of pharmaceutical products across 13 branches in Syria.',
+            },
+          },
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'Cold Chain Inventory Management',
+              description: 'Temperature-controlled drug storage and inventory management under Good Distribution Practices.',
+            },
+          },
+        ],
+      },
     },
     { '@context': 'https://schema.org', '@type': 'WebSite', name: seoData.siteName, url: seoData.siteUrl },
     {
@@ -69,7 +111,20 @@ for (const { path, language, metadata } of localizedRoutes) {
         ...(path === '/' ? [] : [{ '@type': 'ListItem', position: 2, name: metadata.heading, item: canonical }]),
       ],
     },
-  ])
+  ]
+  if (path === '/faq') {
+    const faqItems = language === 'ar' ? arLocale.faq.items : enLocale.faq.items
+    graph.push({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faqItems.map(({ question, answer }) => ({
+        '@type': 'Question',
+        name: question,
+        acceptedAnswer: { '@type': 'Answer', text: answer },
+      })),
+    })
+  }
+  const schema = JSON.stringify(graph)
   const html = source
     .replace(/<html lang="[^"]*">/, `<html lang="${language}" dir="${language === 'ar' ? 'rtl' : 'ltr'}">`)
     .replace(/<title>.*?<\/title>/, `<title>${escapeHtml(metadata.title)}</title>`)

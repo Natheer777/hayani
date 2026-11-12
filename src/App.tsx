@@ -11,6 +11,7 @@ const Contact = lazy(() => import('./pages/contact/Contact'))
 const Credentials = lazy(() => import('./pages/credentials/Credentials'))
 const Products = lazy(() => import('./pages/products/Products'))
 const PartnerWithUs = lazy(() => import('./pages/partner-with-us/PartnerWithUs'))
+const FAQPage = lazy(() => import('./pages/faq/FAQPage'))
 const AnimatedBackground = lazy(() => import('./components/AnimatedBackground'))
 import FloatingSocial from './components/FloatingSocial'
 import Spinner from './components/Spinner'
@@ -38,6 +39,7 @@ function App() {
               <Route path="/credentials" element={<Credentials />} />
               <Route path="/products" element={<Products />} />
               <Route path="/partner-with-us" element={<PartnerWithUs />} />
+              <Route path="/faq" element={<FAQPage />} />
               <Route path="/ar" element={<Home />} />
               <Route path="/ar/about" element={<About />} />
               <Route path="/ar/partnership" element={<Partnership />} />
@@ -46,6 +48,7 @@ function App() {
               <Route path="/ar/credentials" element={<Credentials />} />
               <Route path="/ar/products" element={<Products />} />
               <Route path="/ar/partner-with-us" element={<PartnerWithUs />} />
+              <Route path="/ar/faq" element={<FAQPage />} />
             </Routes>
           </Suspense>
         </BrowserRouter>

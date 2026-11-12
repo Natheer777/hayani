@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import seoData from './seoData.json'
 import ar from '../locales/ar.json'
+import en from '../locales/en.json'
 import { stripLanguagePrefix } from './paths'
 
 const siteUrl = seoData.siteUrl
@@ -97,19 +98,60 @@ export default function Seo() {
     const schema = document.createElement('script')
     schema.type = 'application/ld+json'
     schema.dataset.seoSchema = 'true'
-    schema.textContent = JSON.stringify([
+    const graph: Record<string, unknown>[] = [
       {
         '@context': 'https://schema.org',
-        '@type': 'Organization',
+        '@type': 'MedicalBusiness',
         name: siteName,
+        alternateName: 'شركة الحياني للأدوية',
         url: siteUrl,
-        logo: seoData.defaultImage,
-        email: 'mailto:Contact@hayani-pharma.com',
-        telephone: '+963 944242195',
+        logo: `${siteUrl}/icon.png`,
+        description: seoData.routes['/'].summary,
+        foundingDate: '1997',
         address: {
           '@type': 'PostalAddress',
           addressLocality: 'Damascus',
           addressCountry: 'SY',
+        },
+        contactPoint: {
+          '@type': 'ContactPoint',
+          telephone: '+963944242195',
+          contactType: 'sales',
+          email: 'Contact@hayani-pharma.com',
+          availableLanguage: ['Arabic', 'English'],
+        },
+        identifier: [
+          { '@type': 'PropertyValue', name: 'Ministry of Health License', value: '3190' },
+          { '@type': 'PropertyValue', name: 'Commercial Registry', value: '13356' },
+        ],
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'Service',
+        serviceType: 'Pharmaceutical Distribution & Inventory Management',
+        provider: { '@type': 'MedicalBusiness', name: siteName, url: siteUrl },
+        areaServed: { '@type': 'Country', name: 'Syria' },
+        hasOfferCatalog: {
+          '@type': 'OfferCatalog',
+          name: 'Pharmaceutical Services',
+          itemListElement: [
+            {
+              '@type': 'Offer',
+              itemOffered: {
+                '@type': 'Service',
+                name: 'Fast Pharmaceutical Distribution',
+                description: 'Nationwide delivery of pharmaceutical products across 13 branches in Syria.',
+              },
+            },
+            {
+              '@type': 'Offer',
+              itemOffered: {
+                '@type': 'Service',
+                name: 'Cold Chain Inventory Management',
+                description: 'Temperature-controlled drug storage and inventory management under Good Distribution Practices.',
+              },
+            },
+          ],
         },
       },
       {
@@ -138,7 +180,20 @@ export default function Seo() {
               }]),
         ],
       },
-    ])
+    ]
+    if (route === '/faq') {
+      const faqItems = language === 'ar' ? ar.faq.items : en.faq.items
+      graph.push({
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: faqItems.map(({ question, answer }) => ({
+          '@type': 'Question',
+          name: question,
+          acceptedAnswer: { '@type': 'Answer', text: answer },
+        })),
+      })
+    }
+    schema.textContent = JSON.stringify(graph)
     document.head.appendChild(schema)
   }, [arabicMetadata, canonicalUrl, canonicalPath, englishUrl, i18n, language, route, arabicUrl])
 
