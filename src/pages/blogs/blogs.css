@@ -1,0 +1,92 @@
+.blogs-page,
+.blog-article-page {
+  min-height: 60vh;
+  padding: clamp(7rem, 12vw, 10rem) clamp(1.25rem, 5vw, 3rem) 5rem;
+  color: var(--color-white);
+}
+
+.blogs-header,
+.blogs-grid,
+.blog-article,
+.blog-not-found {
+  width: min(100%, 1100px);
+  margin-inline: auto;
+}
+
+.blogs-header {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.blogs-header h1,
+.blog-article h1,
+.blog-not-found h1 {
+  color: var(--color-primary);
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1.25;
+}
+
+.blogs-header p,
+.blog-article p,
+.blog-card p {
+  color: color-mix(in srgb, var(--color-white) 86%, transparent);
+  font-family: var(--font-body);
+  line-height: 1.85;
+}
+
+.blogs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: 1.5rem;
+}
+
+.blog-card {
+  padding: clamp(1.25rem, 3vw, 2rem);
+  border: 1px solid color-mix(in srgb, var(--color-primary) 28%, transparent);
+  border-radius: 1rem;
+  background: color-mix(in srgb, var(--color-dark-blue) 40%, transparent);
+}
+
+.blog-card h2,
+.blog-article h2 {
+  margin: 0 0 1rem;
+  color: var(--color-primary);
+  font-family: var(--font-heading);
+  font-size: clamp(1.3rem, 3vw, 1.8rem);
+  line-height: 1.4;
+}
+
+.blog-card a,
+.blog-back-link,
+.blog-not-found a {
+  color: var(--color-secondary);
+  font-weight: 700;
+  text-underline-offset: 0.2em;
+}
+
+.blog-article {
+  max-width: 900px;
+}
+
+.blog-article > h1 {
+  margin: 2rem 0 1.5rem;
+}
+
+.blog-article section {
+  margin-top: 2.5rem;
+}
+
+.blog-article h3 {
+  margin: 1.25rem 0 0.35rem;
+  color: var(--color-white);
+  font-size: 1.15rem;
+}
+
+.blog-article li {
+  margin-bottom: 1rem;
+}
+
+.blog-article li p {
+  margin: 0;
+}

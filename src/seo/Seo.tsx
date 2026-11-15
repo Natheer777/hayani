@@ -5,6 +5,8 @@ import seoData from './seoData.json'
 import ar from '../locales/ar.json'
 import en from '../locales/en.json'
 import { stripLanguagePrefix } from './paths'
+import englishBlogs from '../content/blogs/en.json'
+import arabicBlogs from '../content/blogs/ar.json'
 
 const siteUrl = seoData.siteUrl
 const siteName = seoData.siteName
@@ -48,7 +50,10 @@ export default function Seo() {
   const language = pathname === '/ar' || pathname.startsWith('/ar/') ? 'ar' : 'en'
   const route = (stripLanguagePrefix(pathname).replace(/\/$/, '') || '/') as SeoRoute
   const metadata = seoData.routes[route]
-  const canonicalPath = metadata ? route : '/'
+  const blogArticle = route.startsWith('/blogs/')
+    ? (language === 'ar' ? arabicBlogs : englishBlogs).find((blog) => blog.slug === route.slice('/blogs/'.length))
+    : undefined
+  const canonicalPath = metadata || blogArticle ? route : '/'
   const englishUrl = `${siteUrl}${canonicalPath === '/' ? '/' : canonicalPath}`
   const arabicUrl = `${siteUrl}/ar${canonicalPath === '/' ? '' : canonicalPath}`
   const canonicalUrl = language === 'ar' ? arabicUrl : englishUrl
@@ -66,10 +71,10 @@ export default function Seo() {
     }
 
     const current = seoData.routes[route]
-    const isKnownRoute = Boolean(current)
-    const title = arabicMetadata?.title ?? current?.title ?? 'Page not found | Hayani Pharma'
-    const description = arabicMetadata?.description ?? current?.description ?? 'The requested Hayani Pharma page could not be found.'
-    const heading = arabicMetadata?.heading ?? current?.heading ?? 'Page'
+    const isKnownRoute = Boolean(current || blogArticle)
+    const title = blogArticle?.metaTitle ?? arabicMetadata?.title ?? current?.title ?? 'Page not found | Hayani Pharma'
+    const description = blogArticle?.metaDescription ?? arabicMetadata?.description ?? current?.description ?? 'The requested Hayani Pharma page could not be found.'
+    const heading = blogArticle?.title ?? arabicMetadata?.heading ?? current?.heading ?? 'Page'
 
     document.title = title
     document.documentElement.lang = language
@@ -193,9 +198,25 @@ export default function Seo() {
         })),
       })
     }
+    if (blogArticle) {
+      graph.push({
+        '@context': 'https://schema.org',
+        '@type': 'BlogPosting',
+        headline: blogArticle.title,
+        description: blogArticle.metaDescription,
+        keywords: blogArticle.keywords.join(', '),
+        mainEntityOfPage: { '@type': 'WebPage', '@id': canonicalUrl },
+        author: { '@type': 'Organization', name: siteName },
+        publisher: {
+          '@type': 'Organization',
+          name: siteName,
+          logo: { '@type': 'ImageObject', url: `${siteUrl}/icon.png` },
+        },
+      })
+    }
     schema.textContent = JSON.stringify(graph)
     document.head.appendChild(schema)
-  }, [arabicMetadata, canonicalUrl, canonicalPath, englishUrl, i18n, language, route, arabicUrl])
+  }, [arabicMetadata, blogArticle, canonicalUrl, canonicalPath, englishUrl, i18n, language, route, arabicUrl])
 
   return null
 }

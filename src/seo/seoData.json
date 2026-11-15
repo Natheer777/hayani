@@ -21,6 +21,30 @@
       "heading": "Frequently Asked Questions",
       "summary": "Answers to common questions about Hayani Pharma’s pharmaceutical services and distribution network in Syria."
     },
+    "/blogs": {
+      "title": "Pharmaceutical Insights | Hayani Pharma",
+      "description": "Read guides on pharmaceutical distribution, inventory management, cold-chain transport, and medicine quality.",
+      "heading": "Pharmaceutical Insights",
+      "summary": "Articles about pharmaceutical distribution, inventory management, and quality assurance."
+    },
+    "/blogs/pharmaceutical-distribution-syria": {
+      "title": "Pharmaceutical Distribution in Syria | Medical Supply Chain",
+      "description": "Discover the key role of pharmaceutical distribution in Syria in securing medical supply chains and enhancing pharmaceutical inventory management for healthcare providers.",
+      "heading": "The Vital Role of Pharmaceutical Distribution in Syria in Strengthening the Medical Supply Chain",
+      "summary": "Learn how organized pharmaceutical distribution, inventory management, digital tracking, and quality protocols support the medical supply chain."
+    },
+    "/blogs/pharmaceutical-inventory-management": {
+      "title": "Pharmaceutical Inventory Management | Pharmacy Drug Storage Guide",
+      "description": "Learn best practices for pharmaceutical inventory management, compliant pharmacy drug storage, and partnering with reliable pharmaceutical distribution services.",
+      "heading": "Comprehensive Pharmaceutical Inventory Management Guide for Pharmacies and Warehouses",
+      "summary": "A guide to pharmacy inventory management, storage practices, digital tracking, and reliable distribution services."
+    },
+    "/blogs/pharmaceutical-quality-cold-chain": {
+      "title": "Pharmaceutical Quality Assurance | Cold Chain Transport GDP",
+      "description": "Explore standards in pharmaceutical quality assurance, cold chain drug transport, and adherence to Good Distribution Practices (GDP) for secure medicine logistics.",
+      "heading": "Quality Assurance and Cold Chain Safety Standards in Pharmaceutical Transport",
+      "summary": "An overview of cold-chain protocols, Good Distribution Practices, risk management, and training in pharmaceutical transport."
+    },
     "/products": {
       "title": "Pharmaceutical Products | Hayani Pharma",
       "description": "Explore Hayani Pharma's pharmaceutical product catalog and search products by name, company, or category.",

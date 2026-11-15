@@ -12,6 +12,8 @@ const Credentials = lazy(() => import('./pages/credentials/Credentials'))
 const Products = lazy(() => import('./pages/products/Products'))
 const PartnerWithUs = lazy(() => import('./pages/partner-with-us/PartnerWithUs'))
 const FAQPage = lazy(() => import('./pages/faq/FAQPage'))
+const BlogsPage = lazy(() => import('./pages/blogs/BlogsPage'))
+const BlogArticlePage = lazy(() => import('./pages/blogs/BlogArticlePage'))
 const AnimatedBackground = lazy(() => import('./components/AnimatedBackground'))
 import FloatingSocial from './components/FloatingSocial'
 import Spinner from './components/Spinner'
@@ -40,6 +42,8 @@ function App() {
               <Route path="/products" element={<Products />} />
               <Route path="/partner-with-us" element={<PartnerWithUs />} />
               <Route path="/faq" element={<FAQPage />} />
+              <Route path="/blogs" element={<BlogsPage />} />
+              <Route path="/blogs/:slug" element={<BlogArticlePage />} />
               <Route path="/ar" element={<Home />} />
               <Route path="/ar/about" element={<About />} />
               <Route path="/ar/partnership" element={<Partnership />} />
@@ -49,6 +53,8 @@ function App() {
               <Route path="/ar/products" element={<Products />} />
               <Route path="/ar/partner-with-us" element={<PartnerWithUs />} />
               <Route path="/ar/faq" element={<FAQPage />} />
+              <Route path="/ar/blogs" element={<BlogsPage />} />
+              <Route path="/ar/blogs/:slug" element={<BlogArticlePage />} />
             </Routes>
           </Suspense>
         </BrowserRouter>

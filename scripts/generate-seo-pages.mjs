@@ -9,6 +9,8 @@ const source = await readFile(join(distRoot, 'index.html'), 'utf8')
 const seoData = JSON.parse(await readFile(join(clientRoot, 'src', 'seo', 'seoData.json'), 'utf8'))
 const arLocale = JSON.parse(await readFile(join(clientRoot, 'src', 'locales', 'ar.json'), 'utf8'))
 const enLocale = JSON.parse(await readFile(join(clientRoot, 'src', 'locales', 'en.json'), 'utf8'))
+const englishBlogs = JSON.parse(await readFile(join(clientRoot, 'src', 'content', 'blogs', 'en.json'), 'utf8'))
+const arabicBlogs = JSON.parse(await readFile(join(clientRoot, 'src', 'content', 'blogs', 'ar.json'), 'utf8'))
 
 const escapeHtml = (value) => value
   .replaceAll('&', '&amp;')
@@ -123,6 +125,26 @@ for (const { path, language, metadata } of localizedRoutes) {
         acceptedAnswer: { '@type': 'Answer', text: answer },
       })),
     })
+  }
+  if (path.startsWith('/blogs/')) {
+    const articleSlug = path.slice('/blogs/'.length)
+    const article = (language === 'ar' ? arabicBlogs : englishBlogs).find(({ slug }) => slug === articleSlug)
+    if (article) {
+      graph.push({
+        '@context': 'https://schema.org',
+        '@type': 'BlogPosting',
+        headline: article.title,
+        description: article.metaDescription,
+        keywords: article.keywords.join(', '),
+        mainEntityOfPage: { '@type': 'WebPage', '@id': canonical },
+        author: { '@type': 'Organization', name: seoData.siteName },
+        publisher: {
+          '@type': 'Organization',
+          name: seoData.siteName,
+          logo: { '@type': 'ImageObject', url: `${seoData.siteUrl}/icon.png` },
+        },
+      })
+    }
   }
   const schema = JSON.stringify(graph)
   const html = source

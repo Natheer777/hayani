@@ -10,7 +10,7 @@ export default function FAQ() {
   return (
     <section className="faq-section" aria-labelledby="faq-title">
       <div className="faq-container">
-        <h1 id="faq-title" className="faq-title">{t('faq.title')}</h1>
+        <h1 id="faq-title" className="faq-title why-title wave-gradient-title d-flex justify-content-center mt-5">{t('faq.title')}</h1>
         <div className="faq-list">
           {items.map(({ question, answer }) => (
             <details className="faq-item" key={question}>
